@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hives()
+    {
+        return $this->hasMany(Hive::class);
+    }
+
+    public function accessibleHives()
+    {
+        return Hive::where('user_id', $this->id)->get();
+    }
 }
