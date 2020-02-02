@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return Hive::where('user_id', $this->id)->get();
     }
+
+    public function apiaries()
+    {
+        return $this->hasMany(Apiary::class);
+    }
+
+    public function accessibleApiaries()
+    {
+        return Apiary::where('user_id', $this->id)->get();
+    }
 }

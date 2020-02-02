@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateHiveRequest extends FormRequest
+class ApiaryRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

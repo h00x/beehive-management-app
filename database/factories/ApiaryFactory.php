@@ -2,14 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Hive;
+use App\Apiary;
 use Faker\Generator as Faker;
 
-$factory->define(Hive::class, function (Faker $faker) {
+$factory->define(Apiary::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'location' => $faker->city,
         'user_id' => factory(\App\User::class),
-        'apiary_id' => factory(\App\Apiary::class),
     ];
 });

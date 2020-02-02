@@ -4,6 +4,7 @@
             <div>
                 <a href="{{ route('dashboard') }}">Dashboard</a>
                 <a href="{{ route('hives.index') }}" class="ml-4">Hives</a>
+                <a href="{{ route('apiaries.index') }}" class="ml-4">Apiaries</a>
             </div>
         @endauth
 
@@ -24,7 +25,7 @@
                     {{ __('Logout') }}
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                     @csrf
                 </form>
             @endguest

@@ -17,5 +17,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::resource('hives', 'HiveController');
+    Route::resource('apiaries', 'ApiaryController');
 });
 
