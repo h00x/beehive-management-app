@@ -11,7 +11,7 @@
                 <div class="shadow rounded p-6 bg-white h-full relative">
                     <a href="#" class="absolute right-0 top-0 mr-5 mt-2">...</a>
                     <a href="{{ $hive->path() }}" class="text-2xl font-title text-gray-900 block">Name: {{ $hive->name }}</a>
-                    Location: {{ $hive->location }}
+                    Location: {{ $hive->apiary->location }}
                 </div>
             </div>
         @endforeach

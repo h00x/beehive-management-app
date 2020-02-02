@@ -13,6 +13,6 @@
         @method('DELETE')
     </form>
 
-    <p>Location: {{ $hive->location }}</p>
+    <p>Location: {{ $hive->apiary->location }}</p>
     <p>Apiary: <a href="{{ $hive->apiary->path() }}">{{ $hive->apiary->name }}</a></p>
 @endsection

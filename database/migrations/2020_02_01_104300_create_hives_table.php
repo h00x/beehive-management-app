@@ -15,7 +15,6 @@ class CreateHivesTable extends Migration
     {
         Schema::create('hives', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('location');
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->string('hive_origin')->nullable();

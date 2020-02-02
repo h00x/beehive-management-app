@@ -6,13 +6,6 @@
 </div>
 
 <div class="field">
-    <label for="location">Location</label>
-    <div class="control">
-        <input type="text" name="location" class="border-gray-200 border rounded p-2" value="{{ $hive->location }}">
-    </div>
-</div>
-
-<div class="field">
     <label for="apiary_id">Apiary</label>
     <div class="control">
         <select name="apiary_id">

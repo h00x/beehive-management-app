@@ -46,7 +46,6 @@ class ManageHivesTest extends TestCase
         $this->post('/hives', $hive);
         $this->assertDatabaseHas('hives', [
             'name' => $hive['name'],
-            'location' => $hive['location'],
             'user_id' => $user->id,
             'apiary_id' => $hive['apiary_id']
         ]);
@@ -59,7 +58,7 @@ class ManageHivesTest extends TestCase
         $this->actingAs($hive->user)->get($hive->path())
             ->assertStatus(200)
             ->assertSee($hive->name)
-            ->assertSee($hive->location);
+            ->assertSee($hive->apiary->location);
     }
 
     public function test_a_user_cannot_view_hives_of_others()
@@ -73,41 +72,38 @@ class ManageHivesTest extends TestCase
 
     public function test_a_user_can_view_all_their_hives_on_the_hive_overview_page()
     {
-        $this->signIn();
+        $hive1 = factory(Hive::class)->create();
+        $hive2 = factory(Hive::class)->create([
+            'user_id' => '1',
+        ]);
+        $hive3 = factory(Hive::class)->create([
+            'user_id' => '1',
+        ]);
 
-        $hive1 = factory(Hive::class)->raw();
-        $hive2 = factory(Hive::class)->raw();
-        $hive3 = factory(Hive::class)->raw();
-
-        $this->post('/hives', $hive1);
-        $this->post('/hives', $hive2);
-        $this->post('/hives', $hive3);
+        $this->signIn($hive1->user);
 
         $this->get('/hives')
             ->assertStatus(200)
-            ->assertSee($hive1['name'])
-            ->assertSee($hive1['location'])
-            ->assertSee($hive2['name'])
-            ->assertSee($hive2['location'])
-            ->assertSee($hive3['name'])
-            ->assertSee($hive3['location']);
+            ->assertSee($hive1->name)
+            ->assertSee($hive1->apiary->location)
+            ->assertSee($hive2->name)
+            ->assertSee($hive2->apiary->location)
+            ->assertSee($hive3->name)
+            ->assertSee($hive3->apiary->location);
     }
 
     public function test_a_user_doesnt_see_hives_of_others_in_their_hive_overview()
     {
-        $this->signIn();
-
-        $hiveOfDave = factory(Hive::class)->raw();
+        $hiveOfDave = factory(Hive::class)->create();
         $hiveOfPete = factory(Hive::class)->create();
 
-        $this->post('/hives', $hiveOfDave);
-
-        $this->get('/hives')
+        $this->actingAs($hiveOfDave->user)
+            ->get('/hives')
             ->assertStatus(200)
-            ->assertSee($hiveOfDave['name'])
-            ->assertSee($hiveOfDave['location'])
+            ->assertSee($hiveOfDave->name)
+            ->assertDontSee($hiveOfPete->apiary->location)
             ->assertDontSee($hiveOfPete->name)
-            ->assertDontSee($hiveOfPete->location);
+            ->assertDontSee($hiveOfPete->apiary->location);
     }
 
     public function test_a_user_can_update_a_hive()
@@ -115,7 +111,7 @@ class ManageHivesTest extends TestCase
         $hive = factory(Hive::class)->create();
 
         $this->actingAs($hive->user)
-            ->patch($hive->path(), $attributes = ['name' => 'Changed', 'location' => 'Changed', 'apiary_id' => 1])
+            ->patch($hive->path(), $attributes = ['name' => 'Changed', 'apiary_id' => 1])
             ->assertRedirect($hive->path());
 
         $this->get($hive->path() . '/edit')->assertOk();
@@ -129,7 +125,7 @@ class ManageHivesTest extends TestCase
 
         $hive = factory(Hive::class)->create();
 
-        $this->patch($hive->path(), ['name' => 'Changed', 'location' => 'Changed', 'apiary_id' => 1])->assertStatus(403);
+        $this->patch($hive->path(), ['name' => 'Changed', 'apiary_id' => 1])->assertStatus(403);
     }
 
     public function test_a_hive_needs_a_name()
@@ -139,15 +135,6 @@ class ManageHivesTest extends TestCase
         $hive = factory(Hive::class)->raw(['name' => '']);
 
         $this->post('/hives', $hive)->assertSessionHasErrors('name');
-    }
-
-    public function test_a_hive_needs_a_location()
-    {
-        $this->signIn();
-
-        $hive = factory(Hive::class)->raw(['location' => '']);
-
-        $this->post('/hives', $hive)->assertSessionHasErrors('location');
     }
 
     public function test_a_hive_needs_a_apiary()

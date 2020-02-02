@@ -77,17 +77,14 @@ class ManageApiariesTest extends TestCase
 
     public function test_a_user_doesnt_see_apiaries_of_others_in_their_apiary_overview()
     {
-        $this->signIn();
-
-        $apiaryOfDave = factory(Apiary::class)->raw();
+        $apiaryOfDave = factory(Apiary::class)->create();
         $apiaryOfPete = factory(Apiary::class)->create();
 
-        $this->post('/apiaries', $apiaryOfDave);
-
-        $this->get('/apiaries')
+        $this->actingAs($apiaryOfDave->user)
+            ->get('/apiaries')
             ->assertStatus(200)
-            ->assertSee($apiaryOfDave['name'])
-            ->assertSee($apiaryOfDave['location'])
+            ->assertSee($apiaryOfDave->name)
+            ->assertSee($apiaryOfDave->location)
             ->assertDontSee($apiaryOfPete->name)
             ->assertDontSee($apiaryOfPete->location);
     }
@@ -123,13 +120,13 @@ class ManageApiariesTest extends TestCase
         $this->post('/apiaries', $apiary)->assertSessionHasErrors('name');
     }
 
-    public function test_an_location_needs_a_location()
+    public function test_an_apiary_needs_a_location()
     {
         $this->signIn();
 
         $apiary = factory(Apiary::class)->raw(['location' => '']);
 
-        $this->post('/hives', $apiary)->assertSessionHasErrors('location');
+        $this->post('/apiaries', $apiary)->assertSessionHasErrors('location');
     }
 
     public function test_a_user_can_delete_an_apiary()

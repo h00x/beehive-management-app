@@ -15,7 +15,6 @@ class HiveRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'location' => 'required|max:255',
             'apiary_id' => 'required',
         ];
     }
