@@ -14,6 +14,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Hive' => 'App\Policies\HivePolicy',
+        'App\HiveType' => 'App\Policies\HiveTypePolicy',
+        'App\Apiary' => 'App\Policies\ApiaryPolicy',
     ];
 
     /**

@@ -10,6 +10,20 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static function boot()
+    {
+        static::created(function (User $user) {
+            $user->hiveTypes()->createMany([
+                ['name' => 'Langstroth', 'protected_type' => true],
+                ['name' => 'Dadant', 'protected_type' => true],
+                ['name' => 'Top-bar', 'protected_type' => true],
+                ['name' => 'Other', 'protected_type' => true],
+            ]);
+        });
+
+        parent::boot();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +59,16 @@ class User extends Authenticatable
     public function accessibleHives()
     {
         return Hive::where('user_id', $this->id)->get();
+    }
+
+    public function hiveTypes()
+    {
+        return $this->hasMany(HiveType::class);
+    }
+
+    public function accessibleHiveTypes()
+    {
+        return HiveType::where('user_id', $this->id)->get();
     }
 
     public function apiaries()

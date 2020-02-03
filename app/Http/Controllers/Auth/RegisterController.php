@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\HiveType;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "becc524b2bfad847e26db8c721572ba4",
+    "content-hash": "08cea67486f15ff2a29e90e9680e4597",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3059,6 +3059,51 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "dczajkowski/auth-tests",
+            "version": "6.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DCzajkowski/auth-tests.git",
+                "reference": "46baa9c884b950a9a9525c79c72e57189d0306b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DCzajkowski/auth-tests/zipball/46baa9c884b950a9a9525c79c72e57189d0306b9",
+                "reference": "46baa9c884b950a9a9525c79c72e57189d0306b9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DCzajkowski\\AuthTests\\AuthTestsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/AuthTestsServiceProvider.php",
+                    "src/Console/Commands/AuthTestsMakeCommand.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Czajkowski",
+                    "email": "dare.czajkowski@gmail.com",
+                    "homepage": "https://dczajkowski.com"
+                }
+            ],
+            "description": "Authentication tests for Laravel built-in authentication module.",
+            "time": "2019-10-29T00:59:25+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.3.0",

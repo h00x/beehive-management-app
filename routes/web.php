@@ -15,8 +15,12 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
 
     Route::resource('hives', 'HiveController');
     Route::resource('apiaries', 'ApiaryController');
+    Route::resource('hives/types', 'HiveTypeController');
 });
 

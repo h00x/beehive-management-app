@@ -6,7 +6,7 @@
     @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
 
     <a href="{{ $hive->path() }}" onclick="event.preventDefault();
-                   document.getElementById('delete-hive').submit();" class="block">Delete hive</a>
+                   document.getElementById('delete-hive').submit();" class="block text-red-500">Delete hive</a>
 
     <form id="delete-hive" action="{{ $hive->path() }}" method="POST" class="hidden">
         @csrf
