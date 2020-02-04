@@ -16,6 +16,17 @@
     </div>
 </div>
 
+<div class="field">
+    <label for="hive_type_id">Hive type</label>
+    <div class="control">
+        <select name="hive_type_id">
+            @foreach (Auth::user()->accessibleHiveTypes() as $hiveType)
+                <option value="{{ $hiveType->id }}">{{ $hiveType->name }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
 <div class="control">
     <button type="submit">{{ $buttonText }}</button>
 </div>

@@ -62,6 +62,18 @@ class ManageHiveTypeTest extends TestCase
             ->assertSee($type3->name);
     }
 
+    public function test_a_user_doesnt_see_hive_types_of_others_in_their_hive_type_overview()
+    {
+        $hiveTypeOfDave = factory(HiveType::class)->create();
+        $hiveTypeOfPete = factory(HiveType::class)->create();
+
+        $this->actingAs($hiveTypeOfDave->user)
+            ->get('/types')
+            ->assertStatus(200)
+            ->assertSee($hiveTypeOfDave->name)
+            ->assertDontSee($hiveTypeOfPete->name);
+    }
+
     public function test_a_user_has_the_default_hive_types()
     {
         $user = factory(User::class)->create();
@@ -85,5 +97,50 @@ class ManageHiveTypeTest extends TestCase
         $this->get($type->path() . '/edit')->assertOk();
 
         $this->assertDatabaseHas('hive_types', $attributes);
+    }
+
+    public function test_a_user_cannot_update_a_hive_of_others()
+    {
+        $this->signIn();
+
+        $hiveType = factory(HiveType::class)->create();
+
+        $this->patch($hiveType->path(), ['name' => 'Changed'])->assertStatus(403);
+    }
+
+    public function test_a_hive_needs_a_name()
+    {
+        $this->signIn();
+
+        $hiveType = factory(HiveType::class)->raw(['name' => '']);
+
+        $this->post('/hives', $hiveType)->assertSessionHasErrors('name');
+    }
+
+    public function test_a_user_can_delete_a_hive()
+    {
+        $hiveType = factory(HiveType::class)->create();
+
+        $this->assertDatabaseHas('hive_types', [
+            'id' => $hiveType['id'],
+        ]);
+
+        $this->actingAs($hiveType->user)
+            ->delete($hiveType->path())
+            ->assertRedirect('/types');
+
+        $this->assertDatabaseMissing('hive_types', [
+            'id' => $hiveType['id'],
+        ]);
+    }
+
+    public function test_a_user_cannot_delete_a_hive_of_others()
+    {
+        $this->signIn();
+
+        $hiveType = factory(HiveType::class)->create();
+
+        $this->delete($hiveType->path())
+            ->assertStatus(403);
     }
 }

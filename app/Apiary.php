@@ -17,4 +17,9 @@ class Apiary extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function hives()
+    {
+        return $this->hasMany(Hive::class);
+    }
 }

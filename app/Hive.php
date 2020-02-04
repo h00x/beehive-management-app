@@ -22,4 +22,9 @@ class Hive extends Model
     {
         return $this->belongsTo(Apiary::class);
     }
+
+    public function type()
+    {
+        return $this->belongsTo(HiveType::class, 'hive_type_id');
+    }
 }

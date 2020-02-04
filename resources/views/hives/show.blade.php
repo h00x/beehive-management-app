@@ -15,4 +15,5 @@
 
     <p>Location: {{ $hive->apiary->location }}</p>
     <p>Apiary: <a href="{{ $hive->apiary->path() }}">{{ $hive->apiary->name }}</a></p>
+    <p>Hive type: {{ $hive->type->name }}</p>
 @endsection

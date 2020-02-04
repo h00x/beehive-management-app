@@ -37,17 +37,19 @@ class ManageHivesTest extends TestCase
      * @return void
      */
     public function test_a_user_can_create_a_hive()
-    {        $user = $this->signIn();
+    {
+        $user = $this->signIn();
 
         $this->get('/hives/create')->assertStatus(200);
 
-        $hive = factory(Hive::class)->raw();
+        $hive = factory(Hive::class)->raw(['hive_type_id' => $user->hiveTypes->first()->id]);
 
         $this->post('/hives', $hive);
         $this->assertDatabaseHas('hives', [
             'name' => $hive['name'],
             'user_id' => $user->id,
-            'apiary_id' => $hive['apiary_id']
+            'apiary_id' => $hive['apiary_id'],
+            'hive_type_id' => $user->hiveTypes->first()->id
         ]);
     }
 
@@ -58,7 +60,8 @@ class ManageHivesTest extends TestCase
         $this->actingAs($hive->user)->get($hive->path())
             ->assertStatus(200)
             ->assertSee($hive->name)
-            ->assertSee($hive->apiary->location);
+            ->assertSee($hive->apiary->location)
+            ->assertSee($hive->type->name);
     }
 
     public function test_a_user_cannot_view_hives_of_others()
@@ -111,7 +114,7 @@ class ManageHivesTest extends TestCase
         $hive = factory(Hive::class)->create();
 
         $this->actingAs($hive->user)
-            ->patch($hive->path(), $attributes = ['name' => 'Changed', 'apiary_id' => 1])
+            ->patch($hive->path(), $attributes = ['name' => 'Changed', 'apiary_id' => 1, 'hive_type_id' => 1])
             ->assertRedirect($hive->path());
 
         $this->get($hive->path() . '/edit')->assertOk();
@@ -121,29 +124,72 @@ class ManageHivesTest extends TestCase
 
     public function test_a_user_cannot_update_a_hive_of_others()
     {
-        $this->signIn();
+        $user = $this->signIn();
 
         $hive = factory(Hive::class)->create();
 
-        $this->patch($hive->path(), ['name' => 'Changed', 'apiary_id' => 1])->assertStatus(403);
+        $this->patch($hive->path(), ['name' => 'Changed', 'apiary_id' => 1, 'hive_type_id' => $hive->type->id])->assertStatus(403);
     }
 
     public function test_a_hive_needs_a_name()
     {
-        $this->signIn();
+        $user = $this->signIn();
 
-        $hive = factory(Hive::class)->raw(['name' => '']);
+        $hive = factory(Hive::class)->raw(['name' => '', 'hive_type_id' => $user->hiveTypes->first()->id]);
 
         $this->post('/hives', $hive)->assertSessionHasErrors('name');
     }
 
     public function test_a_hive_needs_a_apiary()
     {
-        $this->signIn();
+        $user = $this->signIn();
 
-        $hive = factory(Hive::class)->raw(['apiary_id' => '']);
+        $hive = factory(Hive::class)->raw(['apiary_id' => '', 'hive_type_id' => $user->hiveTypes->first()->id]);
 
         $this->post('/hives', $hive)->assertSessionHasErrors('apiary_id');
+    }
+
+    public function test_a_hive_needs_a_hive_type()
+    {
+        $this->signIn();
+
+        $hive = factory(Hive::class)->raw(['hive_type_id' => '']);
+
+        $this->post('/hives', $hive)->assertSessionHasErrors('hive_type_id');
+    }
+
+    public function test_a_hive_cant_use_a_hive_type_of_others()
+    {
+        $hive2 = factory(Hive::class)->raw();
+
+        $user = $this->signIn();
+
+        $this->post('/hives', $hive2)->assertStatus(403);
+
+        $hive2['hive_type_id'] = $user->hiveTypes->first()->id;
+
+        $this->post('/hives', $hive2);
+
+        $this->assertDatabaseHas('hives', [
+            'name' => $hive2['name'],
+            'user_id' => $user->id,
+            'apiary_id' => $hive2['apiary_id'],
+            'hive_type_id' => $user->hiveTypes->first()->id
+        ]);
+
+    }
+
+    public function test_a_hive_cant_use_an_apiary_of_others()
+    {
+        # @todo: Fix this test so you can't use the apiaries of others.
+        # Adjust it in the HiveRequest class just like what you did with the hive types
+        $hive = factory(Hive::class)->create();
+
+        $hive2 = factory(Hive::class)->raw(['apiary_id' => $hive->apiary->id]);
+
+        $this->signIn();
+
+        $this->post('/hives', $hive2)->assertStatus(403);
     }
 
     public function test_a_user_can_delete_a_hive()

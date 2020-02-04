@@ -22,6 +22,12 @@ class CreateHiveTypesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::table('hives', function (Blueprint $table) {
+            $table->unsignedBigInteger('hive_type_id')->nullable();
+
+            $table->foreign('hive_type_id')->references('id')->on('hive_types')->onDelete('cascade');
+        });
     }
 
     /**
@@ -31,6 +37,10 @@ class CreateHiveTypesTable extends Migration
      */
     public function down()
     {
+        Schema::table('hives', function (Blueprint $table) {
+            $table->dropForeign('hives_hive_type_id_foreign');
+            $table->dropColumn('hive_type_id');
+        });
         Schema::dropIfExists('hive_types');
     }
 }
