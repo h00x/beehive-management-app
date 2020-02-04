@@ -10,52 +10,45 @@ class HiveTypeController extends Controller
 {
     public function index()
     {
-        $hives = auth()->user()->accessibleHiveTypes();
+        $types = auth()->user()->accessibleHiveTypes();
 
-        return view('hiveTypes.index', compact('hives'));
+        return view('hives.types.index', compact('types'));
     }
 
     public function create()
     {
-        return view('hiveTypes.create');
+        return view('hives.types.create');
     }
 
     public function store(HiveTypeRequest $request)
     {
-        $hiveType = auth()->user()->hiveTypes()->create($request->validated());
+        $type = auth()->user()->hiveTypes()->create($request->validated());
 
-        return redirect($hiveType->path());
+        return redirect($type->path());
     }
 
-    public function show(HiveType $hiveType)
+    public function edit(HiveType $type)
     {
-        $this->authorize('view', $hiveType);
+        $this->authorize('view', $type);
 
-        return view('hiveTypes.show', compact('hiveType'));
+        return view('hives.types.edit', compact('type'));
     }
 
-    public function edit(HiveType $hiveType)
+    public function update(HiveTypeRequest $request, HiveType $type)
     {
-        $this->authorize('view', $hiveType);
+        $this->authorize('update', $type);
 
-        return view('hiveTypes.edit', compact('hiveType'));
+        $type->update($request->validated());
+
+        return redirect($type->path());
     }
 
-    public function update(HiveTypeRequest $request, HiveType $hiveType)
+    public function destroy(HiveType $type)
     {
-        $this->authorize('update', $hiveType);
+        $this->authorize('delete', $type);
 
-        $hiveType->update($request->validated());
+        $type->delete();
 
-        return redirect($hiveType->path());
-    }
-
-    public function destroy(HiveType $hiveType)
-    {
-        $this->authorize('delete', $hiveType);
-
-        $hiveType->delete();
-
-        return redirect(route('hiveTypes.index'));
+        return redirect(route('types.index'));
     }
 }

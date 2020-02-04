@@ -10,7 +10,7 @@ class HiveType extends Model
 
     public function path()
     {
-        return "/hives/types/{$this->id}";
+        return "/types/{$this->id}";
     }
 
     public function user()
