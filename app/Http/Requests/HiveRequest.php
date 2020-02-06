@@ -9,7 +9,13 @@ class HiveRequest extends FormRequest
 {
     public function authorize()
     {
-        return auth()->user()->hiveTypes->contains('id', $this->input('hive_type_id')) || $this->input('hive_type_id') === null;
+        if (auth()->user()->hiveTypes->contains('id', $this->input('hive_type_id')) || $this->input('hive_type_id') === null &&
+            auth()->user()->apiaries->contains('id', $this->input('apiary_id')) || $this->input('apiary_id') === null
+        ) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
