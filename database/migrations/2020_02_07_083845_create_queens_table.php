@@ -25,6 +25,12 @@ class CreateQueensTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('hive_id')->references('id')->on('hives')->onDelete('cascade');
         });
+
+        Schema::table('hives', function (Blueprint $table) {
+            $table->unsignedBigInteger('queen_id')->nullable();
+
+            $table->foreign('queen_id')->references('id')->on('queens')->onDelete('cascade');
+        });
     }
 
     /**
@@ -34,6 +40,11 @@ class CreateQueensTable extends Migration
      */
     public function down()
     {
+        Schema::table('hives', function (Blueprint $table) {
+            $table->dropForeign('queens_queen_id_foreign');
+            $table->dropColumn('queen_id');
+        });
+
         Schema::dropIfExists('queens');
     }
 }

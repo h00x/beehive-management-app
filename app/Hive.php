@@ -30,6 +30,6 @@ class Hive extends Model
 
     public function queen()
     {
-        return $this->hasOne(Queen::class);
+        return $this->belongsTo(Queen::class);
     }
 }

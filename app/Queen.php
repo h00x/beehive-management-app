@@ -20,6 +20,6 @@ class Queen extends Model
 
     public function hive()
     {
-        return $this->belongsTo(Hive::class);
+        return $this->hasOne(Hive::class);
     }
 }
