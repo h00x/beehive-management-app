@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Hive' => 'App\Policies\HivePolicy',
         'App\HiveType' => 'App\Policies\HiveTypePolicy',
         'App\Apiary' => 'App\Policies\ApiaryPolicy',
+        'App\Queen' => 'App\Policies\QueenPolicy',
     ];
 
     /**

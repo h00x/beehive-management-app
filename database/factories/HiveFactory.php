@@ -11,5 +11,6 @@ $factory->define(Hive::class, function (Faker $faker) {
         'user_id' => factory(\App\User::class),
         'apiary_id' => factory(\App\Apiary::class),
         'hive_type_id' => factory(\App\HiveType::class),
+        'queen_id' => factory(\App\Queen::class)
     ];
 });

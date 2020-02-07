@@ -22,5 +22,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('hives', 'HiveController');
     Route::resource('apiaries', 'ApiaryController');
     Route::resource('types', 'HiveTypeController');
+    Route::resource('queens', 'QueenController');
 });
 

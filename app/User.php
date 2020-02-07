@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return Apiary::where('user_id', $this->id)->get();
     }
+
+    public function queens()
+    {
+        return $this->hasMany(Queen::class);
+    }
 }

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Apiary;
 use App\Hive;
 use App\HiveType;
+use App\Queen;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -151,8 +152,10 @@ class ManageHiveTypeTest extends TestCase
         $user = $this->signIn();
 
         $this->post('/apiaries', factory(Apiary::class)->raw());
+        $this->post('/queens', factory(Queen::class)->raw());
 
         $hive = factory(Hive::class)->raw([
+            'queen_id' => $user->queens->first()->id,
             'hive_type_id' => $user->hiveTypes->first()->id,
             'apiary_id' => $user->apiaries->first()->id
         ]);

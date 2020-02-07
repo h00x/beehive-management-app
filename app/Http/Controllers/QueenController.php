@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QueenRequest;
 use App\Queen;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class QueenController extends Controller
      */
     public function index()
     {
-        //
+        $queens = auth()->user()->queens->all();
+
+        return view('queens.index', compact('queens'));
     }
 
     /**
@@ -24,7 +27,7 @@ class QueenController extends Controller
      */
     public function create()
     {
-        //
+        return view('queens.create');
     }
 
     /**
@@ -33,20 +36,11 @@ class QueenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QueenRequest $request)
     {
-        //
-    }
+        $queen = auth()->user()->queens()->create($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Queen  $queen
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Queen $queen)
-    {
-        //
+        return redirect(route('queens.index'));
     }
 
     /**
@@ -57,7 +51,9 @@ class QueenController extends Controller
      */
     public function edit(Queen $queen)
     {
-        //
+        $this->authorize('view', $queen);
+
+        return view('queens.edit', compact('queen'));
     }
 
     /**
@@ -67,9 +63,13 @@ class QueenController extends Controller
      * @param  \App\Queen  $queen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Queen $queen)
+    public function update(QueenRequest $request, Queen $queen)
     {
-        //
+        $this->authorize('update', $queen);
+
+        $queen->update($request->validated());
+
+        return redirect($queen->path());
     }
 
     /**
@@ -80,6 +80,14 @@ class QueenController extends Controller
      */
     public function destroy(Queen $queen)
     {
-        //
+        $this->authorize('delete', $queen);
+
+        if ($queen->hive) {
+            return redirect(route('queens.index'))->withErrors(['delete' => 'This queen has a hive. Can\'t delete it.']);
+        }
+
+        $queen->delete();
+
+        return redirect(route('queens.index'));
     }
 }
