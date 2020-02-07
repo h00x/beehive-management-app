@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Apiary;
+use App\Hive;
 use App\HiveType;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -108,13 +110,13 @@ class ManageHiveTypeTest extends TestCase
         $this->patch($hiveType->path(), ['name' => 'Changed'])->assertStatus(403);
     }
 
-    public function test_a_hive_needs_a_name()
+    public function test_a_hive_type_needs_a_name()
     {
         $this->signIn();
 
         $hiveType = factory(HiveType::class)->raw(['name' => '']);
 
-        $this->post('/hives', $hiveType)->assertSessionHasErrors('name');
+        $this->post('/types', $hiveType)->assertSessionHasErrors('name');
     }
 
     public function test_a_user_can_delete_a_hive()
@@ -142,5 +144,23 @@ class ManageHiveTypeTest extends TestCase
 
         $this->delete($hiveType->path())
             ->assertStatus(403);
+    }
+
+    public function test_a_hive_type_cant_be_deleted_when_it_has_hives_allocated_to_it()
+    {
+        $user = $this->signIn();
+
+        $this->post('/apiaries', factory(Apiary::class)->raw());
+
+        $hive = factory(Hive::class)->raw([
+            'hive_type_id' => $user->hiveTypes->first()->id,
+            'apiary_id' => $user->apiaries->first()->id
+        ]);
+
+        $this->post('/hives', $hive);
+
+        $this->delete($user->hiveTypes->first()->path())
+            ->assertRedirect(route('types.index'))
+            ->assertSessionHasErrors('delete');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\HiveType;
 use App\Http\Requests\HiveTypeRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class HiveTypeController extends Controller
 {
@@ -22,9 +23,9 @@ class HiveTypeController extends Controller
 
     public function store(HiveTypeRequest $request)
     {
-        $type = auth()->user()->hiveTypes()->create($request->validated());
+        auth()->user()->hiveTypes()->create($request->validated());
 
-        return redirect($type->path());
+        return redirect(route('types.index'));
     }
 
     public function edit(HiveType $type)
@@ -46,6 +47,10 @@ class HiveTypeController extends Controller
     public function destroy(HiveType $type)
     {
         $this->authorize('delete', $type);
+
+        if (!$type->hives->isEmpty()) {
+            return redirect(route('types.index'))->withErrors(['delete' => 'This hive type has hives under it. Can\'t delete it.']);
+        }
 
         $type->delete();
 

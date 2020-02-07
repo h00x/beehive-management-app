@@ -8,11 +8,15 @@
 <div class="field">
     <label for="apiary_id">Apiary</label>
     <div class="control">
-        <select name="apiary_id">
-            @foreach (Auth::user()->apiaries as $apiary)
-                <option value="{{ $apiary->id }}" {{ isset($hive->apiary) ? $hive->apiary->id === $apiary->id ? 'selected' : '' : '' }}>{{ $apiary->name }}</option>
-            @endforeach
-        </select>
+        @if (Auth::user()->apiaries->isEmpty())
+            <a href="{{ route('apiaries.create') }}">Create an apiary</a>
+        @else
+            <select name="apiary_id">
+                @foreach (Auth::user()->apiaries as $apiary)
+                    <option value="{{ $apiary->id }}" {{ isset($hive->apiary) ? $hive->apiary->id === $apiary->id ? 'selected' : '' : '' }}>{{ $apiary->name }}</option>
+                @endforeach
+            </select>
+        @endif
     </div>
 </div>
 
@@ -24,6 +28,7 @@
                 <option value="{{ $hiveType->id }}" {{ isset($hive->type) ? $hive->type->id === $hiveType->id ? 'selected' : '' : '' }}>{{ $hiveType->name }}</option>
             @endforeach
         </select>
+        <a href="{{ route('types.create') }}">Create a custom hive type</a>
     </div>
 </div>
 
