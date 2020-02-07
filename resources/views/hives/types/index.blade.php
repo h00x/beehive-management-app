@@ -6,10 +6,11 @@
     @include('layouts.button', ['text' => 'Create a hive type', 'url' => route('types.create')])
 
     <div>
-        <table class="">
+        <table class="w-full">
             <thead>
-                <tr>
+                <tr class="text-left">
                     <th>Hive type</th>
+                    <th>Number of hives</th>
                     <th>Edit hive type</th>
                 </tr>
             </thead>
@@ -17,6 +18,7 @@
                 @foreach ($types as $type)
                     <tr>
                         <td>{{ $type->name }}</td>
+                        <td>{{ $type->hives->count() }}</td>
                         <td>
                             <a
                                 href="{{ $type->path() . '/edit' }}"

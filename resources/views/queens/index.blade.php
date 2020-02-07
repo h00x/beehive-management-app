@@ -6,12 +6,13 @@
     @include('layouts.button', ['text' => 'Create a queen', 'url' => route('queens.create')])
 
     <div>
-        <table class="">
+        <table class="w-full">
             <thead>
-                <tr>
+                <tr class="text-left">
                     <th>Queen</th>
                     <th>Race</th>
                     <th>Marking</th>
+                    <th>Hive</th>
                     <th>Edit queen</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                         <td>{{ $queen->name }}</td>
                         <td>{{ $queen->race }}</td>
                         <td>{{ $queen->marking }}</td>
+                        <td><a href="{{$queen->hive->path()}}">{{ $queen->hive->name }}</a></td>
                         <td>
                             <a
                                 href="{{ $queen->path() . '/edit' }}"
