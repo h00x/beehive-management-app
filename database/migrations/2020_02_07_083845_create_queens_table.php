@@ -15,7 +15,15 @@ class CreateQueensTable extends Migration
     {
         Schema::create('queens', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('race');
+            $table->string('marking');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('hive_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('hive_id')->references('id')->on('hives')->onDelete('cascade');
         });
     }
 

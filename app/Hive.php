@@ -27,4 +27,9 @@ class Hive extends Model
     {
         return $this->belongsTo(HiveType::class, 'hive_type_id');
     }
+
+    public function queen()
+    {
+        return $this->hasOne(Queen::class);
+    }
 }
