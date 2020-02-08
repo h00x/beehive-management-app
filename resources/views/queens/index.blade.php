@@ -22,7 +22,13 @@
                         <td>{{ $queen->name }}</td>
                         <td>{{ $queen->race }}</td>
                         <td>{{ $queen->marking }}</td>
-                        <td><a href="{{$queen->hive->path()}}">{{ $queen->hive->name }}</a></td>
+                        <td>
+                        @if (isset($queen->hive))
+                            <a href="{{$queen->hive->path()}}">{{ $queen->hive->name }}</a>
+                        @else
+                            <i>No hive</i>
+                        @endif
+                        </td>
                         <td>
                             <a
                                 href="{{ $queen->path() . '/edit' }}"
