@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Apiary::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->sentence,
         'location' => $faker->city,
         'user_id' => factory(\App\User::class),
     ];

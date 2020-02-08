@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(HiveType::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->sentence,
         'user_id' => factory(\App\User::class),
     ];
 });

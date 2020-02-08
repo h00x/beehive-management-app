@@ -56,19 +56,9 @@ class User extends Authenticatable
         return $this->hasMany(Hive::class);
     }
 
-    public function accessibleHives()
-    {
-        return Hive::where('user_id', $this->id)->get();
-    }
-
     public function hiveTypes()
     {
         return $this->hasMany(HiveType::class);
-    }
-
-    public function accessibleHiveTypes()
-    {
-        return HiveType::where('user_id', $this->id)->get();
     }
 
     public function apiaries()
@@ -76,13 +66,13 @@ class User extends Authenticatable
         return $this->hasMany(Apiary::class);
     }
 
-    public function accessibleApiaries()
-    {
-        return Apiary::where('user_id', $this->id)->get();
-    }
-
     public function queens()
     {
         return $this->hasMany(Queen::class);
+    }
+
+    public function harvests()
+    {
+        return $this->hasMany(Harvest::class);
     }
 }

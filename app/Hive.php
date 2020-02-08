@@ -32,4 +32,9 @@ class Hive extends Model
     {
         return $this->belongsTo(Queen::class);
     }
+
+    public function harvests()
+    {
+        return $this->belongsToMany(Harvest::class);
+    }
 }

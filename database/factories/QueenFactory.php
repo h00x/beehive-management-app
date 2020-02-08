@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Queen::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->sentence,
         'race' => $faker->word,
         'marking' => $faker->word,
         'user_id' => factory(\App\User::class),
