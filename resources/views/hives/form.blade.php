@@ -34,10 +34,12 @@
 <div class="field">
     <label for="queen_id">Queen</label>
     <div class="control">
-        @if (Auth::user()->queens->isNotEmpty())
+        @if (Auth::user()->availableQueens()->count() || $hive->queen)
             <select name="queen_id">
                 @foreach (Auth::user()->queens as $queen)
-                    <option value="{{ $queen->id }}" {{ isset($hive->queen) ? $hive->queen->id === $queen->id ? 'selected' : '' : '' }}>{{ $queen->name }}</option>
+                    @if (!$queen->hasAHive() || $queen->is($hive->queen))
+                        <option value="{{ $queen->id }}" {{ isset($hive->queen) ? $hive->queen->id === $queen->id ? 'selected' : '' : '' }}>{{ $queen->name }}</option>
+                    @endif
                 @endforeach
             </select>
         @endif

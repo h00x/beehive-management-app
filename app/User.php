@@ -75,4 +75,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Harvest::class);
     }
+
+    public function availableQueens()
+    {
+
+        $availableQueens = $this->queens->reject(function ($queen) {
+            return $queen->hive;
+        });
+
+        return $availableQueens;
+    }
 }
