@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Hive;
 use App\Queen;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -22,5 +23,22 @@ class QueenTest extends TestCase
         $queen = factory(Queen::class)->create();
 
         $this->assertInstanceOf('App\User', $queen->user);
+    }
+
+    public function test_it_has_a_hive()
+    {
+        $hive = factory(Hive::class)->create();
+
+        $this->assertTrue($hive->queen->hasAHive());
+    }
+
+    public function test_it_does_not_have_a_hive()
+    {
+        $hive = factory(Hive::class)->create();
+        $queen = Queen::find($hive->queen->id);
+        $hive->queen()->dissociate();
+        $hive->save();
+
+        $this->assertFalse($queen->hasAHive());
     }
 }

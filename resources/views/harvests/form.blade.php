@@ -11,7 +11,7 @@
         @if (Auth::user()->hives->isNotEmpty())
             <select name="hive_id[]" multiple>
                 @foreach (Auth::user()->hives as $hive)
-                    <option value="{{ $hive->id }}" {{ $harvest->hasHives($hive) ? 'selected' : '' }}>{{ $hive->name }}</option>
+                    <option value="{{ $hive->id }}" {{ $harvest->hasHive($hive) ? 'selected' : '' }}>{{ $hive->name }}</option>
                 @endforeach
             </select>
         @else

@@ -22,4 +22,13 @@ class Queen extends Model
     {
         return $this->hasOne(Hive::class);
     }
+
+    public function hasAHive()
+    {
+        if ($this->hive) {
+            return $this->hive->exists();
+        }
+
+        return false;
+    }
 }

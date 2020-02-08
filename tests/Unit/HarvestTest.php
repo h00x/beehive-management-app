@@ -32,6 +32,6 @@ class HarvestTest extends TestCase
 
         $harvest->hives()->attach($hive);
 
-        $this->assertTrue($harvest->hasHives($hive));
+        $this->assertTrue($harvest->hasHive($hive));
     }
 }

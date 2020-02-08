@@ -23,7 +23,7 @@ class Harvest extends Model
         return $this->belongsToMany(Hive::class, 'harvest_hive')->withTimestamps();
     }
 
-    public function hasHives($hive)
+    public function hasHive($hive)
     {
         return $this->hives->contains($hive);
     }
