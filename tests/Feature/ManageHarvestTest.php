@@ -12,13 +12,20 @@ class ManageHarvestTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
+    public function test_guests_cannot_view_harvests_overview()
+    {
+        $response = $this->get('/harvests');
+
+        $response->assertRedirect('/login');
+    }
+
     public function test_you_need_to_be_authenticated_to_create_a_harvest()
     {
         $harvest = factory(Harvest::class)->raw();
 
         $this->post('/harvests', $harvest)->assertRedirect('/login');
 
-        $this->assertDatabaseMissing('queens', $harvest);
+        $this->assertDatabaseMissing('harvests', $harvest);
     }
 
     public function test_a_user_can_create_a_harvest()
@@ -54,10 +61,10 @@ class ManageHarvestTest extends TestCase
     {
         $harvest1 = factory(Harvest::class)->create();
         $harvest2 = factory(Harvest::class)->create([
-            'user_id' => '1',
+            'user_id' => $harvest1->user->id,
         ]);
         $harvest3 = factory(Harvest::class)->create([
-            'user_id' => '1',
+            'user_id' => $harvest1->user->id,
         ]);
         $harvest4 = factory(Harvest::class)->create();
 
@@ -113,7 +120,7 @@ class ManageHarvestTest extends TestCase
     {
         $this->signIn();
 
-        $queen = factory(Harvest::class)->raw([
+        $harvest = factory(Harvest::class)->raw([
             'name' => '',
             'date' => '',
             'batch_code' => '',
@@ -122,7 +129,7 @@ class ManageHarvestTest extends TestCase
             'nectar_source' => ''
         ]);
 
-        $this->post('/harvests', $queen)->assertSessionHasErrors([
+        $this->post('/harvests', $harvest)->assertSessionHasErrors([
             'name',
             'date',
             'batch_code',

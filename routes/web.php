@@ -24,5 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('types', 'HiveTypeController');
     Route::resource('queens', 'QueenController');
     Route::resource('harvests', 'HarvestController');
+    Route::resource('inspections', 'InspectionController');
 });
 

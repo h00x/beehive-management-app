@@ -6,6 +6,7 @@
                 <a href="{{ route('hives.index') }}" class="ml-4">Hives</a>
                 <a href="{{ route('apiaries.index') }}" class="ml-4">Apiaries</a>
                 <a href="{{ route('harvests.index') }}" class="ml-4">Harvests</a>
+                <a href="{{ route('inspections.index') }}" class="ml-4">Inspections</a>
             </div>
         @endauth
 

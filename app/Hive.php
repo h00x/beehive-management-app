@@ -37,4 +37,9 @@ class Hive extends Model
     {
         return $this->belongsToMany(Harvest::class);
     }
+
+    public function inspections()
+    {
+        return $this->hasMany(Inspection::class);
+    }
 }

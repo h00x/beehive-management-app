@@ -13,7 +13,7 @@ class InspectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class InspectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date' => 'required|date',
+            'queen_seen' => 'boolean',
+            'larval_seen' => 'boolean',
+            'young_larval_seen' => 'boolean',
+            'pollen_arriving' => 'integer|min:0|max:100',
+            'comb_building' => 'integer|min:0|max:100',
+            'notes' => 'max:2000',
+            'weather' => 'max:255',
+            'temperature' => 'integer|min:-40|max:80',
+            'hive_id' => 'required'
         ];
     }
 }

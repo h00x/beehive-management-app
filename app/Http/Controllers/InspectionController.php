@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InspectionRequest;
 use App\Inspection;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class InspectionController extends Controller
      */
     public function index()
     {
-        //
+        $inspections = auth()->user()->inspections->all();
+
+        return view('inspections.index', compact('inspections'));
     }
 
     /**
@@ -24,7 +27,7 @@ class InspectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('inspections.create');
     }
 
     /**
@@ -33,9 +36,11 @@ class InspectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InspectionRequest $request)
     {
-        //
+        auth()->user()->inspections()->create($request->validated());
+
+        return redirect(route('inspections.index'));
     }
 
     /**
@@ -46,7 +51,9 @@ class InspectionController extends Controller
      */
     public function show(Inspection $inspection)
     {
-        //
+        $this->authorize('view', $inspection);
+
+        return view('inspections.show', compact('inspection'));
     }
 
     /**
@@ -57,7 +64,9 @@ class InspectionController extends Controller
      */
     public function edit(Inspection $inspection)
     {
-        //
+        $this->authorize('view', $inspection);
+
+        return view('inspections.edit', compact('inspection'));
     }
 
     /**
@@ -67,9 +76,13 @@ class InspectionController extends Controller
      * @param  \App\Inspection  $inspection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inspection $inspection)
+    public function update(InspectionRequest $request, Inspection $inspection)
     {
-        //
+        $this->authorize('update', $inspection);
+
+        $inspection->update($request->validated());
+
+        return redirect($inspection->path());
     }
 
     /**
@@ -80,6 +93,10 @@ class InspectionController extends Controller
      */
     public function destroy(Inspection $inspection)
     {
-        //
+        $this->authorize('delete', $inspection);
+
+        $inspection->delete();
+
+        return redirect(route('inspections.index'));
     }
 }

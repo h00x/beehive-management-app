@@ -6,9 +6,9 @@
     @include('layouts.button', ['text' => 'Edit harvest', 'url' => $harvest->path() . '/edit'])
 
     <a href="{{ $harvest->path() }}" onclick="event.preventDefault();
-                   document.getElementById('delete-hive').submit();" class="block text-red-500">Delete harvest</a>
+                   document.getElementById('delete-harvest').submit();" class="block text-red-500">Delete harvest</a>
 
-    <form id="delete-hive" action="{{ $harvest->path() }}" method="POST" class="hidden">
+    <form id="delete-harvest" action="{{ $harvest->path() }}" method="POST" class="hidden">
         @csrf
         @method('DELETE')
     </form>

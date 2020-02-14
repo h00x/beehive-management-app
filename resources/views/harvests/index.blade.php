@@ -38,9 +38,9 @@
                                 href="{{ $harvest->path() }}"
                                 class="text-red-500"
                                 onclick="event.preventDefault();
-                                    document.getElementById('{{ 'delete-hive-type-' . $harvest->id }}').submit();"
+                                    document.getElementById('{{ 'delete-harvest-' . $harvest->id }}').submit();"
                             >Delete</a>
-                            <form id="{{ 'delete-hive-type-' . $harvest->id }}" action="{{ $harvest->path() }}" method="POST" class="hidden">
+                            <form id="{{ 'delete-harvest-' . $harvest->id }}" action="{{ $harvest->path() }}" method="POST" class="hidden">
                                 @csrf
                                 @method('DELETE')
                             </form>

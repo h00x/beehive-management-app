@@ -2,17 +2,33 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Hive;
+use App\Inspection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class InspectionTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    public function test_it_has_a_path()
     {
-        $this->assertTrue(true);
+        $harvest = factory(Inspection::class)->create();
+
+        $this->assertEquals('/inspections/' . $harvest->id, $harvest->path());
+    }
+
+    public function test_it_has_an_owner()
+    {
+        $harvest = factory(Inspection::class)->create();
+
+        $this->assertInstanceOf('App\User', $harvest->user);
+    }
+
+    public function test_inspection_has_a_hive()
+    {
+        $inspection = factory(Inspection::class)->create();
+
+        $this->assertInstanceOf('App\Hive', $inspection->hive);
     }
 }

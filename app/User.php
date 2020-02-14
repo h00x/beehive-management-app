@@ -76,6 +76,11 @@ class User extends Authenticatable
         return $this->hasMany(Harvest::class);
     }
 
+    public function inspections()
+    {
+        return $this->hasMany(Inspection::class);
+    }
+
     public function availableQueens()
     {
 
