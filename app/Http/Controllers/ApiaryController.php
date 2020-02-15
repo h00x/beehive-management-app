@@ -27,6 +27,8 @@ class ApiaryController extends Controller
      */
     public function create()
     {
+        session()->put('url.intended', url()->previous());
+
         return view('apiaries.create');
     }
 
@@ -39,6 +41,10 @@ class ApiaryController extends Controller
     public function store(ApiaryRequest $request)
     {
         $apiary = auth()->user()->apiaries()->create($request->validated());
+
+        if (session()->get('url.intended') !== route('apiaries.index')) {
+            return redirect()->intended($apiary->path());
+        }
 
         return redirect($apiary->path());
     }

@@ -27,6 +27,8 @@ class QueenController extends Controller
      */
     public function create()
     {
+        session()->put('url.intended', url()->previous());
+
         return view('queens.create');
     }
 
@@ -40,7 +42,7 @@ class QueenController extends Controller
     {
         $queen = auth()->user()->queens()->create($request->validated());
 
-        return redirect(route('queens.index'));
+        return redirect()->intended(route('queens.index'));
     }
 
     /**

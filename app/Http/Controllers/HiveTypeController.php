@@ -18,6 +18,8 @@ class HiveTypeController extends Controller
 
     public function create()
     {
+        session()->put('url.intended', url()->previous());
+
         return view('hives.types.create');
     }
 
@@ -25,7 +27,7 @@ class HiveTypeController extends Controller
     {
         auth()->user()->hiveTypes()->create($request->validated());
 
-        return redirect(route('types.index'));
+        return redirect()->intended(route('types.index'));
     }
 
     public function edit(HiveType $type)
