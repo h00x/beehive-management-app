@@ -1,7 +1,7 @@
 <div class="field">
     <label for="date">Inspection date</label>
     <div class="control">
-        <input type="datetime-local" name="date" class="border-gray-200 border rounded p-2" value="{{ $inspection->date ?? Carbon\Carbon::now()->format('Y-m-d\TH:i') }}">
+        <input type="datetime-local" name="date" class="border-gray-200 border rounded p-2" value="{{ Carbon\Carbon::parse($inspection->date)->format('Y-m-d\TH:i') ?? Carbon\Carbon::now()->format('Y-m-d\TH:i') }}">
     </div>
 </div>
 

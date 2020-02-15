@@ -23,7 +23,7 @@
 <div class="field">
     <label for="date">Harvest date</label>
     <div class="control">
-        <input type="date" name="date" class="border-gray-200 border rounded p-2" value="{{ $harvest->date }}">
+        <input type="date" name="date" class="border-gray-200 border rounded p-2" value="{{ Carbon\Carbon::parse($harvest->date)->format('Y-m-d') ?? Carbon\Carbon::now()->format('Y-m-d') }}">
     </div>
 </div>
 
