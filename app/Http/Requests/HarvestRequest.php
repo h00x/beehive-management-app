@@ -27,8 +27,8 @@ class HarvestRequest extends FormRequest
             'name' => 'required|max:255',
             'date' => 'required|date',
             'batch_code' => 'required|max:255',
-            'weight' => 'required|integer',
-            'moister_content' => 'required|integer',
+            'weight' => 'required|integer|min:0|max:100000',
+            'moister_content' => 'required|integer|min:0|max:100',
             'nectar_source' => 'required|max:255',
             'description' => 'nullable',
             'hive_id' => 'array'

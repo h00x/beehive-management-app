@@ -1,7 +1,7 @@
 <div class="field">
     <label for="name">Harvest name</label>
     <div class="control">
-        <input type="text" name="name" class="border-gray-200 border rounded p-2" value="{{ $harvest->name }}">
+        <input type="text" name="name" class="border-gray-200 border rounded p-2" value="{{ old('name', $harvest->name) }}">
     </div>
 </div>
 
@@ -23,42 +23,42 @@
 <div class="field">
     <label for="date">Harvest date</label>
     <div class="control">
-        <input type="date" name="date" class="border-gray-200 border rounded p-2" value="{{ parseDateForInput($harvest->date, 'Y-m-d') ?? dateNowForInput('Y-m-d') }}">
+        <input type="date" name="date" class="border-gray-200 border rounded p-2" value="{{ old('date') ?? parseDateForInput($harvest->date, 'Y-m-d') ?? dateNowForInput('Y-m-d') }}">
     </div>
 </div>
 
 <div class="field">
     <label for="batch_code">Batch code</label>
     <div class="control">
-        <input type="text" name="batch_code" class="border-gray-200 border rounded p-2" value="{{ $harvest->batch_code }}">
+        <input type="text" name="batch_code" class="border-gray-200 border rounded p-2" value="{{ old('batch_code', $harvest->batch_code) }}">
     </div>
 </div>
 
 <div class="field">
     <label for="weight">Weight</label>
     <div class="control">
-        <input type="number" name="weight" class="border-gray-200 border rounded p-2" value="{{ $harvest->weight }}">
+        <input type="number" name="weight" class="border-gray-200 border rounded p-2" value="{{ old('weight', $harvest->weight) }}" min="0" max="100000">
     </div>
 </div>
 
 <div class="field">
     <label for="moister_content">Moister content</label>
     <div class="control">
-        <input type="number" name="moister_content" class="border-gray-200 border rounded p-2" value="{{ $harvest->moister_content }}">
+        <input type="number" name="moister_content" class="border-gray-200 border rounded p-2" value="{{ old('moister_content', $harvest->moister_content) }}" min="0" max="100">
     </div>
 </div>
 
 <div class="field">
     <label for="nectar_source">Nectar source</label>
     <div class="control">
-        <input type="text" name="nectar_source" class="border-gray-200 border rounded p-2" value="{{ $harvest->nectar_source }}">
+        <input type="text" name="nectar_source" class="border-gray-200 border rounded p-2" value="{{ old('nectar_source', $harvest->nectar_source) }}">
     </div>
 </div>
 
 <div class="field">
     <label for="description">Description</label>
     <div class="control">
-        <textarea name="description" cols="30" rows="10" class="border-gray-200 border rounded p-2">{{ $harvest->description }}</textarea>
+        <textarea name="description" cols="30" rows="10" class="border-gray-200 border rounded p-2">{{ old('description', $harvest->description) }}</textarea>
     </div>
 </div>
 
