@@ -16,6 +16,7 @@ class ApiaryRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'location' => 'required|max:255',
+            'apiary_image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

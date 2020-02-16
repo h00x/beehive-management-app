@@ -12,6 +12,13 @@
     </div>
 </div>
 
+<div class="field">
+    <label for="apiary_image">Beehive image</label>
+    <div class="control">
+        <input type="file" accept="image/*" name="apiary_image" class="border-gray-200 border rounded p-2">
+    </div>
+</div>
+
 <div class="control">
     <button type="submit">{{ $buttonText }}</button>
 </div>

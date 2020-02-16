@@ -13,5 +13,6 @@
         @method('DELETE')
     </form>
 
+    <img src="{{ Storage::url($apiary->image) }}" alt="{{ $apiary->name }}" class="w-auto">
     Location: {{ $apiary->location }}
 @endsection

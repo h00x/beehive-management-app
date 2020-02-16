@@ -12,7 +12,7 @@
         @csrf
         @method('DELETE')
     </form>
-    <img src="{{ Storage::url($hive->image) }}" alt="">
+    <img src="{{ Storage::url($hive->image) }}" alt="{{ $hive->name }}">
     <p>Location: {{ $hive->apiary->location }}</p>
     <p>Apiary: <a href="{{ $hive->apiary->path() }}">{{ $hive->apiary->name }}</a></p>
     <p>Hive type: {{ $hive->type->name }}</p>

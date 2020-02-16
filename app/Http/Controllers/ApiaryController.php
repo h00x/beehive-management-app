@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Apiary;
 use App\Http\Requests\ApiaryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApiaryController extends Controller
 {
@@ -40,7 +41,12 @@ class ApiaryController extends Controller
      */
     public function store(ApiaryRequest $request)
     {
-        $apiary = auth()->user()->apiaries()->create($request->validated());
+        if (isset($request->apiary_image)) {
+            $imagePath = $request->file('apiary_image')->store('public/images/apiaries');
+            $request->merge(['image' => $imagePath]);
+        }
+
+        $apiary = auth()->user()->apiaries()->create($request->except('apiary_image'));
 
         if (session()->get('url.intended') !== route('apiaries.index')) {
             return redirect()->intended($apiary->path());
@@ -86,7 +92,13 @@ class ApiaryController extends Controller
     {
         $this->authorize('update', $apiary);
 
-        $apiary->update($request->validated());
+        if (isset($request->apiary_image)) {
+            Storage::delete($apiary->image);
+            $imagePath = $request->file('apiary_image')->store('public/images/apiaries');
+            $request->merge(['image' => $imagePath]);
+        }
+
+        $apiary->update($request->except('apiary_image'));
 
         return redirect($apiary->path());
     }
@@ -101,6 +113,7 @@ class ApiaryController extends Controller
     {
         $this->authorize('delete', $apiary);
 
+        Storage::delete($apiary->image);
         $apiary->delete();
 
         return redirect(route('apiaries.index'));

@@ -4,7 +4,7 @@
 
 @section('content')
     Start creating an apiary here
-    <form action="{{ route('apiaries.store') }}" method="POST">
+    <form action="{{ route('apiaries.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @include('apiaries.form', ['buttonText' => 'Create Apiary', 'apiary' => new \App\Apiary])
     </form>

@@ -90,6 +90,7 @@ class HiveController extends Controller
         $this->authorize('update', $hive);
 
         if (isset($request->beehive_image)) {
+            Storage::delete($hive->image);
             $imagePath = $request->file('beehive_image')->store('public/images/beehives');
             $request->merge(['image' => $imagePath]);
         }
