@@ -8,4 +8,6 @@
         @method('PATCH')
         @include('queens.form', ['buttonText' => 'Edit queen'])
     </form>
+
+    @include('partials.errors')
 @endsection

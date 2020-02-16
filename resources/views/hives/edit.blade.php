@@ -8,4 +8,6 @@
         @method('PATCH')
         @include('hives.form', ['buttonText' => 'Edit hive'])
     </form>
+
+    @include('partials.errors')
 @endsection

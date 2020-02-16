@@ -24,3 +24,20 @@ if (! function_exists('dateNowForInput')) {
         return Carbon\Carbon::now()->format($format);
     }
 }
+
+if (! function_exists('checkIdForSelected')) {
+    /**
+     * @param Int $toCheckId
+     * @param mixed ...$idsArray
+     * @return string
+     */
+    function checkIdForSelected($toCheckId, ...$idsArray) {
+        foreach ($idsArray as $id) {
+            if ($id === $toCheckId) {
+                return 'selected';
+            }
+        }
+
+        return '';
+    }
+}
