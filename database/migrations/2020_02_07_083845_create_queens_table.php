@@ -40,7 +40,7 @@ class CreateQueensTable extends Migration
     public function down()
     {
         Schema::table('hives', function (Blueprint $table) {
-            $table->dropForeign('queens_queen_id_foreign');
+            $table->dropForeign('hives_queen_id_foreign');
             $table->dropColumn('queen_id');
         });
 

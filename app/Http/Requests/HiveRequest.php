@@ -30,7 +30,8 @@ class HiveRequest extends FormRequest
             'name' => 'required|max:255',
             'apiary_id' => 'required',
             'hive_type_id' => 'required',
-            'queen_id' => 'required'
+            'queen_id' => 'required',
+            'beehive_image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

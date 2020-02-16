@@ -10,6 +10,7 @@
             <div class="lg:w-1/3 px-4 my-4">
                 <div class="shadow rounded p-6 bg-white h-full relative">
                     <a href="#" class="absolute right-0 top-0 mr-5 mt-2">...</a>
+                    <img src="{{ Storage::url($hive->image) }}" alt="" class="w-auto">
                     <a href="{{ $hive->path() }}" class="text-2xl font-title text-gray-900 block">Name: {{ $hive->name }}</a>
                     Location: {{ $hive->apiary->location }}
                 </div>

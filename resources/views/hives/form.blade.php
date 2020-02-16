@@ -6,6 +6,13 @@
 </div>
 
 <div class="field">
+    <label for="beehive_image">Beehive image</label>
+    <div class="control">
+        <input type="file" accept="image/*" name="beehive_image" class="border-gray-200 border rounded p-2">
+    </div>
+</div>
+
+<div class="field">
     <label for="apiary_id">Apiary</label>
     <div class="control">
         @if (Auth::user()->apiaries->isNotEmpty())

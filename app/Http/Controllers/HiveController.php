@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hive;
 use App\Http\Requests\HiveRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HiveController extends Controller
 {
@@ -38,7 +39,12 @@ class HiveController extends Controller
      */
     public function store(HiveRequest $request)
     {
-        $hive = auth()->user()->hives()->create($request->validated());
+        if (isset($request->beehive_image)) {
+            $imagePath = $request->file('beehive_image')->store('public/images/beehives');
+            $request->merge(['image' => $imagePath]);
+        }
+
+        $hive = auth()->user()->hives()->create($request->except('beehive_image'));
 
         return redirect($hive->path());
     }
@@ -83,7 +89,12 @@ class HiveController extends Controller
     {
         $this->authorize('update', $hive);
 
-        $hive->update($request->validated());
+        if (isset($request->beehive_image)) {
+            $imagePath = $request->file('beehive_image')->store('public/images/beehives');
+            $request->merge(['image' => $imagePath]);
+        }
+
+        $hive->update($request->except('beehive_image'));
 
         return redirect($hive->path());
     }
@@ -99,6 +110,7 @@ class HiveController extends Controller
     {
         $this->authorize('delete', $hive);
 
+        Storage::delete($hive->image);
         $hive->delete();
 
         return redirect(route('hives.index'));

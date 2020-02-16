@@ -21,6 +21,7 @@ class CreateHivesTable extends Migration
             $table->integer('supers')->default(0);
             $table->boolean('empty')->default(false);
             $table->boolean('archived')->default(false);
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
