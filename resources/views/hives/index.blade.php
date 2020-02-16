@@ -2,6 +2,10 @@
 
 @section('pageTitle', 'My Hives')
 
+@section('subHeaders')
+    @include('hives.subheader')
+@stop
+
 @section('content')
     @include('layouts.button', ['text' => 'Create hive', 'url' => route('hives.create')])
 

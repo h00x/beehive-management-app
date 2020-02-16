@@ -35,9 +35,12 @@
     </div>
 
     <div class="container mx-auto flex justify-between items-center">
-        <h1 class="font-title text-4xl">
-            @yield('pageTitle', 'Page')
-        </h1>
+        <div class="flex items-center">
+            <h1 class="font-title text-4xl mr-6">
+                @yield('pageTitle', 'Page')
+            </h1>
+            @yield('subHeaders')
+        </div>
         <div>
             button
         </div>
