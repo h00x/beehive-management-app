@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Schema;
 
 class CreateApiariesTable extends Migration
@@ -43,5 +44,8 @@ class CreateApiariesTable extends Migration
             $table->dropColumn('apiary_id');
         });
         Schema::dropIfExists('apiaries');
+
+        $file = new Filesystem;
+        $file->cleanDirectory('storage/app/public/images/apiaries');
     }
 }

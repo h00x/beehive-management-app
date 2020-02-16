@@ -40,7 +40,7 @@ class HiveController extends Controller
     public function store(HiveRequest $request)
     {
         if (isset($request->beehive_image)) {
-            $imagePath = $request->file('beehive_image')->store('public/images/beehives');
+            $imagePath = $request->file('beehive_image')->store('public/images/hives');
             $request->merge(['image' => $imagePath]);
         }
 
@@ -91,7 +91,7 @@ class HiveController extends Controller
 
         if (isset($request->beehive_image)) {
             Storage::delete($hive->image);
-            $imagePath = $request->file('beehive_image')->store('public/images/beehives');
+            $imagePath = $request->file('beehive_image')->store('public/images/hives');
             $request->merge(['image' => $imagePath]);
         }
 

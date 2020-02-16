@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Schema;
 
 class CreateHivesTable extends Migration
@@ -36,5 +37,8 @@ class CreateHivesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('hives');
+
+        $file = new Filesystem;
+        $file->cleanDirectory('storage/app/public/images/hives');
     }
 }
