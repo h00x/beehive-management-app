@@ -81,10 +81,10 @@ class ManageHiveTypeTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->assertDatabaseHas('hive_types', ['name' => 'Langstroth', 'user_id' => $user->id, 'protected_type' => true]);
-        $this->assertDatabaseHas('hive_types', ['name' => 'Dadant', 'user_id' => $user->id, 'protected_type' => true]);
-        $this->assertDatabaseHas('hive_types', ['name' => 'Top-bar', 'user_id' => $user->id, 'protected_type' => true]);
-        $this->assertDatabaseHas('hive_types', ['name' => 'Other', 'user_id' => $user->id, 'protected_type' => true]);
+        $this->assertDatabaseHas('hive_types', ['name' => 'Langstroth', 'user_id' => $user->id, 'protected' => true]);
+        $this->assertDatabaseHas('hive_types', ['name' => 'Dadant', 'user_id' => $user->id, 'protected' => true]);
+        $this->assertDatabaseHas('hive_types', ['name' => 'Top-bar', 'user_id' => $user->id, 'protected' => true]);
+        $this->assertDatabaseHas('hive_types', ['name' => 'Other', 'user_id' => $user->id, 'protected' => true]);
     }
 
     public function test_a_user_can_update_a_hive_type()
@@ -111,6 +111,14 @@ class ManageHiveTypeTest extends TestCase
         $this->patch($hiveType->path(), ['name' => 'Changed'])->assertStatus(403);
     }
 
+    public function test_a_user_cannot_update_a_protected_hive_type()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->patch($user->hiveTypes->first()->path(), ['name' => 'Changed'])->assertStatus(403);
+    }
+
     public function test_a_hive_type_needs_a_name()
     {
         $this->signIn();
@@ -120,7 +128,7 @@ class ManageHiveTypeTest extends TestCase
         $this->post('/types', $hiveType)->assertSessionHasErrors('name');
     }
 
-    public function test_a_user_can_delete_a_hive()
+    public function test_a_user_can_delete_a_hive_type()
     {
         $hiveType = factory(HiveType::class)->create();
 
@@ -137,7 +145,16 @@ class ManageHiveTypeTest extends TestCase
         ]);
     }
 
-    public function test_a_user_cannot_delete_a_hive_of_others()
+    public function test_a_user_cannot_delete_a_hive_type_that_is_protected()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->delete($user->hiveTypes->first()->path())
+            ->assertStatus(403);
+    }
+
+    public function test_a_user_cannot_delete_a_hive_type_of_others()
     {
         $this->signIn();
 
@@ -153,16 +170,19 @@ class ManageHiveTypeTest extends TestCase
 
         $this->post('/apiaries', factory(Apiary::class)->raw());
         $this->post('/queens', factory(Queen::class)->raw());
+        $type = factory(HiveType::class)->create([
+            'user_id' => $user->id,
+        ]);
 
         $hive = factory(Hive::class)->raw([
             'queen_id' => $user->queens->first()->id,
-            'hive_type_id' => $user->hiveTypes->first()->id,
+            'hive_type_id' => $type->id,
             'apiary_id' => $user->apiaries->first()->id
         ]);
 
         $this->post('/hives', $hive);
 
-        $this->delete($user->hiveTypes->first()->path())
+        $this->delete($type->path())
             ->assertRedirect(route('types.index'))
             ->assertSessionHasErrors('delete');
     }

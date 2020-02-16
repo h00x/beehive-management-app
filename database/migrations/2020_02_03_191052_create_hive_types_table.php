@@ -16,7 +16,7 @@ class CreateHiveTypesTable extends Migration
         Schema::create('hive_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->boolean('protected_type')->default(false);
+            $table->boolean('protected')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

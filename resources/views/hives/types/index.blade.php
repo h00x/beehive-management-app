@@ -20,19 +20,21 @@
                         <td>{{ $type->name }}</td>
                         <td>{{ $type->hives->count() }}</td>
                         <td>
-                            <a
-                                href="{{ $type->path() . '/edit' }}"
-                            >Edit</a>
-                            <a
-                                href="{{ $type->path() }}"
-                                class="text-red-500"
-                                onclick="event.preventDefault();
-                                    document.getElementById('{{ 'delete-hive-type-' . $type->id }}').submit();"
-                            >Delete</a>
-                            <form id="{{ 'delete-hive-type-' . $type->id }}" action="{{ $type->path() }}" method="POST" class="hidden">
-                                @csrf
-                                @method('DELETE')
-                            </form>
+                            @if (!$type->protected)
+                                <a
+                                    href="{{ $type->path() . '/edit' }}"
+                                >Edit</a>
+                                <a
+                                    href="{{ $type->path() }}"
+                                    class="text-red-500"
+                                    onclick="event.preventDefault();
+                                        document.getElementById('{{ 'delete-hive-type-' . $type->id }}').submit();"
+                                >Delete</a>
+                                <form id="{{ 'delete-hive-type-' . $type->id }}" action="{{ $type->path() }}" method="POST" class="hidden">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

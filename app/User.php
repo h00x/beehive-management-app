@@ -14,10 +14,10 @@ class User extends Authenticatable
     {
         static::created(function (User $user) {
             $user->hiveTypes()->createMany([
-                ['name' => 'Langstroth', 'protected_type' => true],
-                ['name' => 'Dadant', 'protected_type' => true],
-                ['name' => 'Top-bar', 'protected_type' => true],
-                ['name' => 'Other', 'protected_type' => true],
+                ['name' => 'Langstroth', 'protected' => true],
+                ['name' => 'Dadant', 'protected' => true],
+                ['name' => 'Top-bar', 'protected' => true],
+                ['name' => 'Other', 'protected' => true],
             ]);
         });
 
