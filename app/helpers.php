@@ -33,7 +33,7 @@ if (! function_exists('checkIdForSelected')) {
      */
     function checkIdForSelected($toCheckId, ...$idsArray) {
         foreach ($idsArray as $id) {
-            if ($id === $toCheckId) {
+            if ($id == $toCheckId) {
                 return 'selected';
             }
         }
