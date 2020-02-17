@@ -9357,6 +9357,22 @@ video {
   z-index: auto;
 }
 
+.hover-trigger .hover-target {
+  display: none;
+}
+
+.hover-trigger:hover .hover-target {
+  display: block;
+}
+
+a {
+  color: #3755DC;
+}
+
+.active {
+  color: #664B00;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

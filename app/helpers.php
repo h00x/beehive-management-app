@@ -41,3 +41,9 @@ if (! function_exists('checkIdForSelected')) {
         return '';
     }
 }
+
+if (! function_exists('isCurrentRoute')) {
+    function isCurrentRoute($route) {
+        return \Illuminate\Support\Facades\Route::is($route);
+    }
+}
