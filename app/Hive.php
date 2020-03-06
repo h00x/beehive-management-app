@@ -3,10 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\Traits\CausesActivity;
 
 class Hive extends Model
 {
+    use LogsActivity;
+    use CausesActivity;
+
     protected $guarded = [];
+    protected static $logUnguarded = true;
+    protected static $logOnlyDirty = true;
 
     public function path()
     {

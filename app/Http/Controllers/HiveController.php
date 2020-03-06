@@ -6,6 +6,7 @@ use App\Hive;
 use App\Http\Requests\HiveRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Activitylog\Models\Activity;
 
 class HiveController extends Controller
 {

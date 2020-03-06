@@ -34,6 +34,7 @@
                         <td>{{ $inspection->temperature }}</td>
 
                         <td>
+                            <a href="{{ $inspection->path() }}">View</a>
                             <a
                                 href="{{ $inspection->path() . '/edit' }}"
                             >Edit</a>

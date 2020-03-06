@@ -16,7 +16,7 @@
     <p>Name: {{ $harvest->name }}</p>
     <p>Hives:
         @foreach($harvest->hives as $hive)
-            {{ $hive->name . ', ' }}
+            <a href="{{ $hive->path() }}">{{ $hive->name }}</a>,
         @endforeach
     </p>
     <p>Date: {{ $harvest->date }}</p>

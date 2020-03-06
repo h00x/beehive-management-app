@@ -14,7 +14,7 @@
     </form>
 
     <p>Date: {{ $inspection->date }}</p>
-    <p>Hive: {{ $inspection->hive->name }}</p>
+    <p>Hive: <a href="{{ $inspection->hive->path() }}">{{ $inspection->hive->name }}</a></p>
     <p>Queen seen: {{ $inspection->queen_seen }}</p>
     <p>Larval seen: {{ $inspection->larval_seen }}</p>
     <p>Young larval seen: {{ $inspection->young_larval_seen }}</p>

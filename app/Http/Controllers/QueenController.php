@@ -54,6 +54,7 @@ class QueenController extends Controller
     public function edit(Queen $queen)
     {
         $this->authorize('view', $queen);
+        session()->put('url.intended', url()->previous());
 
         return view('queens.edit', compact('queen'));
     }
@@ -71,7 +72,7 @@ class QueenController extends Controller
 
         $queen->update($request->validated());
 
-        return redirect($queen->path());
+        return redirect()->intended(route('queens.index'));
     }
 
     /**
