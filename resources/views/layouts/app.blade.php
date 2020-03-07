@@ -25,6 +25,10 @@
         <div class="container mx-auto my-16">
 
             <main>
+                <div class="flex justify-end items-center mb-4">
+                    @yield('actions')
+                </div>
+
                 @yield('content')
             </main>
         </div>

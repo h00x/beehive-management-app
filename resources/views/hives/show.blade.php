@@ -2,18 +2,21 @@
 
 @section('pageTitle', 'Hive: ' . $hive->name)
 
-@section('content')
-    @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
-
-    <div class="text-right">
+@section('actions')
+    <div class="mr-4">
         <a href="{{ $hive->path() }}" onclick="event.preventDefault();
-                   document.getElementById('delete-hive').submit();" class="block text-red-500">Delete hive</a>
+                document.getElementById('delete-hive').submit();" class="block text-red-500">Delete hive</a>
 
         <form id="delete-hive" action="{{ $hive->path() }}" method="POST" class="hidden">
             @csrf
             @method('DELETE')
         </form>
     </div>
+
+    @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
+@stop
+
+@section('content')
     <a href="{{ route('hives.index') }}">< Back to overview</a>
     <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
     <div class="flex">

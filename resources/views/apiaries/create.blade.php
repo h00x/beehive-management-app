@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Create an Apiary')
+@section('pageTitle', 'My Apiaries')
 
 @section('content')
-    Start creating an apiary here
     <form action="{{ route('apiaries.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @include('apiaries.form', ['buttonText' => 'Create Apiary', 'apiary' => new \App\Apiary])
+        @include('apiaries.form', ['buttonText' => 'Create Apiary', 'apiary' => new \App\Apiary, 'title' => 'Create apiary'])
     </form>
 
     @include('partials.errors')

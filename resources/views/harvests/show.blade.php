@@ -2,16 +2,21 @@
 
 @section('pageTitle', 'Harvest: ' . $harvest->name)
 
-@section('content')
+@section('actions')
+    <div class="mr-4">
+        <a href="{{ $harvest->path() }}" onclick="event.preventDefault();
+            document.getElementById('delete-harvest').submit();" class="block text-red-500">Delete harvest</a>
+
+        <form id="delete-harvest" action="{{ $harvest->path() }}" method="POST" class="hidden">
+            @csrf
+            @method('DELETE')
+        </form>
+    </div>
+
     @include('layouts.button', ['text' => 'Edit harvest', 'url' => $harvest->path() . '/edit'])
+@stop
 
-    <a href="{{ $harvest->path() }}" onclick="event.preventDefault();
-                   document.getElementById('delete-harvest').submit();" class="block text-red-500">Delete harvest</a>
-
-    <form id="delete-harvest" action="{{ $harvest->path() }}" method="POST" class="hidden">
-        @csrf
-        @method('DELETE')
-    </form>
+@section('content')
 
     <p>Name: {{ $harvest->name }}</p>
     <p>Hives:

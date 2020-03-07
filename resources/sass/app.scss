@@ -19,3 +19,7 @@ a {
 .active {
     @apply text-primary-900;
 }
+
+.form-content .field {
+    @apply mt-4;
+}

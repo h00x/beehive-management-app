@@ -2,10 +2,12 @@
 
 @section('pageTitle', 'My Inspections')
 
-@section('content')
+@section('actions')
     @include('layouts.button', ['text' => 'Log a inspection', 'url' => route('inspections.create')])
+@stop
 
-    <div>
+@section('content')
+    <div class="py-4">
         <table class="w-full">
             <thead>
                 <tr class="text-left">

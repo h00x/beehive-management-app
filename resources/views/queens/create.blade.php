@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Create a queen')
+@section('pageTitle', 'My Queens')
 
 @section('content')
-    Create a queen
     <form action="{{ route('queens.store') }}" method="POST">
         @csrf
-        @include('queens.form', ['buttonText' => 'Create a queen', 'queen' => new \App\Queen])
+        @include('queens.form', ['buttonText' => 'Create a queen', 'queen' => new \App\Queen, 'title' => 'Create queen'])
     </form>
 
     @include('partials.errors')

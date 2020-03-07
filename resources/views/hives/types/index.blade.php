@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'My Hives Types')
+@section('pageTitle', 'My Hive Types')
+
+@section('actions')
+    @include('layouts.button', ['text' => 'Create a hive type', 'url' => route('types.create')])
+@stop
 
 @section('content')
-    @include('layouts.button', ['text' => 'Create a hive type', 'url' => route('types.create')])
-
     <div>
         <table class="w-full">
             <thead>

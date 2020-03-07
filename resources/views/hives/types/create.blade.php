@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Create a hive type')
+@section('pageTitle', 'My Hive Types')
 
 @section('content')
-    Start creating a hive here
     <form action="{{ route('types.store') }}" method="POST">
         @csrf
-        @include('hives.types.form', ['buttonText' => 'Create hive type', 'type' => new \App\HiveType])
+        @include('hives.types.form', ['buttonText' => 'Create hive type', 'type' => new \App\HiveType, 'title' => 'Create hive type'])
     </form>
 
     @include('partials.errors')

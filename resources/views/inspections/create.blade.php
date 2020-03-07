@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Log a Inspection')
+@section('pageTitle', 'My Inspections')
 
 @section('content')
-    Start logging an inspection here
     <form action="{{ route('inspections.store') }}" method="POST">
         @csrf
-        @include('inspections.form', ['buttonText' => 'Create inspection', 'inspection' => new \App\Inspection])
+        @include('inspections.form', ['buttonText' => 'Create inspection', 'inspection' => new \App\Inspection, 'title' => 'Log inspection'])
     </form>
 
     @include('partials.errors')

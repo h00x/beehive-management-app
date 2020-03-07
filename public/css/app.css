@@ -9373,6 +9373,10 @@ a {
   color: #664B00;
 }
 
+.form-content .field {
+  margin-top: 1rem;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

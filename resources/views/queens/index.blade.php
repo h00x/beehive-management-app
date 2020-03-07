@@ -2,9 +2,11 @@
 
 @section('pageTitle', 'My Queens')
 
-@section('content')
+@section('actions')
     @include('layouts.button', ['text' => 'Create a queen', 'url' => route('queens.create')])
+@stop
 
+@section('content')
     <div>
         <table class="w-full">
             <thead>

@@ -2,16 +2,22 @@
 
 @section('pageTitle', 'Inspection: ' . $inspection->hive->name . ' ' . $inspection->date)
 
-@section('content')
+@section('actions')
+    <div class="mr-4">
+        <a href="{{ $inspection->path() }}" onclick="event.preventDefault();
+            document.getElementById('delete-inspection').submit();" class="block text-red-500">Delete harvest</a>
+
+        <form id="delete-inspection" action="{{ $inspection->path() }}" method="POST" class="hidden">
+            @csrf
+            @method('DELETE')
+
+        </form>
+    </div>
+
     @include('layouts.button', ['text' => 'Edit inspection', 'url' => $inspection->path() . '/edit'])
+@stop
 
-    <a href="{{ $inspection->path() }}" onclick="event.preventDefault();
-                   document.getElementById('delete-inspection').submit();" class="block text-red-500">Delete harvest</a>
-
-    <form id="delete-inspection" action="{{ $inspection->path() }}" method="POST" class="hidden">
-        @csrf
-        @method('DELETE')
-    </form>
+@section('content')
 
     <p>Date: {{ $inspection->date }}</p>
     <p>Hive: <a href="{{ $inspection->hive->path() }}">{{ $inspection->hive->name }}</a></p>

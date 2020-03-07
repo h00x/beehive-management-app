@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Edit queen: ' . $queen->name)
+@section('pageTitle', 'Queen: ' . $queen->name)
 
 @section('content')
     <form action="{{ $queen->path() }}" method="POST">
         @csrf
         @method('PATCH')
-        @include('queens.form', ['buttonText' => 'Edit queen'])
+        @include('queens.form', ['buttonText' => 'Edit queen', 'title' => 'Edit queen'])
     </form>
 
     @include('partials.errors')
