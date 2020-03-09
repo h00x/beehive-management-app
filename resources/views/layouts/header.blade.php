@@ -20,18 +20,31 @@
                     <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
             @else
-                <a href="#" role="button" class="mr-4">
-                    {{ Auth::user()->name }}
-                </a>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                <dropdown>
+                    <template v-slot:trigger>
+                        <button
+                            class="flex items-center text-default no-underline text-sm"
+                            v-pre
+                        >
+                            <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">{{ substr(auth()->user()->name, 0, 1) }}</div>
+                            {{ auth()->user()->name }}
+                        </button>
+                    </template>
+                    <div>
+                        <a href="/profile" role="button" class="mr-4"><i class="fas fa-caret-right"></i> Profile</a>
+                    </div>
+                    <div>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                    @csrf
-                </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    </div>
+                </dropdown>
             @endguest
         </div>
     </div>
