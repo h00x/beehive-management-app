@@ -7,9 +7,10 @@
         </div>
 
         <div v-show="isOpen"
-             class="dropdown-menu absolute bg-white p-2 rounded shadow mt-2"
+             class="dropdown-menu absolute bg-white p-2 rounded shadow whitespace-no-wrap z-20"
+             v-bind:class="[align === 'right' ? 'right-0' : 'left-0', generateTopMargin]"
         >
-            <slot>test</slot>
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -17,6 +18,11 @@
 <script>
     export default {
         name: "Dropdown",
+
+        props: {
+            align: { default: 'right'},
+            margin: { default: '2'}
+        },
 
         data() {
             return { isOpen: false }
@@ -36,8 +42,14 @@
                     this.isOpen = false;
                     document.removeEventListener('click', this.closeIfClickedOutside);
                 }
-            }
+            },
         },
+
+        computed: {
+            generateTopMargin() {
+                return 'mt-' + this.margin;
+            }
+        }
     }
 </script>
 

@@ -1924,8 +1924,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dropdown",
+  props: {
+    align: {
+      "default": 'right'
+    },
+    margin: {
+      "default": '2'
+    }
+  },
   data: function data() {
     return {
       isOpen: false
@@ -1944,6 +1953,11 @@ __webpack_require__.r(__webpack_exports__);
         this.isOpen = false;
         document.removeEventListener('click', this.closeIfClickedOutside);
       }
+    }
+  },
+  computed: {
+    generateTopMargin: function generateTopMargin() {
+      return 'mt-' + this.margin;
     }
   }
 });
@@ -2460,9 +2474,14 @@ var render = function() {
             expression: "isOpen"
           }
         ],
-        staticClass: "dropdown-menu absolute bg-white p-2 rounded shadow mt-2"
+        staticClass:
+          "dropdown-menu absolute bg-white p-2 rounded shadow whitespace-no-wrap z-20",
+        class: [
+          _vm.align === "right" ? "right-0" : "left-0",
+          _vm.generateTopMargin
+        ]
       },
-      [_vm._t("default", [_vm._v("test")])],
+      [_vm._t("default")],
       2
     )
   ])

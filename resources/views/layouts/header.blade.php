@@ -27,17 +27,18 @@
                             v-pre
                         >
                             <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">{{ substr(auth()->user()->name, 0, 1) }}</div>
-                            {{ auth()->user()->name }}
+                            {{ auth()->user()->name }}<i class="fas fa-caret-down ml-1"></i>
                         </button>
                     </template>
-                    <div>
-                        <a href="/profile" role="button" class="mr-4"><i class="fas fa-caret-right"></i> Profile</a>
+                    <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                        <a href="/profile" role="button" class="inline-block p-2"><i class="fas fa-user text-sm mr-2"></i>Profile</a>
                     </div>
-                    <div>
+                    <div class="hover:bg-secondary-100 -mx-2 px-2">
                         <a href="{{ route('logout') }}"
+                           class="inline-block p-2"
                            onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                                    document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt text-sm mr-2"></i>{{ __('Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
