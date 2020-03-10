@@ -2,6 +2,8 @@
 
 @section('pageTitle', 'Harvest: ' . $harvest->name)
 
+@section('overviewUrl', route('harvests.index'))
+
 @section('actions')
     <div class="mr-4">
         <a href="{{ $harvest->path() }}" onclick="event.preventDefault();

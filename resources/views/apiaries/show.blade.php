@@ -2,6 +2,8 @@
 
 @section('pageTitle', 'Apiary: ' . $apiary->name)
 
+@section('overviewUrl', route('apiaries.index'))
+
 @section('actions')
     <div class="mr-4">
         <a href="{{ $apiary->path() }}" onclick="event.preventDefault();

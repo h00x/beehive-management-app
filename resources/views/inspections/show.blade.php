@@ -2,6 +2,8 @@
 
 @section('pageTitle', 'Inspection: ' . $inspection->hive->name . ' ' . $inspection->date)
 
+@section('overviewUrl', route('inspections.index'))
+
 @section('actions')
     <div class="mr-4">
         <a href="{{ $inspection->path() }}" onclick="event.preventDefault();

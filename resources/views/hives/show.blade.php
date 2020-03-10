@@ -2,6 +2,8 @@
 
 @section('pageTitle', 'Hive: ' . $hive->name)
 
+@section('overviewUrl', route('hives.index'))
+
 @section('actions')
     <div class="mr-4">
         <a href="{{ $hive->path() }}" onclick="event.preventDefault();
@@ -17,7 +19,6 @@
 @stop
 
 @section('content')
-    <a href="{{ route('hives.index') }}">< Back to overview</a>
     <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
     <div class="flex">
         <div class="w-2/3">

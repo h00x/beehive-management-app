@@ -25,8 +25,15 @@
         <div class="container mx-auto my-16">
 
             <main>
-                <div class="flex justify-end items-center mb-4">
-                    @yield('actions')
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        @if(View::hasSection('overviewUrl'))
+                            <a href="@yield('overviewUrl')"><i class="fas fa-caret-left"></i> Back to overview</a>
+                        @endif
+                    </div>
+                    <div class="flex justify-end items-center mb-4">
+                        @yield('actions')
+                    </div>
                 </div>
 
                 @yield('content')
