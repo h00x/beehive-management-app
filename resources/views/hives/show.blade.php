@@ -7,7 +7,7 @@
 @section('actions')
     <div class="mr-4">
         <a href="{{ $hive->path() }}" onclick="event.preventDefault();
-                document.getElementById('delete-hive').submit();" class="block text-red-500">Delete hive</a>
+                document.getElementById('delete-hive').submit();" class="block warning">Delete hive</a>
 
         <form id="delete-hive" action="{{ $hive->path() }}" method="POST" class="hidden">
             @csrf
@@ -15,7 +15,7 @@
         </form>
     </div>
 
-    @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
+    <a href="{{ $hive->path() . '/edit' }}" class="btn btn-primary">Edit hive</a>
 @stop
 
 @section('content')
@@ -47,7 +47,7 @@
                     <td class="p-2">Location</td>
                     <td class="p-2">{{ $hive->apiary->location }}</td>
                 </tr>
-                <tr class="bg-white">
+                <tr>
                     <td class="p-2">Total liters harvested</td>
                     <td class="p-2">{{ array_sum($hive->harvests->pluck('weight')->toArray()) }}</td>
                 </tr>
@@ -59,29 +59,29 @@
             </div>
             <table class="w-full mb-12">
                 <thead>
-                <tr class="text-left">
-                    <th>Date</th>
-                    <th>Queen seen</th>
-                    <th>Larval seen</th>
-                    <th>Young larval seen</th>
-                    <th>Pollen arriving</th>
-                    <th>Comb building</th>
-                    <th>Weather</th>
-                    <th>Temperature</th>
-                </tr>
+                    <tr class="text-left">
+                        <th>Date</th>
+                        <th>Queen seen</th>
+                        <th>Larval seen</th>
+                        <th>Young larval seen</th>
+                        <th>Pollen arriving</th>
+                        <th>Comb building</th>
+                        <th>Weather</th>
+                        <th>Temperature</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach ($hive->inspections as $inspection)
                     <tr>
-                        <td>{{ Carbon\Carbon::parse($inspection->date)->format('d-m-Y') }}</td>
-                        <td>{{ $inspection->queen_seen ? 'Yes' : 'No' }}</td>
-                        <td>{{ $inspection->larval_seen ? 'Yes' : 'No' }}</td>
-                        <td>{{ $inspection->young_larval_seen ? 'Yes' : 'No' }}</td>
-                        <td>{{ $inspection->pollen_arriving }}</td>
-                        <td>{{ $inspection->comb_building }}</td>
-                        <td>{{ $inspection->weather }}</td>
-                        <td>{{ $inspection->temperature }}</td>
-                        <td><a href="{{ $inspection->path() }}">View</a></td>
+                        <td class="border border-gray-200 px-4 py-2">{{ Carbon\Carbon::parse($inspection->date)->format('d-m-Y') }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->queen_seen ? 'Yes' : 'No' }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->larval_seen ? 'Yes' : 'No' }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->young_larval_seen ? 'Yes' : 'No' }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->pollen_arriving }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->comb_building }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->weather }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->temperature }}</td>
+                        <td class="border border-gray-200 px-4 py-2"><a href="{{ $inspection->path() }}">View</a></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -93,25 +93,25 @@
             </div>
             <table class="w-full">
                 <thead>
-                <tr class="text-left">
-                    <th>Name</th>
-                    <th>Harvest date</th>
-                    <th>Batch code</th>
-                    <th>Weight</th>
-                    <th>Moister content</th>
-                    <th>Nectar source</th>
-                </tr>
+                    <tr class="text-left">
+                        <th>Name</th>
+                        <th>Harvest date</th>
+                        <th>Batch code</th>
+                        <th>Weight</th>
+                        <th>Moister content</th>
+                        <th>Nectar source</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach ($hive->harvests as $harvest)
                     <tr>
-                        <td>{{ $harvest->name }}</td>
-                        <td>{{ $harvest->date }}</td>
-                        <td>{{ $harvest->batch_code }}</td>
-                        <td>{{ $harvest->weight }}</td>
-                        <td>{{ $harvest->moister_content }}</td>
-                        <td>{{ $harvest->nectar_source }}</td>
-                        <td><a href="{{ $harvest->path() }}">View</a></td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->name }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->date }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->batch_code }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->weight }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->moister_content }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->nectar_source }}</td>
+                        <td class="border border-gray-200 px-4 py-2"><a href="{{ $harvest->path() }}">View</a></td>
                     </tr>
                 @endforeach
                 </tbody>

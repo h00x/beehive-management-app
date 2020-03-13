@@ -7,7 +7,7 @@
 @section('actions')
     <div class="mr-4">
         <a href="{{ $apiary->path() }}" onclick="event.preventDefault();
-                document.getElementById('delete-apiary').submit();" class="block text-red-500">Delete apiary</a>
+                document.getElementById('delete-apiary').submit();" class="block warning">Delete apiary</a>
 
         <form id="delete-apiary" action="{{ $apiary->path() }}" method="POST" class="hidden">
             @csrf

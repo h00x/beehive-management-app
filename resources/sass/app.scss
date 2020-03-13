@@ -1,26 +1,35 @@
-@import 'variables';
-
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+
+@import 'variables';
+@import "links";
 
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-.hover-trigger .hover-target {
-    display: none;
-}
+.hover-trigger {
+    .hover-target,
+    .dots {
+        @apply opacity-0;
+        transition: opacity 0.2s ease-out;
+    }
 
-.hover-trigger:hover .hover-target {
-    display: block;
-}
+    transition: all 0.2s ease-in-out;
 
-a {
-    @apply text-secondary-500;
+    &:hover {
+        @apply shadow-lg;
+
+        .dots {
+            @apply opacity-100;
+        }
+
+        .hover-target {
+            @apply opacity-75;
+        }
+    }
 }
 
 .active {
@@ -29,4 +38,8 @@ a {
 
 .form-content .field {
     @apply mt-4;
+}
+
+.opacity-transition {
+    transition: opacity 0.2s ease-in-out;
 }

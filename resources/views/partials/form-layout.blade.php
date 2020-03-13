@@ -1,6 +1,6 @@
 <div class="form-content flex -mx-4 justify-center">
     <div class="w-1/2 px-4 my-4">
-        <div class="shadow rounded-lg p-6 bg-white h-full relative hover-trigger">
+        <div class="shadow rounded-lg p-6 bg-white h-full relative">
             <h2 class="text-3xl">@yield('title')</h2>
             @yield('form')
             <div class="control">

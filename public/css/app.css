@@ -9359,6 +9359,53 @@ video {
   z-index: auto;
 }
 
+a {
+  color: #3755DC;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #1A3093;
+}
+
+a.warning {
+  color: #FD7553;
+}
+
+a.warning:hover {
+  color: #F23202;
+}
+
+.btn {
+  border-radius: 0.25rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: inline-block;
+  -webkit-transition: box-shadow 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+  box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.3);
+}
+
+.btn.btn-primary {
+  background-color: #3755DC;
+  color: #fff;
+  background-image: linear-gradient(135deg, #4561DE, #203CB6);
+}
+
+.btn.btn-primary:hover {
+  color: #fff;
+}
+
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -15319,16 +15366,28 @@ readers do not read off random characters that represent icons */
   width: auto;
 }
 
-.hover-trigger .hover-target {
-  display: none;
+.hover-trigger {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-trigger .hover-target,
+.hover-trigger .dots {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.hover-trigger:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hover-trigger:hover .dots {
+  opacity: 1;
 }
 
 .hover-trigger:hover .hover-target {
-  display: block;
-}
-
-a {
-  color: #3755DC;
+  opacity: 0.75;
 }
 
 .active {
@@ -15337,6 +15396,11 @@ a {
 
 .form-content .field {
   margin-top: 1rem;
+}
+
+.opacity-transition {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 @media (min-width: 640px){

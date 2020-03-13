@@ -7,7 +7,7 @@
 @section('actions')
     <div class="mr-4">
         <a href="{{ $inspection->path() }}" onclick="event.preventDefault();
-            document.getElementById('delete-inspection').submit();" class="block text-red-500">Delete harvest</a>
+            document.getElementById('delete-inspection').submit();" class="block warning">Delete harvest</a>
 
         <form id="delete-inspection" action="{{ $inspection->path() }}" method="POST" class="hidden">
             @csrf
