@@ -43,3 +43,18 @@
 .opacity-transition {
     transition: opacity 0.2s ease-in-out;
 }
+
+.item-blocks {
+    nav {
+        @apply w-full text-center my-4;
+
+        .pagination {
+            .page-item {
+                @apply inline-block px-2 py-1;
+                &.active {
+                    @apply bg-white shadow rounded;
+                }
+            }
+        }
+    }
+}

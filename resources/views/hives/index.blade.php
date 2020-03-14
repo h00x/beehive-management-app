@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    <div class="lg:flex lg:flex-wrap -mx-4">
+    <div class="lg:flex lg:flex-wrap -mx-4 item-blocks">
         @foreach ($hives as $hive)
             <div class="lg:w-1/3 px-4 my-4">
                 <div class="shadow rounded-lg p-6 bg-white h-full relative hover-trigger">
@@ -45,5 +45,6 @@
                 </div>
             </div>
         @endforeach
+        {{ $hives->links() }}
     </div>
 @endsection

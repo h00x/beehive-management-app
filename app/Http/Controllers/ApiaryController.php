@@ -16,7 +16,7 @@ class ApiaryController extends Controller
      */
     public function index()
     {
-        $apiaries = auth()->user()->apiaries->all();
+        $apiaries = auth()->user()->apiaries()->paginate(9);
 
         return view('apiaries.index', compact('apiaries'));
     }

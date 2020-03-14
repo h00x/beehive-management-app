@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="lg:flex lg:flex-wrap -mx-4">
+    <div class="lg:flex lg:flex-wrap -mx-4 item-blocks">
         @foreach ($apiaries as $apiary)
             <div class="lg:w-1/3 px-4 my-4">
                 <div class="shadow rounded p-6 bg-white h-full relative hover-trigger">
@@ -41,5 +41,6 @@
                 </div>
             </div>
         @endforeach
+        {{ $apiaries->links() }}
     </div>
 @endsection
