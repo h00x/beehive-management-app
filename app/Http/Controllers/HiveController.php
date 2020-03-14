@@ -17,7 +17,7 @@ class HiveController extends Controller
      */
     public function index()
     {
-        $hives = auth()->user()->hives()->paginate(9);
+        $hives = auth()->user()->hives()->latest()->paginate(9);
 
         return view('hives.index', compact('hives'));
     }

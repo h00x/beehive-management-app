@@ -15403,14 +15403,16 @@ readers do not read off random characters that represent icons */
   transition: opacity 0.2s ease-in-out;
 }
 
-.item-blocks nav {
+.item-blocks nav,
+.table-overview nav {
   width: 100%;
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.item-blocks nav .pagination .page-item {
+.item-blocks nav .pagination .page-item,
+.table-overview nav .pagination .page-item {
   display: inline-block;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -15418,7 +15420,8 @@ readers do not read off random characters that represent icons */
   padding-bottom: 0.25rem;
 }
 
-.item-blocks nav .pagination .page-item.active {
+.item-blocks nav .pagination .page-item.active,
+.table-overview nav .pagination .page-item.active {
   background-color: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;

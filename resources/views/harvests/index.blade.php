@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="py-4">
+    <div class="py-4 table-overview">
         <table class="w-full">
             <thead>
                 <tr class="text-left">
@@ -51,6 +51,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $harvests->links() }}
         @include('partials.errors')
     </div>
 @endsection

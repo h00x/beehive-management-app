@@ -44,7 +44,8 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-.item-blocks {
+.item-blocks,
+.table-overview {
     nav {
         @apply w-full text-center my-4;
 

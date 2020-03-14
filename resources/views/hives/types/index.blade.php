@@ -7,8 +7,8 @@
 @stop
 
 @section('content')
-    <div>
-        <table class="w-full">
+    <div class="table-overview">
+        <table class="w-full table-fixed">
             <thead>
                 <tr class="text-left">
                     <th>Hive type</th>
@@ -42,6 +42,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $types->links() }}
         @include('partials.errors')
     </div>
 @endsection

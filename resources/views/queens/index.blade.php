@@ -7,8 +7,8 @@
 @stop
 
 @section('content')
-    <div>
-        <table class="w-full">
+    <div class="table-overview">
+        <table class="w-full table-fixed">
             <thead>
                 <tr class="text-left">
                     <th>Queen</th>
@@ -50,6 +50,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $queens->links() }}
         @include('partials.errors')
     </div>
 @endsection

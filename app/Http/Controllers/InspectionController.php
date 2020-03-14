@@ -15,7 +15,7 @@ class InspectionController extends Controller
      */
     public function index()
     {
-        $inspections = auth()->user()->inspections->all();
+        $inspections = auth()->user()->inspections()->latest()->paginate(15);
 
         return view('inspections.index', compact('inspections'));
     }

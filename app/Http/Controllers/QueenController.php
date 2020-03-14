@@ -15,7 +15,7 @@ class QueenController extends Controller
      */
     public function index()
     {
-        $queens = auth()->user()->queens->all();
+        $queens = auth()->user()->queens()->latest()->paginate(15);
 
         return view('queens.index', compact('queens'));
     }

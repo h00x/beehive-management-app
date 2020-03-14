@@ -11,7 +11,7 @@ class HiveTypeController extends Controller
 {
     public function index()
     {
-        $types = auth()->user()->hiveTypes->all();
+        $types = auth()->user()->hiveTypes()->paginate(15);
 
         return view('hives.types.index', compact('types'));
     }

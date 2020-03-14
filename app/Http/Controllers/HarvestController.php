@@ -16,7 +16,7 @@ class HarvestController extends Controller
      */
     public function index()
     {
-        $harvests = auth()->user()->harvests->all();
+        $harvests = auth()->user()->harvests()->latest()->paginate(15);
 
         return view('harvests.index', compact('harvests'));
     }
