@@ -20,6 +20,8 @@
 
 
 @section('content')
-    <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($apiary->image) }}')"></div>
+    @if($apiary->image)
+        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($apiary->image) }}')"></div>
+    @endif
     Location: {{ $apiary->location }}
 @endsection

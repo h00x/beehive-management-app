@@ -19,7 +19,9 @@
 @stop
 
 @section('content')
-    <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
+    @if($hive->image)
+        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
+    @endif
     <div class="flex">
         <div class="w-2/3">
             <table class="w-full mb-12">

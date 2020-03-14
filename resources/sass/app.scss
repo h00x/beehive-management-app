@@ -14,7 +14,7 @@
     .hover-target,
     .dots {
         @apply opacity-0;
-        transition: opacity 0.2s ease-out;
+        transition: all 0.2s ease-out;
     }
 
     transition: all 0.2s ease-in-out;

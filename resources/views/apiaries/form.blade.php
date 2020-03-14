@@ -18,7 +18,7 @@
     </div>
 
     <div class="field">
-        <label for="apiary_image">Beehive image</label>
+        <label for="apiary_image">Apiary image</label>
         <div class="control">
             <input type="file" accept="image/*" name="apiary_image" class="border-gray-200 border rounded p-2 w-full">
         </div>
