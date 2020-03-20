@@ -4,7 +4,11 @@
 
 @section('overviewUrl', route('hives.index'))
 
-@section('actions')
+@section('headerButton')
+    @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
+@endsection
+
+@section('deleteLink')
     <div class="mr-4">
         <a href="{{ $hive->path() }}" onclick="event.preventDefault();
                 document.getElementById('delete-hive').submit();" class="block warning">Delete hive</a>
@@ -14,8 +18,6 @@
             @method('DELETE')
         </form>
     </div>
-
-    <a href="{{ $hive->path() . '/edit' }}" class="btn btn-primary">Edit hive</a>
 @stop
 
 @section('content')

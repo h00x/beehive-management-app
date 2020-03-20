@@ -11,7 +11,7 @@ class InspectionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -23,10 +23,12 @@ class InspectionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
+        setPreviousUrl();
+
         return view('inspections.create');
     }
 
@@ -34,20 +36,21 @@ class InspectionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(InspectionRequest $request)
     {
         auth()->user()->inspections()->create($request->validated());
 
-        return redirect(route('inspections.index'));
+        return redirect(route('inspections.index'))->with('flashMessage', ['description' => 'Inspection created successfully!', 'type' => 'success']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Inspection  $inspection
-     * @return \Illuminate\Http\Response
+     * @param \App\Inspection $inspection
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Inspection $inspection)
     {
@@ -59,12 +62,15 @@ class InspectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Inspection  $inspection
-     * @return \Illuminate\Http\Response
+     * @param \App\Inspection $inspection
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Inspection $inspection)
     {
         $this->authorize('view', $inspection);
+
+        setPreviousUrl();
 
         return view('inspections.edit', compact('inspection'));
     }
@@ -72,9 +78,10 @@ class InspectionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Inspection  $inspection
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Inspection $inspection
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(InspectionRequest $request, Inspection $inspection)
     {
@@ -82,14 +89,15 @@ class InspectionController extends Controller
 
         $inspection->update($request->validated());
 
-        return redirect($inspection->path());
+        return redirect($inspection->path())->with('flashMessage', ['description' => 'Inspection edited successfully!', 'type' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Inspection  $inspection
-     * @return \Illuminate\Http\Response
+     * @param \App\Inspection $inspection
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Inspection $inspection)
     {
@@ -97,6 +105,6 @@ class InspectionController extends Controller
 
         $inspection->delete();
 
-        return redirect(route('inspections.index'));
+        return redirect(route('inspections.index'))->with('flashMessage', ['description' => 'Inspection deleted successfully!', 'type' => 'warning']);
     }
 }

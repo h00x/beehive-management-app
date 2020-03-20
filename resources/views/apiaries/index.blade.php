@@ -2,9 +2,9 @@
 
 @section('pageTitle', 'My Apiaries')
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Create apiary', 'url' => route('apiaries.create')])
-@stop
+@endsection
 
 @section('content')
     <div class="lg:flex lg:flex-wrap -mx-4 item-blocks">

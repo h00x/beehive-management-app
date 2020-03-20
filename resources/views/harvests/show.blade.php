@@ -4,7 +4,11 @@
 
 @section('overviewUrl', route('harvests.index'))
 
-@section('actions')
+@section('headerButton')
+    @include('layouts.button', ['text' => 'Edit harvest', 'url' => $harvest->path() . '/edit'])
+@endsection
+
+@section('deleteLink')
     <div class="mr-4">
         <a href="{{ $harvest->path() }}" onclick="event.preventDefault();
             document.getElementById('delete-harvest').submit();" class="block warning">Delete harvest</a>
@@ -14,8 +18,6 @@
             @method('DELETE')
         </form>
     </div>
-
-    @include('layouts.button', ['text' => 'Edit harvest', 'url' => $harvest->path() . '/edit'])
 @stop
 
 @section('content')

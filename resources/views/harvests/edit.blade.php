@@ -8,6 +8,4 @@
         @method('PATCH')
         @include('harvests.form', ['buttonText' => 'Edit harvest', 'title' => 'Edit harvest'])
     </form>
-
-    @include('partials.errors')
 @endsection

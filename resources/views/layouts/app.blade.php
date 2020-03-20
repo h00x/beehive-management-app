@@ -23,18 +23,22 @@
     <div id="app">
         @include('layouts.header')
         <div class="container mx-auto my-16">
-
+            @if (session()->has('flashMessage'))
+                <flash-message :message='@json(session()->get('flashMessage'))'></flash-message>
+            @endif
             <main>
-                <div class="flex items-center">
-                    <div class="flex-1">
-                        @if(View::hasSection('overviewUrl'))
-                            <a href="@yield('overviewUrl')"><i class="fas fa-caret-left"></i> Back to overview</a>
-                        @endif
+                @if(View::hasSection('overviewUrl') || View::hasSection('deleteLink'))
+                    <div class="flex items-center mb-4">
+                        <div class="flex-1">
+                            @if(View::hasSection('overviewUrl'))
+                                <a href="@yield('overviewUrl')"><i class="fas fa-caret-left"></i> Back to overview</a>
+                            @endif
+                        </div>
+                        <div class="flex justify-end items-center">
+                            @yield('deleteLink')
+                        </div>
                     </div>
-                    <div class="flex justify-end items-center mb-4">
-                        @yield('actions')
-                    </div>
-                </div>
+                @endif
 
                 @yield('content')
             </main>

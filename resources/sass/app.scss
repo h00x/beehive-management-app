@@ -59,3 +59,59 @@
         }
     }
 }
+
+.alert {
+    @apply py-4 px-4 rounded font-bold relative mb-4;
+
+    transform-origin: top;
+
+    &.alert-block {
+        @apply block;
+    }
+
+    &.alert-success {
+        @apply bg-green-400 text-green-900;
+
+        .close:hover {
+            @apply text-green-800;
+        }
+    }
+
+    &.alert-info {
+        @apply bg-blue-400 text-blue-900;
+
+        .close:hover {
+            @apply text-blue-800;
+        }
+    }
+
+    &.alert-warning {
+        @apply bg-yellow-400 text-yellow-900;
+
+        .close:hover {
+            @apply text-yellow-800;
+        }
+    }
+
+    &.alert-danger {
+        @apply bg-red-400 text-red-900;
+
+        .close:hover {
+            @apply text-red-800;
+        }
+    }
+
+    .close {
+        @apply right-0 mr-4 absolute;
+
+        transition: color 0.2s ease-in-out;
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: all .5s ease-out;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+}

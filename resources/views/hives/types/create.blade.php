@@ -7,6 +7,4 @@
         @csrf
         @include('hives.types.form', ['buttonText' => 'Create hive type', 'type' => new \App\HiveType, 'title' => 'Create hive type'])
     </form>
-
-    @include('partials.errors')
 @endsection

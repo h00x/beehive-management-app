@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto flex justify-between items-center">
+    <div class="container mx-auto flex justify-between items-center mt-4">
         <div class="flex items-center">
             <h1 class="font-title text-4xl mr-6">
                 @yield('pageTitle', 'Page')
@@ -58,7 +58,7 @@
             @yield('subHeaders')
         </div>
         <div>
-            button
+            @yield('headerButton')
         </div>
     </div>
 </nav>

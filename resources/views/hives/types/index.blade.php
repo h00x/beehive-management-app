@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'My Hive Types')
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Create a hive type', 'url' => route('types.create')])
 @stop
 

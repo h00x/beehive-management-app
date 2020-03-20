@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'My Inspections')
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Log a inspection', 'url' => route('inspections.create')])
 @stop
 

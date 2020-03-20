@@ -7,6 +7,4 @@
         @csrf
         @include('harvests.form', ['buttonText' => 'Create harvest', 'harvest' => new \App\Harvest, 'title' => 'Create harvest'])
     </form>
-
-    @include('partials.errors')
 @endsection

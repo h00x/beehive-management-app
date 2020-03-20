@@ -47,3 +47,14 @@ if (! function_exists('isCurrentRoute')) {
         return \Illuminate\Support\Facades\Route::is($route);
     }
 }
+
+if (! function_exists('setPreviousUrl')) {
+    /**
+     * Sets the previous url in url.intended session and ignores it if there are errors in the session
+     */
+    function setPreviousUrl() {
+        if (!session()->get('errors')) {
+            session()->put('url.intended', url()->previous());
+        }
+    }
+}

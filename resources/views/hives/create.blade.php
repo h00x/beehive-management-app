@@ -11,6 +11,4 @@
             'title' => 'Create a hive'
          ])
     </form>
-
-    @include('partials.errors')
 @endsection

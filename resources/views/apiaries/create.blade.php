@@ -7,6 +7,4 @@
         @csrf
         @include('apiaries.form', ['buttonText' => 'Create Apiary', 'apiary' => new \App\Apiary, 'title' => 'Create apiary'])
     </form>
-
-    @include('partials.errors')
 @endsection

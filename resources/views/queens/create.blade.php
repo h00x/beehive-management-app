@@ -7,6 +7,4 @@
         @csrf
         @include('queens.form', ['buttonText' => 'Create a queen', 'queen' => new \App\Queen, 'title' => 'Create queen'])
     </form>
-
-    @include('partials.errors')
 @endsection

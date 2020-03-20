@@ -12,7 +12,7 @@ class HarvestController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -24,10 +24,12 @@ class HarvestController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
+        setPreviousUrl();
+
         return view('harvests.create');
     }
 
@@ -36,7 +38,7 @@ class HarvestController extends Controller
      *
      * @param HarvestRequest $request
      * @param Harvest $harvest
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(HarvestRequest $request)
     {
@@ -45,14 +47,15 @@ class HarvestController extends Controller
         $hive = $request->hive_id;
         $harvest->hives()->attach($hive);
 
-        return redirect(route('harvests.index'));
+        return redirect(route('harvests.index'))->with('flashMessage', ['description' => 'Harvest created successfully!', 'type' => 'success']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Harvest  $harvest
-     * @return \Illuminate\Http\Response
+     * @param \App\Harvest $harvest
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Harvest $harvest)
     {
@@ -64,12 +67,15 @@ class HarvestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Harvest  $harvest
-     * @return \Illuminate\Http\Response
+     * @param \App\Harvest $harvest
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Harvest $harvest)
     {
         $this->authorize('view', $harvest);
+
+        setPreviousUrl();
 
         return view('harvests.edit', compact('harvest'));
     }
@@ -77,9 +83,10 @@ class HarvestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Harvest  $harvest
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Harvest $harvest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(HarvestRequest $request, Harvest $harvest)
     {
@@ -91,14 +98,15 @@ class HarvestController extends Controller
 
         $harvest->hives()->sync($hives);
 
-        return redirect($harvest->path());
+        return redirect($harvest->path())->with('flashMessage', ['description' => 'Harvest edited successfully!', 'type' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Harvest  $harvest
-     * @return \Illuminate\Http\Response
+     * @param \App\Harvest $harvest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Harvest $harvest)
     {
@@ -106,6 +114,6 @@ class HarvestController extends Controller
 
         $harvest->delete();
 
-        return redirect(route('harvests.index'));
+        return redirect(route('harvests.index'))->with('flashMessage', ['description' => 'Harvest deleted successfully!', 'type' => 'warning']);
     }
 }

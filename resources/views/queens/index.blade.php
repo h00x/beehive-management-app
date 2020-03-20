@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'My Queens')
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Create a queen', 'url' => route('queens.create')])
 @stop
 

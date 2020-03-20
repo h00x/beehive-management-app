@@ -4,7 +4,11 @@
 
 @section('overviewUrl', route('inspections.index'))
 
-@section('actions')
+@section('headerButton')
+    @include('layouts.button', ['text' => 'Edit inspection', 'url' => $inspection->path() . '/edit'])
+@endsection
+
+@section('deleteLink')
     <div class="mr-4">
         <a href="{{ $inspection->path() }}" onclick="event.preventDefault();
             document.getElementById('delete-inspection').submit();" class="block warning">Delete harvest</a>
@@ -15,8 +19,6 @@
 
         </form>
     </div>
-
-    @include('layouts.button', ['text' => 'Edit inspection', 'url' => $inspection->path() . '/edit'])
 @stop
 
 @section('content')

@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'My Harvests')
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Log a harvest', 'url' => route('harvests.create')])
 @stop
 

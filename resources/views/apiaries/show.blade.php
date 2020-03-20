@@ -4,8 +4,12 @@
 
 @section('overviewUrl', route('apiaries.index'))
 
-@section('actions')
-    <div class="mr-4">
+@section('headerButton')
+    @include('layouts.button', ['text' => 'Edit apiary', 'url' => $apiary->path() . '/edit'])
+@endsection
+
+@section('deleteLink')
+    <div>
         <a href="{{ $apiary->path() }}" onclick="event.preventDefault();
                 document.getElementById('delete-apiary').submit();" class="block warning">Delete apiary</a>
 
@@ -14,8 +18,6 @@
             @method('DELETE')
         </form>
     </div>
-
-    @include('layouts.button', ['text' => 'Edit apiary', 'url' => $apiary->path() . '/edit'])
 @stop
 
 

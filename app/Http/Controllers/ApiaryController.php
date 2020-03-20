@@ -12,7 +12,7 @@ class ApiaryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -24,11 +24,11 @@ class ApiaryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        session()->put('url.intended', url()->previous());
+        setPreviousUrl();
 
         return view('apiaries.create');
     }
@@ -36,8 +36,8 @@ class ApiaryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ApiaryRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ApiaryRequest $request)
     {
@@ -52,14 +52,15 @@ class ApiaryController extends Controller
             return redirect()->intended($apiary->path());
         }
 
-        return redirect($apiary->path());
+        return redirect($apiary->path())->with('flashMessage', ['description' => 'Apiary created successfully!', 'type' => 'success']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Apiary  $apiary
-     * @return \Illuminate\Http\Response
+     * @param \App\Apiary $apiary
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Apiary $apiary)
     {
@@ -71,12 +72,15 @@ class ApiaryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Apiary  $apiary
-     * @return \Illuminate\Http\Response
+     * @param \App\Apiary $apiary
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Apiary $apiary)
     {
         $this->authorize('view', $apiary);
+
+        setPreviousUrl();
 
         return view('apiaries.edit', compact('apiary'));
     }
@@ -84,9 +88,10 @@ class ApiaryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Apiary  $apiary
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Apiary $apiary
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(ApiaryRequest $request, Apiary $apiary)
     {
@@ -100,14 +105,15 @@ class ApiaryController extends Controller
 
         $apiary->update($request->except('apiary_image'));
 
-        return redirect($apiary->path());
+        return redirect($apiary->path())->with('flashMessage', ['description' => 'Apiary updated successfully!', 'type' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Apiary  $apiary
-     * @return \Illuminate\Http\Response
+     * @param \App\Apiary $apiary
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Apiary $apiary)
     {
@@ -116,6 +122,6 @@ class ApiaryController extends Controller
         Storage::delete($apiary->image);
         $apiary->delete();
 
-        return redirect(route('apiaries.index'));
+        return redirect(route('apiaries.index'))->with('flashMessage', ['description' => 'Apiary deleted successfully!', 'type' => 'warning']);
     }
 }

@@ -29,6 +29,8 @@ class HiveController extends Controller
      */
     public function create()
     {
+        setPreviousUrl();
+
         return view('hives.create');
     }
 
@@ -47,7 +49,7 @@ class HiveController extends Controller
 
         $hive = auth()->user()->hives()->create($request->except('beehive_image'));
 
-        return redirect($hive->path());
+        return redirect($hive->path())->with('flashMessage.success','Hive created successfully!');
     }
 
     /**
@@ -75,6 +77,8 @@ class HiveController extends Controller
     {
         $this->authorize('view', $hive);
 
+        setPreviousUrl();
+
         return view('hives.edit', compact('hive'));
     }
 
@@ -98,7 +102,7 @@ class HiveController extends Controller
 
         $hive->update($request->except('beehive_image'));
 
-        return redirect($hive->path());
+        return redirect($hive->path())->with('flashMessage', ['description' => 'Hive updated successfully!', 'type' => 'success']);
     }
 
     /**
@@ -115,6 +119,6 @@ class HiveController extends Controller
         Storage::delete($hive->image);
         $hive->delete();
 
-        return redirect(route('hives.index'));
+        return redirect(route('hives.index'))->with('flashMessage', ['description' => 'Hive deleted successfully!', 'type' => 'warning']);
     }
 }

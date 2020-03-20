@@ -6,7 +6,7 @@
     @include('hives.subheader')
 @stop
 
-@section('actions')
+@section('headerButton')
     @include('layouts.button', ['text' => 'Create hive', 'url' => route('hives.create')])
 @stop
 

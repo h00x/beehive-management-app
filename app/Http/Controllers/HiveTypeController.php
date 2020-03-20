@@ -18,7 +18,7 @@ class HiveTypeController extends Controller
 
     public function create()
     {
-        session()->put('url.intended', url()->previous());
+        setPreviousUrl();
 
         return view('hives.types.create');
     }
@@ -27,12 +27,14 @@ class HiveTypeController extends Controller
     {
         auth()->user()->hiveTypes()->create($request->validated());
 
-        return redirect()->intended(route('types.index'));
+        return redirect()->intended(route('types.index'))->with('flashMessage', ['description' => 'Hive Type created successfully!', 'type' => 'success']);
     }
 
     public function edit(HiveType $type)
     {
         $this->authorize('view', $type);
+
+        setPreviousUrl();
 
         return view('hives.types.edit', compact('type'));
     }
@@ -43,7 +45,7 @@ class HiveTypeController extends Controller
 
         $type->update($request->validated());
 
-        return redirect($type->path());
+        return redirect($type->path())->with('flashMessage', ['description' => 'Hive Type created successfully!', 'type' => 'success']);
     }
 
     public function destroy(HiveType $type)
@@ -56,6 +58,6 @@ class HiveTypeController extends Controller
 
         $type->delete();
 
-        return redirect(route('types.index'));
+        return redirect(route('types.index'))->with('flashMessage', ['description' => 'Hive Type deleted successfully!', 'type' => 'warning']);
     }
 }

@@ -8,6 +8,4 @@
         @method('PATCH')
         @include('apiaries.form', ['buttonText' => 'Edit apiary', 'title' => 'Edit apiary'])
     </form>
-
-    @include('partials.errors')
 @endsection

@@ -7,6 +7,4 @@
         @csrf
         @include('inspections.form', ['buttonText' => 'Create inspection', 'inspection' => new \App\Inspection, 'title' => 'Log inspection'])
     </form>
-
-    @include('partials.errors')
 @endsection
