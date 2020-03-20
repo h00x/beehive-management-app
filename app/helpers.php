@@ -53,7 +53,7 @@ if (! function_exists('setPreviousUrl')) {
      * Sets the previous url in url.intended session and ignores it if there are errors in the session
      */
     function setPreviousUrl() {
-        if (!session()->get('errors')) {
+        if (!session()->get('errors') && url()->current() !== url()->previous()) {
             session()->put('url.intended', url()->previous());
         }
     }

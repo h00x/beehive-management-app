@@ -4,50 +4,68 @@
 
 @section('form')
     <div class="field">
-        <label for="name">Name</label>
+        <label for="name" class="@error('name') text-red-500 @enderror">Name</label>
         <div class="control">
-            <input type="text" name="name" class="border-gray-200 border rounded p-2 w-full" value="{{ old('name', $hive->name) }}">
+            <input type="text" name="name" class="border-gray-200 border rounded p-2 w-full @error('name') border-red-500 @enderror" value="{{ old('name', $hive->name) }}" required autofocus>
+
+            @error('name')
+                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+            @enderror
         </div>
     </div>
 
     <div class="field">
-        <label for="beehive_image">Beehive image</label>
+        <label for="beehive_image" class="@error('beehive_image') text-red-500 @enderror">Beehive image</label>
         <div class="control">
-            <input type="file" accept="image/*" name="beehive_image" class="border-gray-200 border rounded p-2 w-full">
+            <input type="file" accept="image/*" name="beehive_image" class="border-gray-200 border rounded p-2 w-full @error('beehive_image') border-red-500 @enderror">
+
+            @error('beehive_image')
+                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+            @enderror
         </div>
     </div>
 
     <div class="field">
-        <label for="apiary_id">Apiary</label>
+        <label for="apiary_id" class="@error('apiary_id') text-red-500 @enderror">Apiary</label>
         <div class="control">
             @if (Auth::user()->apiaries->isNotEmpty())
-                <select name="apiary_id" class="w-full">
+                <select name="apiary_id" class="w-full @error('apiary_id') border-red-500 @enderror" required>
                     @foreach (Auth::user()->apiaries as $apiary)
                         <option value="{{ $apiary->id }}" {{ checkIdForSelected($apiary->id, $hive->apiary_id, intval(old('apiary_id'))) }}>{{ $apiary->name }}</option>
                     @endforeach
                 </select>
             @endif
-            <a href="{{ route('apiaries.create') }}">Create an apiary</a>
+
+            @error('apiary_id')
+                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+            @enderror
+
+            <a href="{{ route('apiaries.create') }}" class="block">Create an apiary</a>
         </div>
     </div>
 
     <div class="field">
-        <label for="hive_type_id">Hive type</label>
+        <label for="hive_type_id" class="@error('hive_type_id') text-red-500 @enderror">Hive type</label>
         <div class="control">
-            <select name="hive_type_id" class="w-full">
+            <select name="hive_type_id" class="w-full @error('hive_type_id') border-red-500 @enderror" required>
                 @foreach (Auth::user()->hiveTypes as $hiveType)
                     <option value="{{ $hiveType->id }}" {{ checkIdForSelected($hiveType->id, $hive->type_id, intval(old('hive_type_id'))) }}>{{ $hiveType->name }}</option>
                 @endforeach
             </select>
-            <a href="{{ route('types.create') }}">Create a custom hive type</a>
+
+            @error('hive_type_id')
+                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+            @enderror
+
+            <a href="{{ route('types.create') }}" class="block">Create a custom hive type</a>
         </div>
     </div>
 
     <div class="field">
-        <label for="queen_id">Queen</label>
+        <label for="queen_id" class="@error('queen_id') text-red-500 @enderror">Queen</label>
         <div class="control">
             @if (Auth::user()->availableQueens()->count() || $hive->queen)
-                <select name="queen_id" class="w-full">
+                <select name="queen_id" class="w-full @error('queen_id') border-red-500 @enderror" required>
                     @foreach (Auth::user()->queens as $queen)
                         @if (!$queen->hasAHive() || $queen->is($hive->queen))
                             <option value="{{ $queen->id }}" {{ checkIdForSelected($queen->id, $hive->queen_id, intval(old('queen_id'))) }}>{{ $queen->name }}</option>
@@ -55,7 +73,10 @@
                     @endforeach
                 </select>
             @endif
-            <a href="{{ route('queens.create') }}">Create a queen</a>
+            @error('queen_id')
+                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+            @enderror
+            <a href="{{ route('queens.create') }}" class="block">Create a queen</a>
         </div>
     </div>
 @stop
