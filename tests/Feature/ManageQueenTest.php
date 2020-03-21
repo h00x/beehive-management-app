@@ -73,7 +73,7 @@ class ManageQueenTest extends TestCase
 
         $this->actingAs($queen->user)
             ->patch($queen->path(), $attributes = ['name' => 'Changed', 'race' => 'Changed', 'marking' => 'Changed'])
-            ->assertRedirect($queen->path());
+            ->assertRedirect('queens');
 
         $this->get($queen->path() . '/edit')->assertOk();
 
@@ -144,7 +144,7 @@ class ManageQueenTest extends TestCase
             ->assertStatus(403);
     }
 
-    public function test_a_hive_type_cant_be_deleted_when_it_has_hives_allocated_to_it()
+    public function test_a_queen_cant_be_deleted_when_it_has_hives_allocated_to_it()
     {
         $user = $this->signIn();
 
@@ -161,6 +161,7 @@ class ManageQueenTest extends TestCase
 
         $this->delete($user->queens->first()->path())
             ->assertRedirect(route('queens.index'))
-            ->assertSessionHasErrors('delete');
+            ->assertSessionHas('flashMessage.description', 'This queen has a hive. Can\'t delete it.')
+            ->assertSessionHas('flashMessage.type', 'danger');
     }
 }

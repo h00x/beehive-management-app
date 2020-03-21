@@ -65,9 +65,13 @@ class ManageHivesTest extends TestCase
 
     public function test_a_user_can_view_their_hive()
     {
-        $hive = factory(Hive::class)->create();
+        $user = $this->signIn();
 
-        $this->actingAs($hive->user)->get($hive->path())
+        $hive = factory(Hive::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this->get($hive->path())
             ->assertStatus(200)
             ->assertSee($hive->name)
             ->assertSee($hive->apiary->location)
