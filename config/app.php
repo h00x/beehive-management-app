@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Lawnstarter\LaravelDarkSky\LaravelDarkSkyServiceProvider::class,
+        Spatie\Geocoder\GeocoderServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'DarkSky' => \Lawnstarter\LaravelDarkSky\Facades\DarkSky::class,
+        'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
 
     ],
 

@@ -6,6 +6,8 @@ use App\Apiary;
 use App\Http\Requests\ApiaryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Lawnstarter\LaravelDarkSky\Facades\DarkSky;
+use Spatie\Geocoder\Facades\Geocoder;
 
 class ApiaryController extends Controller
 {
@@ -66,7 +68,15 @@ class ApiaryController extends Controller
     {
         $this->authorize('view', $apiary);
 
-        return view('apiaries.show', compact('apiary'));
+        $geocode = Geocoder::getCoordinatesForAddress($apiary->location);
+        $weather = null;
+
+        if ($geocode['formatted_address'] !== 'result_not_found') {
+            $weather = DarkSky::location($geocode['lat'], $geocode['lng'])->excludes(['flags', 'hourly', 'minutely', 'daily', 'offset'])->units('si')->get();
+        }
+
+
+        return view('apiaries.show', compact('apiary', 'weather', 'geocode'));
     }
 
     /**
