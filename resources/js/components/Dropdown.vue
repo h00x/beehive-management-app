@@ -2,11 +2,15 @@
     <div class="dropdown relative">
         <div class="dropdown-toggle"
              @click.prevent="isOpen = !isOpen"
+             v-on:mouseleave="mouseOut"
+             v-on:mouseenter="mouseIn"
         >
             <slot name="trigger"></slot>
         </div>
 
         <div v-show="isOpen"
+             v-on:mouseleave="mouseOut"
+             v-on:mouseenter="mouseIn"
              class="dropdown-menu absolute bg-white p-2 rounded shadow whitespace-no-wrap z-20"
              v-bind:class="[align === 'right' ? 'right-0' : 'left-0', generateTopMargin]"
         >
@@ -21,11 +25,14 @@
 
         props: {
             align: { default: 'right'},
-            margin: { default: '2'}
+            margin: { default: '2'},
         },
 
         data() {
-            return { isOpen: false }
+            return {
+                isOpen: false,
+                timeout: null,
+            }
         },
 
         watch: {
@@ -33,7 +40,7 @@
                 if (isOpen) {
                     document.addEventListener('click', this.closeIfClickedOutside);
                 }
-            }
+            },
         },
 
         methods: {
@@ -42,6 +49,14 @@
                     this.isOpen = false;
                     document.removeEventListener('click', this.closeIfClickedOutside);
                 }
+            },
+            mouseOut() {
+                this.timeout = setTimeout(() => {
+                    this.isOpen = false;
+                }, 500);
+            },
+            mouseIn() {
+                clearTimeout(this.timeout);
             },
         },
 

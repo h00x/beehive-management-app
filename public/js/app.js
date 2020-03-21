@@ -1925,6 +1925,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dropdown",
   props: {
@@ -1937,7 +1941,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isOpen: false
+      isOpen: false,
+      timeout: null
     };
   },
   watch: {
@@ -1953,6 +1958,16 @@ __webpack_require__.r(__webpack_exports__);
         this.isOpen = false;
         document.removeEventListener('click', this.closeIfClickedOutside);
       }
+    },
+    mouseOut: function mouseOut() {
+      var _this = this;
+
+      this.timeout = setTimeout(function () {
+        _this.isOpen = false;
+      }, 500);
+    },
+    mouseIn: function mouseIn() {
+      clearTimeout(this.timeout);
     }
   },
   computed: {
@@ -2504,7 +2519,9 @@ var render = function() {
           click: function($event) {
             $event.preventDefault()
             _vm.isOpen = !_vm.isOpen
-          }
+          },
+          mouseleave: _vm.mouseOut,
+          mouseenter: _vm.mouseIn
         }
       },
       [_vm._t("trigger")],
@@ -2527,7 +2544,8 @@ var render = function() {
         class: [
           _vm.align === "right" ? "right-0" : "left-0",
           _vm.generateTopMargin
-        ]
+        ],
+        on: { mouseleave: _vm.mouseOut, mouseenter: _vm.mouseIn }
       },
       [_vm._t("default")],
       2
