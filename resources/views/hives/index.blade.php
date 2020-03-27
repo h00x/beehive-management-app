@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'My Hives')
+@section('pageTitle')
+    @lang('hives.title')
+@endsection
 
 @section('subHeaders')
     @include('hives.subheader')
 @stop
 
 @section('headerButton')
-    @include('layouts.button', ['text' => 'Create hive', 'url' => route('hives.create')])
+    @include('layouts.button', ['text' => __('hives.create'), 'url' => route('hives.create')])
 @stop
 
 @section('content')
@@ -20,7 +22,7 @@
                             <button class="absolute right-0 top-0 text-sm text-white z-20 dots hover:text-gray-200"><i class="fas fa-ellipsis-h"></i></button>
                         </template>
                         <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
-                            <a href="{{ $hive->path() . '/edit' }}" class="inline-block p-2"><i class="fas fa-edit text-sm mr-2"></i>Edit hive</a>
+                            <a href="{{ $hive->path() . '/edit' }}" class="inline-block p-2"><i class="fas fa-edit text-sm mr-2"></i>@lang('hives.edit')</a>
                         </div>
                         <div class="hover:bg-secondary-100 -mx-2 px-2">
                             <a href="{{ $hive->path() }}"
@@ -28,7 +30,7 @@
                                onclick="event.preventDefault();
                                         document.getElementById('delete-hive-{{ $hive->id }}').submit();" class="block text-red-800"
                             >
-                                <i class="fas fa-trash text-sm mr-2"></i>Delete hive
+                                <i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')
                             </a>
 
                             <form id="delete-hive-{{ $hive->id }}" action="{{ $hive->path() }}" method="POST" class="hidden">
@@ -47,7 +49,7 @@
                         </div>
                     @endif
                     <p class="text-2xl font-title text-gray-900 block">{{ $hive->name }}</p>
-                    Location: {{ $hive->apiary->location }}
+                    @lang('general.location'): {{ $hive->apiary->location }}
                 </div>
             </div>
         @endforeach

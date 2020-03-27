@@ -6,9 +6,9 @@
     <form action="{{ route('hives.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @include('hives.form', [
-            'buttonText' => 'Create hive',
+            'buttonText' => __('hives.create'),
             'hive' => new \App\Hive,
-            'title' => 'Create a hive'
+            'title' => __('hives.create')
          ])
     </form>
 @endsection

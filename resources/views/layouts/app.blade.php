@@ -31,7 +31,7 @@
                     <div class="flex items-center mb-4">
                         <div class="flex-1">
                             @if(View::hasSection('overviewUrl'))
-                                <a href="@yield('overviewUrl')"><i class="fas fa-caret-left"></i> Back to overview</a>
+                                <a href="@yield('overviewUrl')"><i class="fas fa-caret-left"></i> @lang('general.backOverview')</a>
                             @endif
                         </div>
                         <div class="flex justify-end items-center">

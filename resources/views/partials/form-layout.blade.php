@@ -9,7 +9,7 @@
             @yield('form')
 
             <div class="flex items-center justify-between mt-8">
-                <a href="{{ session()->get('url.intended') }}"><i class="fas fa-caret-left"></i> Back</a>
+                <a href="{{ session()->get('url.intended') }}"><i class="fas fa-caret-left"></i> @lang('general.back')</a>
                 <div class="control">
                     <button type="submit" class="rounded px-6 py-4 bg-secondary-500 text-white inline-block">@yield('button')</button>
                 </div>

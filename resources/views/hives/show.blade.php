@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Hive: ' . $hive->name)
+@section('pageTitle', trans_choice('hives.hive', 1) . ': ' . $hive->name)
 
 @section('overviewUrl', route('hives.index'))
 
 @section('headerButton')
-    @include('layouts.button', ['text' => 'Edit hive', 'url' => $hive->path() . '/edit'])
+    @include('layouts.button', ['text' => __('hives.edit'), 'url' => $hive->path() . '/edit'])
 @endsection
 
 @section('deleteLink')
     <div class="mr-4">
         <a href="{{ $hive->path() }}" onclick="event.preventDefault();
-                document.getElementById('delete-hive').submit();" class="block warning">Delete hive</a>
+                document.getElementById('delete-hive').submit();" class="block warning">@lang('hives.delete')</a>
 
         <form id="delete-hive" action="{{ $hive->path() }}" method="POST" class="hidden">
             @csrf
@@ -28,31 +28,31 @@
         <div class="w-2/3">
             <table class="w-full mb-12">
                 <tr>
-                    <td class="p-2">Hive type</td>
+                    <td class="p-2">{{ trans_choice('hivetypes.type', 1) }}</td>
                     <td class="p-2">{{ $hive->type->name }}</td>
                 </tr>
                 <tr class="bg-white">
-                    <td class="p-2">Queen</td>
-                    <td class="p-2">{{ $hive->queen->name }} <small><a href="{{ $hive->queen->path() . '/edit' }}">Edit queen</a></small></td>
+                    <td class="p-2">{{ trans_choice('queens.queen', 1) }}</td>
+                    <td class="p-2">{{ $hive->queen->name }} <small><a href="{{ $hive->queen->path() . '/edit' }}">@lang('queens.edit')</a></small></td>
                 </tr>
                 <tr>
-                    <td class="p-2">Created</td>
+                    <td class="p-2">@lang('hives.created')</td>
                     <td class="p-2">{{ Carbon\Carbon::parse($hive->created_at)->format('d-m-Y') }}</td>
                 </tr>
                 <tr class="bg-white">
-                    <td class="p-2">Last updated</td>
+                    <td class="p-2">@lang('hives.updated')</td>
                     <td class="p-2">{{ Carbon\Carbon::parse($hive->updated_at)->format('d-m-Y') }}</td>
                 </tr>
                 <tr>
-                    <td class="p-2">Apiary</td>
+                    <td class="p-2">{{ trans_choice('apiaries.apiary', 1) }}</td>
                     <td class="p-2"><a href="{{ $hive->apiary->path() }}">{{ $hive->apiary->name }}</a></td>
                 </tr>
                 <tr class="bg-white">
-                    <td class="p-2">Location</td>
+                    <td class="p-2">@lang('general.location')</td>
                     <td class="p-2">{{ $hive->apiary->location }}</td>
                 </tr>
                 <tr>
-                    <td class="p-2">Total liters harvested</td>
+                    <td class="p-2">@lang('hives.harvested')</td>
                     <td class="p-2">{{ array_sum($hive->harvests->pluck('weight')->toArray()) }}</td>
                 </tr>
             </table>
