@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,8 +20,18 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyA_EPtNQeXKa8cJL5hrZV-teKCShpQX-Ls',
+        libraries: 'places',
+    },
+    installComponents: true
+});
+
 Vue.component('dropdown', require('./components/Dropdown').default);
 Vue.component('flash-message', require('./components/FlashMessage').default);
+Vue.component('google-map', VueGoogleMaps.Map);
+Vue.component('google-map-marker', VueGoogleMaps.Marker);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

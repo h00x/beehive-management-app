@@ -97,28 +97,6 @@
             @enderror
         </div>
     </div>
-
-    <div class="field">
-        <label for="weather" class="@error('weather') text-red-500 @enderror">Weather</label>
-        <div class="control">
-            <input type="text" name="weather" class="border-gray-200 border rounded p-2 w-full @error('weather') border-red-500 @enderror" value="{{ old('weather', $inspection->weather) }}">
-
-            @error('weather')
-                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="temperature" class="@error('temperature') text-red-500 @enderror">Temperature</label>
-        <div class="control">
-            <input type="number" name="temperature" class="border-gray-200 border rounded p-2 w-full @error('temperature') border-red-500 @enderror" value="{{ old('temperature', $inspection->temperature) }}" min="-40" max="80">
-
-            @error('temperature')
-                <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
 @stop
 
 @section('button')

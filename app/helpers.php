@@ -1,5 +1,8 @@
 <?php
 
+use Lawnstarter\LaravelDarkSky\Facades\DarkSky;
+use Spatie\Geocoder\Facades\Geocoder;
+
 if (! function_exists('parseDateForInput')) {
     /**
      * Returns the date formatted for HTML date input fields
@@ -56,5 +59,23 @@ if (! function_exists('setPreviousUrl')) {
         if (!session()->get('errors') && url()->current() !== url()->previous()) {
             session()->put('url.intended', url()->previous());
         }
+    }
+}
+
+if (! function_exists('getWeather')) {
+    /**
+     * Input any location and the weather is returned. Returns null if the location is not found.
+     *
+     * @param $location
+     * @return array|null
+     */
+    function getWeather($location) {
+        $geocode = Geocoder::getCoordinatesForAddress($location);
+
+        if ($geocode['formatted_address'] !== 'result_not_found') {
+            return DarkSky::location($geocode['lat'], $geocode['lng'])->excludes(['flags', 'hourly', 'minutely', 'daily', 'offset'])->units('si')->get();
+        }
+
+        return null;
     }
 }

@@ -30,4 +30,14 @@
         <p>Temperature: {{ $weather->currently->temperature }}</p>
         <p>Weather: {{ $weather->currently->summary }}</p>
     @endif
+    <google-map
+        :center="{lat:{{ $geocode['lat'] }}, lng:{{ $geocode['lng'] }}}"
+        :zoom="12"
+        map-type-id="terrain"
+        class="w-full h-64"
+    >
+        <google-map-marker
+            :position="{lat:{{ $geocode['lat'] }}, lng:{{ $geocode['lng'] }}}"
+        ></google-map-marker>
+    </google-map>
 @endsection

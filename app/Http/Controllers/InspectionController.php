@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hive;
 use App\Http\Requests\InspectionRequest;
 use App\Inspection;
 use Illuminate\Http\Request;
@@ -40,7 +41,16 @@ class InspectionController extends Controller
      */
     public function store(InspectionRequest $request)
     {
-        auth()->user()->inspections()->create($request->validated());
+        $hive = Hive::find($request['hive_id']);
+        $weather = getWeather($hive->apiary->location);
+
+        auth()->user()->inspections()
+            ->create(
+                array_merge($request->validated(), [
+                    'weather' => $weather ? $weather->currently->summary : null,
+                    'temperature' => $weather ? $weather->currently->temperature : null
+                ])
+            );
 
         return redirect(route('inspections.index'))->with('flashMessage', ['description' => 'Inspection created successfully!', 'type' => 'success']);
     }

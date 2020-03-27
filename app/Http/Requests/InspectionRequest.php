@@ -31,8 +31,6 @@ class InspectionRequest extends FormRequest
             'pollen_arriving' => 'integer|min:0|max:100',
             'comb_building' => 'integer|min:0|max:100',
             'notes' => 'max:2000',
-            'weather' => 'max:255',
-            'temperature' => 'integer|min:-40|max:80',
             'hive_id' => 'required'
         ];
     }
