@@ -3,7 +3,7 @@
 @section('pageTitle', 'My Harvests')
 
 @section('headerButton')
-    @include('layouts.button', ['text' => 'Log a harvest', 'url' => route('harvests.create')])
+    @include('layouts.button', ['text' => __('harvests.create'), 'url' => route('harvests.create')])
 @stop
 
 @section('content')
@@ -11,41 +11,60 @@
         <table class="w-full">
             <thead>
                 <tr class="text-left">
-                    <th>Name</th>
-                    <th>Harvest date</th>
-                    <th>Batch code</th>
-                    <th>Weight</th>
-                    <th>Moister content</th>
-                    <th>Nectar source</th>
-                    <th>Description</th>
-                    <th>Edit</th>
+                    <th class="py-2 px-4">Name</th>
+                    <th class="py-2 px-4">Harvest date</th>
+                    <th class="py-2 px-4">Batch code</th>
+                    <th class="py-2 px-4">Weight</th>
+                    <th class="py-2 px-4">Moister content</th>
+                    <th class="py-2 px-4">Nectar source</th>
+                    <th class="py-2 px-4">Description</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($harvests as $harvest)
-                    <tr>
-                        <td><a href="{{ $harvest->path() }}">{{ $harvest->name }}</a></td>
-                        <td>{{ $harvest->date }}</td>
-                        <td>{{ $harvest->batch_code }}</td>
-                        <td>{{ $harvest->weight }}</td>
-                        <td>{{ $harvest->moister_content }}</td>
-                        <td>{{ $harvest->nectar_source }}</td>
-                        <td>{{ $harvest->description }}</td>
+                    <tr class="hover:bg-white">
+                        <td class="py-2 px-4"><a href="{{ $harvest->path() }}">{{ $harvest->name }}</a></td>
+                        <td class="py-2 px-4">{{ $harvest->date }}</td>
+                        <td class="py-2 px-4">{{ $harvest->batch_code }}</td>
+                        <td class="py-2 px-4">{{ $harvest->weight }}</td>
+                        <td class="py-2 px-4">{{ $harvest->moister_content }}</td>
+                        <td class="py-2 px-4">{{ $harvest->nectar_source }}</td>
+                        <td class="py-2 px-4">{{ $harvest->description }}</td>
 
-                        <td>
-                            <a
-                                href="{{ $harvest->path() . '/edit' }}"
-                            >Edit</a>
-                            <a
-                                href="{{ $harvest->path() }}"
-                                class="text-red-500"
-                                onclick="event.preventDefault();
-                                    document.getElementById('{{ 'delete-harvest-' . $harvest->id }}').submit();"
-                            >Delete</a>
-                            <form id="{{ 'delete-harvest-' . $harvest->id }}" action="{{ $harvest->path() }}" method="POST" class="hidden">
-                                @csrf
-                                @method('DELETE')
-                            </form>
+                        <td class="flex justify-end py-2 px-4">
+                            <dropdown align="right" margin="0">
+                                <template v-slot:trigger>
+                                    <button class="text-sm text-gray-500 z-20 dots hover:text-gray-700"><i class="fas fa-ellipsis-h"></i></button>
+                                </template>
+                                <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                                    <a href="{{ $harvest->path() . '/edit' }}" class="inline-block p-2"><i class="fas fa-edit text-sm mr-2"></i>@lang('harvests.edit')</a>
+                                </div>
+                                <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                                    <a href="{{ $harvest->path() }}" class="inline-block p-2"><i class="fas fa-archive text-sm mr-2"></i>@lang('harvests.archive')</a>
+                                </div>
+                                <modal>
+                                    <div class="hover:bg-secondary-100 -mx-2 px-2 cursor-pointer" slot="button">
+                                        <a class="inline-block p-2 warning block text-red-800"><i class="fas fa-trash text-sm mr-2"></i>@lang('harvests.delete')</a>
+                                    </div>
+                                    <span slot="header">@lang('harvests.delete') {{ $harvest->name }}?</span>
+                                    <p slot="body">@lang('harvests.deleteBody')</p>
+                                    <span slot="cancel">@lang('general.cancel')</span>
+                                    <div slot="footer">
+                                        <a href="{{ $harvest->path() }}"
+                                           class="btn btn-warning"
+                                           onclick="event.preventDefault();
+                                               document.getElementById('delete-harvest-{{ $harvest->id }}').submit();" class="block text-red-800"
+                                        >
+                                            <i class="fas fa-trash text-sm mr-2"></i>@lang('harvests.delete')
+                                        </a>
+
+                                        <form id="delete-harvest-{{ $harvest->id }}" action="{{ $harvest->path() }}" method="POST" class="hidden">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </div>
+                                </modal>
+                            </dropdown>
                         </td>
                     </tr>
                 @endforeach
