@@ -10,13 +10,36 @@
 
 @section('deleteLink')
     <div class="mr-4">
-        <a href="{{ $hive->path() }}" onclick="event.preventDefault();
-                document.getElementById('delete-hive').submit();" class="block warning">@lang('hives.delete')</a>
+        <dropdown align="right" margin="6" class="-mr-2 -mt-3">
+            <template v-slot:trigger>
+                <button class="absolute right-0 top-0 text-sm text-gray-500 z-20 dots hover:text-gray-700"><i class="fas fa-ellipsis-h"></i></button>
+            </template>
+            <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                <a href="{{ $hive->path() }}" class="inline-block p-2"><i class="fas fa-archive text-sm mr-2"></i>@lang('hives.archive')</a>
+            </div>
+            <modal>
+                <div class="hover:bg-secondary-100 -mx-2 px-2 cursor-pointer" slot="button">
+                    <a class="inline-block p-2 warning block text-red-800"><i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')</a>
+                </div>
+                <span slot="header">@lang('hives.delete') {{ $hive->name }}?</span>
+                <p slot="body">@lang('hives.deleteBody')</p>
+                <span slot="cancel">@lang('general.cancel')</span>
+                <div slot="footer">
+                    <a href="{{ $hive->path() }}"
+                       class="btn btn-warning"
+                       onclick="event.preventDefault();
+                           document.getElementById('delete-hive-{{ $hive->id }}').submit();" class="block text-red-800"
+                    >
+                        <i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')
+                    </a>
 
-        <form id="delete-hive" action="{{ $hive->path() }}" method="POST" class="hidden">
-            @csrf
-            @method('DELETE')
-        </form>
+                    <form id="delete-hive-{{ $hive->id }}" action="{{ $hive->path() }}" method="POST" class="hidden">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                </div>
+            </modal>
+        </dropdown>
     </div>
 @stop
 

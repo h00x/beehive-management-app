@@ -17,12 +17,15 @@
         @foreach ($hives as $hive)
             <div class="lg:w-1/3 px-4 my-4">
                 <div class="shadow rounded-lg p-6 bg-white h-full relative hover-trigger">
-                    <dropdown align="right" margin="6" class="-mr-2 -mt-3">
+                    <dropdown align="right" margin="6">
                         <template v-slot:trigger>
                             <button class="absolute right-0 top-0 text-sm text-white z-20 dots hover:text-gray-200"><i class="fas fa-ellipsis-h"></i></button>
                         </template>
                         <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
                             <a href="{{ $hive->path() . '/edit' }}" class="inline-block p-2"><i class="fas fa-edit text-sm mr-2"></i>@lang('hives.edit')</a>
+                        </div>
+                        <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                            <a href="{{ $hive->path() }}" class="inline-block p-2"><i class="fas fa-archive text-sm mr-2"></i>@lang('hives.archive')</a>
                         </div>
                         <modal>
                             <div class="hover:bg-secondary-100 -mx-2 px-2 cursor-pointer" slot="button">

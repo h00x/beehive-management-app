@@ -13,5 +13,6 @@ return [
     'created' => 'Hive created',
     'updated' => 'Hive updated',
     'harvested' => 'Liters of honey harvested',
+    'archive' => 'Archive hive',
 
 ];

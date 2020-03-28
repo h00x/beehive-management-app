@@ -11,7 +11,7 @@
         <div v-show="isOpen"
              v-on:mouseleave="mouseOut"
              v-on:mouseenter="mouseIn"
-             class="dropdown-menu absolute bg-white p-2 rounded shadow whitespace-no-wrap z-20"
+             class="dropdown-menu absolute bg-white p-2 rounded shadow whitespace-no-wrap z-20 box-border"
              v-bind:class="[align === 'right' ? 'right-0' : 'left-0', generateTopMargin]"
         >
             <slot></slot>

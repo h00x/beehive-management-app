@@ -13,5 +13,6 @@ return [
     'created' => 'Korf aangemaakt',
     'updated' => 'Korf aangepast',
     'harvested' => 'Liters aan honing geoogst',
+    'archive' => 'Archiveer korf',
 
 ];
