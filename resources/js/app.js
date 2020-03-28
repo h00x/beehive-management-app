@@ -30,6 +30,7 @@ Vue.use(VueGoogleMaps, {
 
 Vue.component('dropdown', require('./components/Dropdown').default);
 Vue.component('flash-message', require('./components/FlashMessage').default);
+Vue.component('modal', require('./components/Modal').default);
 Vue.component('google-map', VueGoogleMaps.Map);
 Vue.component('google-map-marker', VueGoogleMaps.Marker);
 
@@ -41,4 +42,5 @@ Vue.component('google-map-marker', VueGoogleMaps.Marker);
 
 const app = new Vue({
     el: '#app',
+
 });

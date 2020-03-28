@@ -45,7 +45,7 @@
 
         methods: {
             closeIfClickedOutside(event) {
-                if (! event.target.closest('.dropdown')) {
+                    if (! event.target.closest('.dropdown')) {
                     this.isOpen = false;
                     document.removeEventListener('click', this.closeIfClickedOutside);
                 }

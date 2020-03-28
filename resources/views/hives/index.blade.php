@@ -24,20 +24,28 @@
                         <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
                             <a href="{{ $hive->path() . '/edit' }}" class="inline-block p-2"><i class="fas fa-edit text-sm mr-2"></i>@lang('hives.edit')</a>
                         </div>
-                        <div class="hover:bg-secondary-100 -mx-2 px-2">
-                            <a href="{{ $hive->path() }}"
-                               class="inline-block p-2 warning"
-                               onclick="event.preventDefault();
-                                        document.getElementById('delete-hive-{{ $hive->id }}').submit();" class="block text-red-800"
-                            >
-                                <i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')
-                            </a>
+                        <modal>
+                            <div class="hover:bg-secondary-100 -mx-2 px-2 cursor-pointer" slot="button">
+                                <a class="inline-block p-2 warning block text-red-800"><i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')</a>
+                            </div>
+                            <span slot="header">@lang('hives.delete') {{ $hive->name }}?</span>
+                            <p slot="body">@lang('hives.deleteBody')</p>
+                            <span slot="cancel">@lang('general.cancel')</span>
+                            <div slot="footer">
+                                <a href="{{ $hive->path() }}"
+                                   class="btn btn-warning"
+                                   onclick="event.preventDefault();
+                                       document.getElementById('delete-hive-{{ $hive->id }}').submit();" class="block text-red-800"
+                                >
+                                    <i class="fas fa-trash text-sm mr-2"></i>@lang('hives.delete')
+                                </a>
 
-                            <form id="delete-hive-{{ $hive->id }}" action="{{ $hive->path() }}" method="POST" class="hidden">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </div>
+                                <form id="delete-hive-{{ $hive->id }}" action="{{ $hive->path() }}" method="POST" class="hidden">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </div>
+                        </modal>
                     </dropdown>
                     <a href="{{ $hive->path() }}" class="absolute w-full h-full top-0 bottom-0 left-0 right-0 z-10"></a>
                     <div class="w-auto h-32 bg-gray-900 absolute top-0 left-0 right-0 rounded-t-lg hover-target"></div>

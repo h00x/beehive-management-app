@@ -957,6 +957,18 @@ video {
   background-color: #038096;
 }
 
+.bg-blackAlpha-25{
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.bg-blackAlpha-50{
+  background-color: rgba(0, 0, 0, 0.50);
+}
+
+.bg-blackAlpha-75{
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
 .hover\:bg-transparent:hover{
   background-color: transparent;
 }
@@ -1221,6 +1233,18 @@ video {
   background-color: #038096;
 }
 
+.hover\:bg-blackAlpha-25:hover{
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.hover\:bg-blackAlpha-50:hover{
+  background-color: rgba(0, 0, 0, 0.50);
+}
+
+.hover\:bg-blackAlpha-75:hover{
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
 .focus\:bg-transparent:focus{
   background-color: transparent;
 }
@@ -1483,6 +1507,18 @@ video {
 
 .focus\:bg-blue-900:focus{
   background-color: #038096;
+}
+
+.focus\:bg-blackAlpha-25:focus{
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:bg-blackAlpha-50:focus{
+  background-color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:bg-blackAlpha-75:focus{
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .bg-bottom{
@@ -1829,6 +1865,18 @@ video {
   border-color: #038096;
 }
 
+.border-blackAlpha-25{
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.border-blackAlpha-50{
+  border-color: rgba(0, 0, 0, 0.50);
+}
+
+.border-blackAlpha-75{
+  border-color: rgba(0, 0, 0, 0.75);
+}
+
 .hover\:border-transparent:hover{
   border-color: transparent;
 }
@@ -2093,6 +2141,18 @@ video {
   border-color: #038096;
 }
 
+.hover\:border-blackAlpha-25:hover{
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.hover\:border-blackAlpha-50:hover{
+  border-color: rgba(0, 0, 0, 0.50);
+}
+
+.hover\:border-blackAlpha-75:hover{
+  border-color: rgba(0, 0, 0, 0.75);
+}
+
 .focus\:border-transparent:focus{
   border-color: transparent;
 }
@@ -2355,6 +2415,18 @@ video {
 
 .focus\:border-blue-900:focus{
   border-color: #038096;
+}
+
+.focus\:border-blackAlpha-25:focus{
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:border-blackAlpha-50:focus{
+  border-color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:border-blackAlpha-75:focus{
+  border-color: rgba(0, 0, 0, 0.75);
 }
 
 .rounded-none{
@@ -6555,6 +6627,66 @@ video {
   color: #038096;
 }
 
+.placeholder-blackAlpha-25::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.placeholder-blackAlpha-25::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.placeholder-blackAlpha-25:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.placeholder-blackAlpha-25::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.placeholder-blackAlpha-25::placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.placeholder-blackAlpha-50::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.placeholder-blackAlpha-50::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.placeholder-blackAlpha-50:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.placeholder-blackAlpha-50::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.placeholder-blackAlpha-50::placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.placeholder-blackAlpha-75::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.placeholder-blackAlpha-75::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.placeholder-blackAlpha-75:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.placeholder-blackAlpha-75::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.placeholder-blackAlpha-75::placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
 .focus\:placeholder-transparent:focus::-webkit-input-placeholder{
   color: transparent;
 }
@@ -7875,6 +8007,66 @@ video {
   color: #038096;
 }
 
+.focus\:placeholder-blackAlpha-25:focus::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:placeholder-blackAlpha-25:focus::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:placeholder-blackAlpha-25:focus:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:placeholder-blackAlpha-25:focus::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:placeholder-blackAlpha-25:focus::placeholder{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:placeholder-blackAlpha-50:focus::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:placeholder-blackAlpha-50:focus::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:placeholder-blackAlpha-50:focus:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:placeholder-blackAlpha-50:focus::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:placeholder-blackAlpha-50:focus::placeholder{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:placeholder-blackAlpha-75:focus::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.focus\:placeholder-blackAlpha-75:focus::-moz-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.focus\:placeholder-blackAlpha-75:focus:-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.focus\:placeholder-blackAlpha-75:focus::-ms-input-placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.focus\:placeholder-blackAlpha-75:focus::placeholder{
+  color: rgba(0, 0, 0, 0.75);
+}
+
 .pointer-events-none{
   pointer-events: none;
 }
@@ -8378,6 +8570,18 @@ video {
   color: #038096;
 }
 
+.text-blackAlpha-25{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.text-blackAlpha-50{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.text-blackAlpha-75{
+  color: rgba(0, 0, 0, 0.75);
+}
+
 .hover\:text-transparent:hover{
   color: transparent;
 }
@@ -8642,6 +8846,18 @@ video {
   color: #038096;
 }
 
+.hover\:text-blackAlpha-25:hover{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.hover\:text-blackAlpha-50:hover{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.hover\:text-blackAlpha-75:hover{
+  color: rgba(0, 0, 0, 0.75);
+}
+
 .focus\:text-transparent:focus{
   color: transparent;
 }
@@ -8904,6 +9120,18 @@ video {
 
 .focus\:text-blue-900:focus{
   color: #038096;
+}
+
+.focus\:text-blackAlpha-25:focus{
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.focus\:text-blackAlpha-50:focus{
+  color: rgba(0, 0, 0, 0.50);
+}
+
+.focus\:text-blackAlpha-75:focus{
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .text-xs{
@@ -9404,6 +9632,16 @@ a.warning:hover {
 }
 
 .btn.btn-primary:hover {
+  color: #fff;
+}
+
+.btn.btn-warning {
+  background-color: #FD7553;
+  color: #fff;
+  background-image: linear-gradient(135deg, #FD8668, #F23202);
+}
+
+.btn.btn-warning:hover {
   color: #fff;
 }
 
@@ -15829,6 +16067,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .sm\:bg-blackAlpha-25{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:bg-blackAlpha-50{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:bg-blackAlpha-75{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:hover\:bg-transparent:hover{
     background-color: transparent;
   }
@@ -16093,6 +16343,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .sm\:hover\:bg-blackAlpha-25:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:hover\:bg-blackAlpha-50:hover{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:hover\:bg-blackAlpha-75:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:focus\:bg-transparent:focus{
     background-color: transparent;
   }
@@ -16355,6 +16617,18 @@ readers do not read off random characters that represent icons */
 
   .sm\:focus\:bg-blue-900:focus{
     background-color: #038096;
+  }
+
+  .sm\:focus\:bg-blackAlpha-25:focus{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:bg-blackAlpha-50:focus{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:bg-blackAlpha-75:focus{
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .sm\:bg-bottom{
@@ -16701,6 +16975,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .sm\:border-blackAlpha-25{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:border-blackAlpha-50{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:border-blackAlpha-75{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -16965,6 +17251,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .sm\:hover\:border-blackAlpha-25:hover{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:hover\:border-blackAlpha-50:hover{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:hover\:border-blackAlpha-75:hover{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -17227,6 +17525,18 @@ readers do not read off random characters that represent icons */
 
   .sm\:focus\:border-blue-900:focus{
     border-color: #038096;
+  }
+
+  .sm\:focus\:border-blackAlpha-25:focus{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:border-blackAlpha-50:focus{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:border-blackAlpha-75:focus{
+    border-color: rgba(0, 0, 0, 0.75);
   }
 
   .sm\:rounded-none{
@@ -21427,6 +21737,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .sm\:placeholder-blackAlpha-25::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:placeholder-blackAlpha-25::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:placeholder-blackAlpha-25:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:placeholder-blackAlpha-25::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:placeholder-blackAlpha-25::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:placeholder-blackAlpha-50::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:placeholder-blackAlpha-50::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:placeholder-blackAlpha-50:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:placeholder-blackAlpha-50::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:placeholder-blackAlpha-50::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:placeholder-blackAlpha-75::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:placeholder-blackAlpha-75::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:placeholder-blackAlpha-75:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:placeholder-blackAlpha-75::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:placeholder-blackAlpha-75::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:focus\:placeholder-transparent:focus::-webkit-input-placeholder{
     color: transparent;
   }
@@ -22747,6 +23117,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .sm\:focus\:placeholder-blackAlpha-25:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-25:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-25:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-25:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-25:focus::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-50:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-50:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-50:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-50:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-50:focus::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-75:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-75:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-75:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-75:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .sm\:focus\:placeholder-blackAlpha-75:focus::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:pointer-events-none{
     pointer-events: none;
   }
@@ -23250,6 +23680,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .sm\:text-blackAlpha-25{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:text-blackAlpha-50{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:text-blackAlpha-75{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:hover\:text-transparent:hover{
     color: transparent;
   }
@@ -23514,6 +23956,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .sm\:hover\:text-blackAlpha-25:hover{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:hover\:text-blackAlpha-50:hover{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:hover\:text-blackAlpha-75:hover{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .sm\:focus\:text-transparent:focus{
     color: transparent;
   }
@@ -23776,6 +24230,18 @@ readers do not read off random characters that represent icons */
 
   .sm\:focus\:text-blue-900:focus{
     color: #038096;
+  }
+
+  .sm\:focus\:text-blackAlpha-25:focus{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .sm\:focus\:text-blackAlpha-50:focus{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .sm\:focus\:text-blackAlpha-75:focus{
+    color: rgba(0, 0, 0, 0.75);
   }
 
   .sm\:text-xs{
@@ -24561,6 +25027,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .md\:bg-blackAlpha-25{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:bg-blackAlpha-50{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:bg-blackAlpha-75{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:hover\:bg-transparent:hover{
     background-color: transparent;
   }
@@ -24825,6 +25303,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .md\:hover\:bg-blackAlpha-25:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:hover\:bg-blackAlpha-50:hover{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:hover\:bg-blackAlpha-75:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:focus\:bg-transparent:focus{
     background-color: transparent;
   }
@@ -25087,6 +25577,18 @@ readers do not read off random characters that represent icons */
 
   .md\:focus\:bg-blue-900:focus{
     background-color: #038096;
+  }
+
+  .md\:focus\:bg-blackAlpha-25:focus{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:bg-blackAlpha-50:focus{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:bg-blackAlpha-75:focus{
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .md\:bg-bottom{
@@ -25433,6 +25935,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .md\:border-blackAlpha-25{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:border-blackAlpha-50{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:border-blackAlpha-75{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -25697,6 +26211,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .md\:hover\:border-blackAlpha-25:hover{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:hover\:border-blackAlpha-50:hover{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:hover\:border-blackAlpha-75:hover{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -25959,6 +26485,18 @@ readers do not read off random characters that represent icons */
 
   .md\:focus\:border-blue-900:focus{
     border-color: #038096;
+  }
+
+  .md\:focus\:border-blackAlpha-25:focus{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:border-blackAlpha-50:focus{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:border-blackAlpha-75:focus{
+    border-color: rgba(0, 0, 0, 0.75);
   }
 
   .md\:rounded-none{
@@ -30159,6 +30697,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .md\:placeholder-blackAlpha-25::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:placeholder-blackAlpha-25::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:placeholder-blackAlpha-25:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:placeholder-blackAlpha-25::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:placeholder-blackAlpha-25::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:placeholder-blackAlpha-50::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:placeholder-blackAlpha-50::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:placeholder-blackAlpha-50:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:placeholder-blackAlpha-50::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:placeholder-blackAlpha-50::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:placeholder-blackAlpha-75::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:placeholder-blackAlpha-75::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:placeholder-blackAlpha-75:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:placeholder-blackAlpha-75::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:placeholder-blackAlpha-75::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:focus\:placeholder-transparent:focus::-webkit-input-placeholder{
     color: transparent;
   }
@@ -31479,6 +32077,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .md\:focus\:placeholder-blackAlpha-25:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-25:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-25:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-25:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-25:focus::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-50:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-50:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-50:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-50:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-50:focus::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-75:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-75:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-75:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-75:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .md\:focus\:placeholder-blackAlpha-75:focus::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:pointer-events-none{
     pointer-events: none;
   }
@@ -31982,6 +32640,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .md\:text-blackAlpha-25{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:text-blackAlpha-50{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:text-blackAlpha-75{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:hover\:text-transparent:hover{
     color: transparent;
   }
@@ -32246,6 +32916,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .md\:hover\:text-blackAlpha-25:hover{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:hover\:text-blackAlpha-50:hover{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:hover\:text-blackAlpha-75:hover{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .md\:focus\:text-transparent:focus{
     color: transparent;
   }
@@ -32508,6 +33190,18 @@ readers do not read off random characters that represent icons */
 
   .md\:focus\:text-blue-900:focus{
     color: #038096;
+  }
+
+  .md\:focus\:text-blackAlpha-25:focus{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .md\:focus\:text-blackAlpha-50:focus{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .md\:focus\:text-blackAlpha-75:focus{
+    color: rgba(0, 0, 0, 0.75);
   }
 
   .md\:text-xs{
@@ -33293,6 +33987,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .lg\:bg-blackAlpha-25{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:bg-blackAlpha-50{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:bg-blackAlpha-75{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:hover\:bg-transparent:hover{
     background-color: transparent;
   }
@@ -33557,6 +34263,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .lg\:hover\:bg-blackAlpha-25:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:hover\:bg-blackAlpha-50:hover{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:hover\:bg-blackAlpha-75:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:focus\:bg-transparent:focus{
     background-color: transparent;
   }
@@ -33819,6 +34537,18 @@ readers do not read off random characters that represent icons */
 
   .lg\:focus\:bg-blue-900:focus{
     background-color: #038096;
+  }
+
+  .lg\:focus\:bg-blackAlpha-25:focus{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:bg-blackAlpha-50:focus{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:bg-blackAlpha-75:focus{
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .lg\:bg-bottom{
@@ -34165,6 +34895,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .lg\:border-blackAlpha-25{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:border-blackAlpha-50{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:border-blackAlpha-75{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -34429,6 +35171,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .lg\:hover\:border-blackAlpha-25:hover{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:hover\:border-blackAlpha-50:hover{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:hover\:border-blackAlpha-75:hover{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -34691,6 +35445,18 @@ readers do not read off random characters that represent icons */
 
   .lg\:focus\:border-blue-900:focus{
     border-color: #038096;
+  }
+
+  .lg\:focus\:border-blackAlpha-25:focus{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:border-blackAlpha-50:focus{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:border-blackAlpha-75:focus{
+    border-color: rgba(0, 0, 0, 0.75);
   }
 
   .lg\:rounded-none{
@@ -38891,6 +39657,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .lg\:placeholder-blackAlpha-25::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:placeholder-blackAlpha-25::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:placeholder-blackAlpha-25:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:placeholder-blackAlpha-25::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:placeholder-blackAlpha-25::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:placeholder-blackAlpha-50::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:placeholder-blackAlpha-50::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:placeholder-blackAlpha-50:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:placeholder-blackAlpha-50::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:placeholder-blackAlpha-50::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:placeholder-blackAlpha-75::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:placeholder-blackAlpha-75::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:placeholder-blackAlpha-75:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:placeholder-blackAlpha-75::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:placeholder-blackAlpha-75::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:focus\:placeholder-transparent:focus::-webkit-input-placeholder{
     color: transparent;
   }
@@ -40211,6 +41037,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .lg\:focus\:placeholder-blackAlpha-25:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-25:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-25:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-25:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-25:focus::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-50:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-50:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-50:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-50:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-50:focus::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-75:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-75:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-75:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-75:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .lg\:focus\:placeholder-blackAlpha-75:focus::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:pointer-events-none{
     pointer-events: none;
   }
@@ -40714,6 +41600,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .lg\:text-blackAlpha-25{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:text-blackAlpha-50{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:text-blackAlpha-75{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:hover\:text-transparent:hover{
     color: transparent;
   }
@@ -40978,6 +41876,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .lg\:hover\:text-blackAlpha-25:hover{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:hover\:text-blackAlpha-50:hover{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:hover\:text-blackAlpha-75:hover{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .lg\:focus\:text-transparent:focus{
     color: transparent;
   }
@@ -41240,6 +42150,18 @@ readers do not read off random characters that represent icons */
 
   .lg\:focus\:text-blue-900:focus{
     color: #038096;
+  }
+
+  .lg\:focus\:text-blackAlpha-25:focus{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .lg\:focus\:text-blackAlpha-50:focus{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .lg\:focus\:text-blackAlpha-75:focus{
+    color: rgba(0, 0, 0, 0.75);
   }
 
   .lg\:text-xs{
@@ -42025,6 +42947,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .xl\:bg-blackAlpha-25{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:bg-blackAlpha-50{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:bg-blackAlpha-75{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:hover\:bg-transparent:hover{
     background-color: transparent;
   }
@@ -42289,6 +43223,18 @@ readers do not read off random characters that represent icons */
     background-color: #038096;
   }
 
+  .xl\:hover\:bg-blackAlpha-25:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:hover\:bg-blackAlpha-50:hover{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:hover\:bg-blackAlpha-75:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:focus\:bg-transparent:focus{
     background-color: transparent;
   }
@@ -42551,6 +43497,18 @@ readers do not read off random characters that represent icons */
 
   .xl\:focus\:bg-blue-900:focus{
     background-color: #038096;
+  }
+
+  .xl\:focus\:bg-blackAlpha-25:focus{
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:bg-blackAlpha-50:focus{
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:bg-blackAlpha-75:focus{
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .xl\:bg-bottom{
@@ -42897,6 +43855,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .xl\:border-blackAlpha-25{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:border-blackAlpha-50{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:border-blackAlpha-75{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -43161,6 +44131,18 @@ readers do not read off random characters that represent icons */
     border-color: #038096;
   }
 
+  .xl\:hover\:border-blackAlpha-25:hover{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:hover\:border-blackAlpha-50:hover{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:hover\:border-blackAlpha-75:hover{
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -43423,6 +44405,18 @@ readers do not read off random characters that represent icons */
 
   .xl\:focus\:border-blue-900:focus{
     border-color: #038096;
+  }
+
+  .xl\:focus\:border-blackAlpha-25:focus{
+    border-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:border-blackAlpha-50:focus{
+    border-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:border-blackAlpha-75:focus{
+    border-color: rgba(0, 0, 0, 0.75);
   }
 
   .xl\:rounded-none{
@@ -47623,6 +48617,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .xl\:placeholder-blackAlpha-25::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:placeholder-blackAlpha-25::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:placeholder-blackAlpha-25:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:placeholder-blackAlpha-25::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:placeholder-blackAlpha-25::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:placeholder-blackAlpha-50::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:placeholder-blackAlpha-50::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:placeholder-blackAlpha-50:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:placeholder-blackAlpha-50::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:placeholder-blackAlpha-50::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:placeholder-blackAlpha-75::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:placeholder-blackAlpha-75::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:placeholder-blackAlpha-75:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:placeholder-blackAlpha-75::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:placeholder-blackAlpha-75::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:focus\:placeholder-transparent:focus::-webkit-input-placeholder{
     color: transparent;
   }
@@ -48943,6 +49997,66 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .xl\:focus\:placeholder-blackAlpha-25:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-25:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-25:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-25:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-25:focus::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-50:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-50:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-50:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-50:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-50:focus::placeholder{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-75:focus::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-75:focus::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-75:focus:-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-75:focus::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  .xl\:focus\:placeholder-blackAlpha-75:focus::placeholder{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:pointer-events-none{
     pointer-events: none;
   }
@@ -49446,6 +50560,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .xl\:text-blackAlpha-25{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:text-blackAlpha-50{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:text-blackAlpha-75{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:hover\:text-transparent:hover{
     color: transparent;
   }
@@ -49710,6 +50836,18 @@ readers do not read off random characters that represent icons */
     color: #038096;
   }
 
+  .xl\:hover\:text-blackAlpha-25:hover{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:hover\:text-blackAlpha-50:hover{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:hover\:text-blackAlpha-75:hover{
+    color: rgba(0, 0, 0, 0.75);
+  }
+
   .xl\:focus\:text-transparent:focus{
     color: transparent;
   }
@@ -49972,6 +51110,18 @@ readers do not read off random characters that represent icons */
 
   .xl\:focus\:text-blue-900:focus{
     color: #038096;
+  }
+
+  .xl\:focus\:text-blackAlpha-25:focus{
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  .xl\:focus\:text-blackAlpha-50:focus{
+    color: rgba(0, 0, 0, 0.50);
+  }
+
+  .xl\:focus\:text-blackAlpha-75:focus{
+    color: rgba(0, 0, 0, 0.75);
   }
 
   .xl\:text-xs{
