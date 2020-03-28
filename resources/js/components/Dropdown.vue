@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown relative">
         <div class="dropdown-toggle"
-             @click.prevent="isOpen = !isOpen"
+             @click.stop="isOpen = !isOpen"
              v-on:mouseleave="mouseOut"
              v-on:mouseenter="mouseIn"
         >

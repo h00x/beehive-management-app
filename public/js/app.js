@@ -3582,7 +3582,7 @@ var render = function() {
         staticClass: "dropdown-toggle",
         on: {
           click: function($event) {
-            $event.preventDefault()
+            $event.stopPropagation()
             _vm.isOpen = !_vm.isOpen
           },
           mouseleave: _vm.mouseOut,
@@ -3693,19 +3693,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      on: {
-        keyup: function($event) {
-          if (
-            !$event.type.indexOf("key") &&
-            _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
-          ) {
-            return null
-          }
-          return _vm.closeModal($event)
-        }
-      }
-    },
     [
       _c(
         "div",

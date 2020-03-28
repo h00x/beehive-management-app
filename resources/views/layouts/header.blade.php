@@ -4,11 +4,25 @@
             <div>
                 <a href="{{ route('dashboard') }}"
                    class="font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('dashboard') ? 'active' : '' }}"
-                >Dashboard</a>
-                <a href="{{ route('hives.index') }}" class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('hives.*') ? 'active' : '' }}">Hives</a>
-                <a href="{{ route('apiaries.index') }}" class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('apiaries.*') ? 'active' : '' }}">Apiaries</a>
-                <a href="{{ route('harvests.index') }}" class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('harvests.*') ? 'active' : '' }}">Harvests</a>
-                <a href="{{ route('inspections.index') }}" class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('inspections.*') ? 'active' : '' }}">Inspections</a>
+                >
+                    {{ trans_choice('dashboard.dashboard', 1) }}
+                </a>
+                <a href="{{ route('hives.index') }}"
+                   class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('hives.*') ? 'active' : '' }}">
+                    {{ trans_choice('hives.hive', 2) }}
+                </a>
+                <a href="{{ route('apiaries.index') }}"
+                   class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('apiaries.*') ? 'active' : '' }}">
+                    {{ trans_choice('apiaries.apiary', 2) }}
+                </a>
+                <a href="{{ route('harvests.index') }}"
+                   class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('harvests.*') ? 'active' : '' }}">
+                    {{ trans_choice('harvests.harvest', 2) }}
+                </a>
+                <a href="{{ route('inspections.index') }}"
+                   class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('inspections.*') ? 'active' : '' }}">
+                    {{ trans_choice('inspections.inspection', 2) }}
+                </a>
             </div>
         @endauth
 

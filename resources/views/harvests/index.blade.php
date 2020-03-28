@@ -22,16 +22,16 @@
             </thead>
             <tbody>
                 @foreach ($harvests as $harvest)
-                    <tr class="hover:bg-white">
-                        <td class="py-2 px-4"><a href="{{ $harvest->path() }}">{{ $harvest->name }}</a></td>
-                        <td class="py-2 px-4">{{ $harvest->date }}</td>
-                        <td class="py-2 px-4">{{ $harvest->batch_code }}</td>
-                        <td class="py-2 px-4">{{ $harvest->weight }}</td>
-                        <td class="py-2 px-4">{{ $harvest->moister_content }}</td>
-                        <td class="py-2 px-4">{{ $harvest->nectar_source }}</td>
-                        <td class="py-2 px-4">{{ $harvest->description }}</td>
+                    <tr class="hover:bg-white cursor-pointer">
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->name }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->date }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->batch_code }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->weight }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->moister_content }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->nectar_source }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->description }}</td>
 
-                        <td class="flex justify-end py-2 px-4">
+                        <td class="flex justify-end py-2 px-4 z-20">
                             <dropdown align="right" margin="0">
                                 <template v-slot:trigger>
                                     <button class="text-sm text-gray-500 z-20 dots hover:text-gray-700"><i class="fas fa-ellipsis-h"></i></button>

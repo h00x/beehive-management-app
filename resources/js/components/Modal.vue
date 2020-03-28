@@ -1,12 +1,12 @@
 <template>
-    <div @keyup.esc = "closeModal">
+    <div>
         <div @click="openModal">
             <slot name="button">Default button</slot>
         </div>
         <transition name="modal-fade">
             <div
                 class="modal-bg fixed top-0 bottom-0 left-0 right-0 bg-blackAlpha-75 flex justify-center items-center"
-                @click.self = "closeModal"
+                @click.self="closeModal"
                 v-if="isModalVisible"
                 @close="closeModal"
             >
