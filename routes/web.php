@@ -19,6 +19,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('home');
     })->name('home');
 
+    Route::get('profile', 'ProfileController@index')->name('profile.index');
+    Route::patch('profile', 'ProfileController@update')->name('profile.update');
+
     Route::resource('hives', 'HiveController');
     Route::resource('apiaries', 'ApiaryController');
     Route::resource('types', 'HiveTypeController');
