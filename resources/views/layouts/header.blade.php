@@ -29,9 +29,13 @@
         <div class="flex items-center">
             <!-- Authentication Links -->
             @guest
-                <a href="{{ route('login') }}" class="mr-4">{{ __('Login') }}</a>
+                <a href="{{ route('login') }}"
+                   class="font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('login') ? 'active' : '' }}"
+                >{{ __('Login') }}</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a href="{{ route('register') }}"
+                       class="ml-4 font-bold no-underline text-primary-700 hover:text-primary-800 {{ isCurrentRoute('register') ? 'active' : '' }}"
+                    >{{ __('Register') }}</a>
                 @endif
             @else
                 <dropdown>
