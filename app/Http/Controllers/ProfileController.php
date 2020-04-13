@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -31,8 +33,11 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        $user->update($request->all());
+        $user->update([
+            'name' => $request->name,
+            'language' => $request->language
+        ]);
 
-        return redirect(url()->previous())->with('flashMessage', ['description' => 'Profile update successfully', 'type' => 'success']);
+        return redirect(url()->previous())->with('flashMessage', ['description' => 'Profile updated successfully', 'type' => 'success']);
     }
 }

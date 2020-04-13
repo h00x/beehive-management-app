@@ -19,8 +19,10 @@ Route::group(['middleware' => 'auth'], function () {
         return view('home');
     })->name('home');
 
-    Route::get('profile', 'ProfileController@index')->name('profile.index');
-    Route::patch('profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/profile', 'ProfileController@index')->name('profile.index');
+    Route::patch('/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/change-password', 'ChangePasswordController@index')->name('changePassword.index');
+    Route::patch('/change-password', 'ChangePasswordController@update')->name('changePassword.update');
 
     Route::resource('hives', 'HiveController');
     Route::resource('apiaries', 'ApiaryController');

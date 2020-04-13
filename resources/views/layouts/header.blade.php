@@ -49,7 +49,10 @@
                         </button>
                     </template>
                     <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
-                        <a href="/profile" role="button" class="inline-block p-2"><i class="fas fa-user text-sm mr-2"></i>Profile</a>
+                        <a href="{{ route('profile.index') }}" role="button" class="inline-block p-2"><i class="fas fa-user text-sm mr-2"></i>Profile</a>
+                    </div>
+                    <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">
+                        <a href="{{ route('changePassword.index') }}" role="button" class="inline-block p-2"><i class="fas fa-key text-sm mr-2"></i>Change password</a>
                     </div>
                     <div class="hover:bg-secondary-100 -mx-2 px-2">
                         <a href="{{ route('logout') }}"
