@@ -9,7 +9,7 @@
 @section('content')
     <div class="lg:flex lg:flex-wrap -mx-4 item-blocks">
         @foreach ($apiaries as $apiary)
-            <div class="lg:w-1/3 px-4 my-4">
+            <div class="lg:w-1/2 px-4 my-4">
                 <div class="shadow rounded bg-white h-full relative hover-trigger">
                     <dropdown align="right" margin="8" class="mr-4">
                         <template v-slot:trigger>
@@ -47,7 +47,7 @@
                     <a href="{{ $apiary->path() }}" class="absolute w-full h-full top-0 bottom-0 left-0 right-0 z-10"></a>
                     <div class="w-auto h-32 bg-gray-900 absolute top-0 left-0 right-0 rounded-t-lg hover-target"></div>
                     @if($apiary->image)
-                        <div class="w-auto h-32 bg-no-repeat bg-cover bg-center rounded-t-lg" style="background-image: url('{{ Storage::url($apiary->image) }}')"></div>
+                        <div class="w-auto h-32 bg-no-repeat bg-cover bg-center rounded-t-lg" style="background-image: url('{{ Storage::url('images/apiaries/'.$apiary->image.'_thumb.jpg') }}')"></div>
                     @else
                         <div class="flex items-center justify-center w-auto h-32 rounded-t-lg bg-primary-300">
                             <i class="fas fa-map-marker-alt text-4xl text-primary-800"></i>

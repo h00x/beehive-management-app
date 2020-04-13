@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\HiveHelper;
 use App\Hive;
 use App\Http\Requests\HiveRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Spatie\Activitylog\Models\Activity;
 
 class HiveController extends Controller
@@ -43,8 +45,12 @@ class HiveController extends Controller
     public function store(HiveRequest $request)
     {
         if (isset($request->beehive_image)) {
-            $imagePath = $request->file('beehive_image')->store('public/images/hives');
-            $request->merge(['image' => $imagePath]);
+            $hiveImageName = uniqid();
+
+            HiveHelper::storeMainImage($request, $hiveImageName);
+            HiveHelper::storeThumbImage($request, $hiveImageName);
+
+            $request->merge(['image' => $hiveImageName]);
         }
 
         $hive = auth()->user()->hives()->create($request->except('beehive_image'));
@@ -116,7 +122,11 @@ class HiveController extends Controller
     {
         $this->authorize('delete', $hive);
 
-        Storage::delete($hive->image);
+        Storage::delete([
+            'public/images/hives/'.$hive->image.'.jpg',
+            'public/images/hives/'.$hive->image.'_thumb.jpg'
+        ]);
+
         $hive->delete();
 
         return redirect(route('hives.index'))->with('flashMessage', ['description' => 'Hive deleted successfully!', 'type' => 'warning']);

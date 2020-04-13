@@ -161,13 +161,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
         Lawnstarter\LaravelDarkSky\LaravelDarkSkyServiceProvider::class,
         Spatie\Geocoder\GeocoderServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,6 +231,7 @@ return [
         'DarkSky' => \Lawnstarter\LaravelDarkSky\Facades\DarkSky::class,
         'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Helper' => App\Helpers\Helper::class,
 
     ],
 

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Apiary;
+use App\Helpers\ApiaryHelper;
 use App\Http\Requests\ApiaryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Spatie\Geocoder\Facades\Geocoder;
 
 class ApiaryController extends Controller
@@ -43,8 +45,12 @@ class ApiaryController extends Controller
     public function store(ApiaryRequest $request)
     {
         if (isset($request->apiary_image)) {
-            $imagePath = $request->file('apiary_image')->store('public/images/apiaries');
-            $request->merge(['image' => $imagePath]);
+            $apiaryImageName = uniqid();
+
+            ApiaryHelper::storeMainImage($request, $apiaryImageName);
+            ApiaryHelper::storeThumbImage($request, $apiaryImageName);
+
+            $request->merge(['image' => $apiaryImageName]);
         }
 
         $apiary = auth()->user()->apiaries()->create($request->except('apiary_image'));
@@ -124,7 +130,11 @@ class ApiaryController extends Controller
     {
         $this->authorize('delete', $apiary);
 
-        Storage::delete($apiary->image);
+        Storage::delete([
+            'public/images/apiaries/'.$apiary->image.'.jpg',
+            'public/images/apiaries/'.$apiary->image.'_thumb.jpg'
+        ]);
+
         $apiary->delete();
 
         return redirect(route('apiaries.index'))->with('flashMessage', ['description' => 'Apiary deleted successfully!', 'type' => 'warning']);

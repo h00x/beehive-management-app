@@ -53,7 +53,7 @@
                     <a href="{{ $hive->path() }}" class="absolute w-full h-full top-0 bottom-0 left-0 right-0 z-10"></a>
                     <div class="w-auto h-32 bg-gray-900 absolute top-0 left-0 right-0 rounded-t-lg hover-target"></div>
                     @if($hive->image)
-                        <div class="w-auto h-32 bg-no-repeat bg-cover bg-center rounded-t-lg" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
+                        <div class="w-auto h-32 bg-no-repeat bg-cover bg-center rounded-t-lg" style="background-image: url('{{ Storage::url('images/hives/'.$hive->image.'_thumb.jpg') }}')"></div>
                     @else
                         <div class="flex items-center justify-center w-auto h-32 rounded-t-lg bg-primary-300">
                             <i class="fas fa-archive text-4xl text-primary-800"></i>

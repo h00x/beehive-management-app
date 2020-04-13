@@ -43,7 +43,7 @@
 
 @section('content')
     @if($hive->image)
-        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($hive->image) }}')"></div>
+        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url('images/hives/'.$hive->image.'.jpg') }}')"></div>
     @endif
     <div class="flex">
         <div class="w-2/3">

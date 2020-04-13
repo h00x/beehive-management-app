@@ -44,7 +44,7 @@
 
 @section('content')
     @if($apiary->image)
-        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url($apiary->image) }}')"></div>
+        <div class="w-auto h-48 bg-no-repeat bg-cover bg-center mb-12" style="background-image: url('{{ Storage::url('images/apiaries/'.$apiary->image.'.jpg') }}')"></div>
     @endif
     <p>Location: {{ $geocode['formatted_address'] !== 'result_not_found' ? $geocode['formatted_address'] : $apiary->location }}</p>
     @if(isset($weather))
