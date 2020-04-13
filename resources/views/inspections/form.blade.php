@@ -19,8 +19,9 @@
         <div class="control">
             @if (Auth::user()->hives->isNotEmpty())
                 <select name="hive_id" class="w-full @error('hive_id') border-red-500 @enderror" required>
+                    <option selected disabled>Select a hive</option>
                     @foreach (Auth::user()->hives as $hive)
-                        <option value="{{ $hive->id }}" {{ checkIdForSelected($hive->id, $inspection->hive_id, intval(old('hive_id'))) }}>{{ $hive->name }}</option>
+                        <option value="{{ $hive->id }}" {{ checkIdForSelected($hive->id, $inspection->hive_id, intval(old('hive_id')), request()->hivePreviousPage) }}>{{ $hive->name }}</option>
                     @endforeach
                 </select>
             @else

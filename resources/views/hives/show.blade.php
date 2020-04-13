@@ -80,7 +80,7 @@
 
             <div class="flex justify-between mb-4">
                 <h2 class="text-3xl">Inspections</h2>
-                @include('layouts.button', ['text' => 'Log a inspection', 'url' => route('inspections.create')])
+                @include('layouts.button', ['text' => 'Log a inspection', 'url' => route('inspections.create', ['hivePreviousPage' => $hive->id])])
             </div>
             <table class="w-full mb-12">
                 <thead>
@@ -114,7 +114,7 @@
 
             <div class="flex justify-between mb-4">
                 <h2 class="text-3xl">Harvests</h2>
-                @include('layouts.button', ['text' => 'Log a harvest', 'url' => route('harvests.create')])
+                @include('layouts.button', ['text' => 'Log a harvest', 'url' => route('harvests.create', ['hivePreviousPage' => $hive->id])])
             </div>
             <table class="w-full">
                 <thead>

@@ -20,7 +20,7 @@
             @if (Auth::user()->hives->isNotEmpty())
                 <select name="hive_id[]" class="w-full @error('hive_id[]') border-red-500 @enderror" multiple required>
                     @foreach (Auth::user()->hives as $hive)
-                        <option value="{{ $hive->id }}" {{ $harvest->hasHive($hive) ? 'selected' : '' }}>{{ $hive->name }}</option>
+                        <option value="{{ $hive->id }}" {{ $harvest->hasHive($hive) || request()->hivePreviousPage == $hive->id ? 'selected' : '' }}>{{ $hive->name }}</option>
                     @endforeach
                 </select>
             @else
