@@ -45,8 +45,6 @@ class ManageInspectionTest extends TestCase
             'pollen_arriving' => $inspection['pollen_arriving'],
             'comb_building' => $inspection['comb_building'],
             'notes' => $inspection['notes'],
-            'weather' => $inspection['weather'],
-            'temperature' => $inspection['temperature'],
             'hive_id' => $inspection['hive_id'],
             'user_id' => $user->id,
         ]);
@@ -86,9 +84,7 @@ class ManageInspectionTest extends TestCase
                 'pollen_arriving' => '39',
                 'comb_building' => '30',
                 'notes' => 'Changed',
-                'weather' => 'Changed',
                 'hive_id' => $inspection->hive->id,
-                'temperature' => 34,
             ])
             ->assertRedirect($inspection->path());
 
@@ -129,7 +125,6 @@ class ManageInspectionTest extends TestCase
             'pollen_arriving' => '',
             'comb_building' => '',
             'hive_id' => '',
-            'temperature' => '',
         ]);
 
         $this->post('/inspections', $inspection)->assertSessionHasErrors([
@@ -140,7 +135,6 @@ class ManageInspectionTest extends TestCase
             'pollen_arriving',
             'comb_building',
             'hive_id',
-            'temperature',
         ]);
     }
 

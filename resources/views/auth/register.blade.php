@@ -16,10 +16,19 @@
                     @csrf
 
                     <div class="field">
-                        <label for="name" class="@error('name') text-red-500 @enderror">{{ __('Name') }}</label>
-                        <input id="name" type="text" class="border-gray-200 border rounded p-2 w-full @error('name') border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <label for="first_name" class="@error('first_name') text-red-500 @enderror">{{ __('First name') }}</label>
+                        <input id="first_name" type="text" class="border-gray-200 border rounded p-2 w-full @error('first_name') border-red-500 @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-                        @error('name')
+                        @error('first_name')
+                            <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="field">
+                        <label for="last_name" class="@error('last_name') text-red-500 @enderror">{{ __('Last name') }}</label>
+                        <input id="last_name" type="text" class="border-gray-200 border rounded p-2 w-full @error('last_name') border-red-500 @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="first_name" autofocus>
+
+                        @error('last_name')
                             <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
                         @enderror
                     </div>

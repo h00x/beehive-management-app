@@ -55,7 +55,8 @@ class RegisterTest extends TestCase
         Event::fake();
 
         $response = $this->post($this->registerPostRoute(), [
-            'name' => 'John Doe',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
             'email' => 'john@example.com',
             'password' => 'i-love-laravel',
             'password_confirmation' => 'i-love-laravel',
@@ -64,7 +65,8 @@ class RegisterTest extends TestCase
         $response->assertRedirect($this->successfulRegistrationRoute());
         $this->assertCount(1, $users = User::all());
         $this->assertAuthenticatedAs($user = $users->first());
-        $this->assertEquals('John Doe', $user->name);
+        $this->assertEquals('John', $user->first_name);
+        $this->assertEquals('Doe', $user->last_name);
         $this->assertEquals('john@example.com', $user->email);
         $this->assertTrue(Hash::check('i-love-laravel', $user->password));
         Event::assertDispatched(Registered::class, function ($e) use ($user) {
@@ -75,7 +77,7 @@ class RegisterTest extends TestCase
     public function testUserCannotRegisterWithoutName()
     {
         $response = $this->from($this->registerGetRoute())->post($this->registerPostRoute(), [
-            'name' => '',
+            'first_name' => '',
             'email' => 'john@example.com',
             'password' => 'i-love-laravel',
             'password_confirmation' => 'i-love-laravel',
@@ -85,7 +87,7 @@ class RegisterTest extends TestCase
 
         $this->assertCount(0, $users);
         $response->assertRedirect($this->registerGetRoute());
-        $response->assertSessionHasErrors('name');
+        $response->assertSessionHasErrors('first_name');
         $this->assertTrue(session()->hasOldInput('email'));
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();

@@ -44,8 +44,8 @@
                             class="flex items-center text-default no-underline text-sm"
                             v-pre
                         >
-                            <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">{{ substr(auth()->user()->name, 0, 1) }}</div>
-                            {{ auth()->user()->name }}<i class="fas fa-caret-down ml-1"></i>
+                            <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">{{ substr(auth()->user()->first_name, 0, 1) }}</div>
+                            {{ auth()->user()->first_name }}<i class="fas fa-caret-down ml-1"></i>
                         </button>
                     </template>
                     <div class="hover:bg-secondary-100 -mx-2 px-2 border-b border-secondary-100">

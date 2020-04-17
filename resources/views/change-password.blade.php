@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Profile of ' . $user->name)
+@section('pageTitle', 'Profile of ' . $user->first_name)
 
 @section('content')
     <div class="form-content flex -mx-4 justify-center">
