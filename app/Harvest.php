@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\UnitSystemHelper;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -12,6 +13,8 @@ class Harvest extends Model
     protected $guarded = [];
     protected static $logUnguarded = true;
     protected static $logOnlyDirty = true;
+
+    protected $appends = ['computed_weight', 'converted_weight'];
 
     public function path()
     {
@@ -31,5 +34,19 @@ class Harvest extends Model
     public function hasHive($hive)
     {
         return $this->hives->contains($hive);
+    }
+
+    public function getConvertedWeightAttribute()
+    {
+        if(!auth()->user()->uses_metric) {
+            return UnitSystemHelper::calculateLbs($this->weight);
+        }
+
+        return $this->weight;
+    }
+
+    public function getComputedWeightAttribute()
+    {
+        return UnitSystemHelper::processWeightFromKg($this->weight, auth()->user()->uses_metric);
     }
 }

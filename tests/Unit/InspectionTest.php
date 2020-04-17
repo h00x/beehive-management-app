@@ -13,21 +13,33 @@ class InspectionTest extends TestCase
 
     public function test_it_has_a_path()
     {
-        $harvest = factory(Inspection::class)->create();
+        $user = $this->signIn();
 
-        $this->assertEquals('/inspections/' . $harvest->id, $harvest->path());
+        $inspection = factory(Inspection::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertEquals('/inspections/' . $inspection->id, $inspection->path());
     }
 
     public function test_it_has_an_owner()
     {
-        $harvest = factory(Inspection::class)->create();
+        $user = $this->signIn();
 
-        $this->assertInstanceOf('App\User', $harvest->user);
+        $inspection = factory(Inspection::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertInstanceOf('App\User', $inspection->user);
     }
 
     public function test_inspection_has_a_hive()
     {
-        $inspection = factory(Inspection::class)->create();
+        $user = $this->signIn();
+
+        $inspection = factory(Inspection::class)->create([
+            'user_id' => $user->id,
+        ]);
 
         $this->assertInstanceOf('App\Hive', $inspection->hive);
     }

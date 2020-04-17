@@ -50,6 +50,16 @@
                         </div>
                     </div>
 
+                    <div class="field">
+                        <label for="unit_system">Unit system</label>
+                        <div class="control">
+                            <select name="unit_system" id="unit_system" class="w-full">
+                                <option value="metric" {{ $user->uses_metric ? 'selected' : '' }}>Metric</option>
+                                <option value="imperial" {{ !$user->uses_metric ? 'selected' : '' }}>Imperial</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="flex items-center justify-between mt-8">
                         <button type="submit" class="rounded px-6 py-4 bg-secondary-500 text-white inline-block">Change profile</button>
                     </div>

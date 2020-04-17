@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\UnitSystemHelper;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -19,6 +20,8 @@ class Inspection extends Model
         'young_larval_seen' => 'boolean',
     ];
 
+    protected $appends = ['computed_temperature'];
+
     public function path()
     {
         return "/inspections/{$this->id}";
@@ -32,5 +35,17 @@ class Inspection extends Model
     public function hive()
     {
         return $this->belongsTo(Hive::class);
+    }
+
+    /**
+     * Sets the temperature variable based on the user unit setting
+     * and the symbol is suffixed to the number
+     *
+     * @param $value
+     * @return string
+     */
+    public function getComputedTemperatureAttribute()
+    {
+        return UnitSystemHelper::processTemperatureFromCelsius($this->temperature, auth()->user()->uses_metric);
     }
 }
