@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
@@ -21,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile', 'ProfileController@index')->name('profile.index');
     Route::patch('/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/profile/remove-image', 'ProfileController@removeImage')->name('profile.remove-image');
     Route::get('/change-password', 'ChangePasswordController@index')->name('changePassword.index');
     Route::patch('/change-password', 'ChangePasswordController@update')->name('changePassword.update');
 
