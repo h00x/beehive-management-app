@@ -58,7 +58,7 @@
     <div class="field">
         <label for="weight" class="@error('weight') text-red-500 @enderror">Weight {{ auth()->user()->uses_metric ? 'in kg' : 'in lbs' }}</label>
         <div class="control">
-            <input type="number" name="weight" class="border-gray-200 border rounded p-2 w-full @error('weight') border-red-500 @enderror" value="{{ round(old('weight', $harvest->converted_weight)) }}" min="0" max="{{ auth()->user()->uses_metric ? '100000' : '220462' }}" required>
+            <input type="number" name="weight" step="0.01" class="border-gray-200 border rounded p-2 w-full @error('weight') border-red-500 @enderror" value="{{ round(old('weight', $harvest->converted_weight), 2) }}" min="0" max="{{ auth()->user()->uses_metric ? '100000' : '220462' }}" required>
 
             @error('weight')
                 <span class="text-sm text-red-500" role="alert">{{ $message }}</span>

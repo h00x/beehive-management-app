@@ -29,10 +29,10 @@ class UnitSystemHelper extends Helper
     public static function processWeightFromKg(float $weightInKg, bool $metric):string
     {
         if($metric) {
-            return round($weightInKg) . ' kg';
+            return round($weightInKg, 2) . ' kg';
         }
 
-        return round(static::calculateLbs($weightInKg)) . ' lbs';
+        return round(static::calculateLbs($weightInKg), 2) . ' lbs';
     }
 
     /**
@@ -74,7 +74,7 @@ class UnitSystemHelper extends Helper
      * @param int $weightInLbs
      * @return int
      */
-    public static function calculateKg(int $weightInLbs):float
+    public static function calculateKg(float $weightInLbs):float
     {
         return $weightInLbs / 2.2046;
     }

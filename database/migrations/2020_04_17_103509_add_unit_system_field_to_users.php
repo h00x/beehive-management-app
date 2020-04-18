@@ -18,11 +18,11 @@ class AddUnitSystemFieldToUsers extends Migration
         });
 
         Schema::table('harvests', function (Blueprint $table) {
-            $table->decimal('weight', 10, 2)->change();
+            $table->decimal('weight', 20, 6)->change();
         });
 
         Schema::table('inspections', function (Blueprint $table) {
-            $table->decimal('temperature', 10, 2)->change();
+            $table->decimal('temperature', 20, 6)->change();
         });
     }
 
