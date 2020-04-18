@@ -26,7 +26,7 @@
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->name }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->date }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->batch_code }}</td>
-                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->weight }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->computed_weight }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->moister_content }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->nectar_source }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $harvest->path() }}';">{{ $harvest->description }}</td>

@@ -36,7 +36,8 @@ class ProfileController extends Controller
         $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'language' => $request->language
+            'language' => $request->language,
+            'uses_metric' => $request->unit_system === 'metric' ? true : false,
         ]);
 
         return redirect(url()->previous())->with('flashMessage', ['description' => 'Profile updated successfully', 'type' => 'success']);

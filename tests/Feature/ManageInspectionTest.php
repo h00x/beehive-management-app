@@ -52,12 +52,16 @@ class ManageInspectionTest extends TestCase
 
     public function test_a_user_can_only_view_their_own_inspections_on_the_inspections_overview_page()
     {
-        $inspection1 = factory(Inspection::class)->create();
+        $user = $this->signIn();
+
+        $inspection1 = factory(Inspection::class)->create([
+            'user_id' => $user->id,
+        ]);
         $inspection2 = factory(Inspection::class)->create([
-            'user_id' => $inspection1->user->id,
+            'user_id' => $user->id,
         ]);
         $inspection3 = factory(Inspection::class)->create([
-            'user_id' => $inspection1->user->id,
+            'user_id' => $user->id,
         ]);
         $inspection4 = factory(Inspection::class)->create();
 
@@ -73,10 +77,11 @@ class ManageInspectionTest extends TestCase
 
     public function test_a_user_can_update_an_inspection()
     {
-        $inspection = factory(Inspection::class)->create();
+        $user = $this->signIn();
 
-        $this->actingAs($inspection->user)
-            ->patch($inspection->path(), $attributes = [
+        $inspection = factory(Inspection::class)->create(['user_id' => $user->id]);
+
+        $this->patch($inspection->path(), $attributes = [
                 'date' => $inspection->date,
                 'queen_seen' => $inspection->queen_seen,
                 'larval_seen' => $inspection->larval_seen,
@@ -140,7 +145,11 @@ class ManageInspectionTest extends TestCase
 
     public function test_a_user_can_delete_an_inspection()
     {
-        $inspection = factory(Inspection::class)->create();
+        $user = $this->signIn();
+
+        $inspection = factory(Inspection::class)->create([
+            'user_id' => $user->id,
+        ]);
 
         $this->assertDatabaseHas('inspections', [
             'id' => $inspection->id,

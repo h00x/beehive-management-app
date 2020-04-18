@@ -51,7 +51,7 @@
     </p>
     <p>Date: {{ $harvest->date }}</p>
     <p>Batch code: {{ $harvest->batch_code }}</p>
-    <p>Weight: {{ $harvest->weight }}</p>
+    <p>Weight: {{ $harvest->computed_weight }}</p>
     <p>Moister content: {{ $harvest->moister_content }}</p>
     <p>Nectar source: {{ $harvest->nectar_source }}</p>
     <p>Description: {{ $harvest->description }}</p>

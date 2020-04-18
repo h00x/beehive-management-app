@@ -27,7 +27,7 @@
                         <td class="py-2 px-4" onclick="window.location='{{ $inspection->path() }}';">{{ $inspection->pollen_arriving }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $inspection->path() }}';">{{ $inspection->comb_building }}</td>
                         <td class="py-2 px-4" onclick="window.location='{{ $inspection->path() }}';">{{ $inspection->weather }}</td>
-                        <td class="py-2 px-4" onclick="window.location='{{ $inspection->path() }}';">{{ $inspection->temperature }}</td>
+                        <td class="py-2 px-4" onclick="window.location='{{ $inspection->path() }}';">{{ $inspection->computed_temperature }}</td>
 
                         <td class="py-2 px-4">
                             <dropdown align="right" margin="0">

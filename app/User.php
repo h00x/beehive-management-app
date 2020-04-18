@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'language'
+        'first_name', 'last_name', 'email', 'password', 'language', 'uses_metric'
     ];
 
     /**
@@ -51,6 +51,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'uses_metric' => 'boolean',
     ];
 
     public function hives()

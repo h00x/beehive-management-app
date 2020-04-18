@@ -52,5 +52,5 @@
     <p>Comb building: {{ $inspection->comb_building }}</p>
     <p>Notes: {{ $inspection->notes }}</p>
     <p>Weather: {{ $inspection->weather }}</p>
-    <p>Temperature: {{ $inspection->temperature }}</p>
+    <p>Temperature: {{ $inspection->computed_temperature }}</p>
 @endsection
