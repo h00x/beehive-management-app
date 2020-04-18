@@ -27,7 +27,8 @@ class ProfileRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'language' => 'in:nl,en',
-            'unit_system' => 'required|in:metric,imperial'
+            'unit_system' => 'required|in:metric,imperial',
+            'profile_image' => 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }

@@ -44,7 +44,13 @@
                             class="flex items-center text-default no-underline text-sm"
                             v-pre
                         >
-                            <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">{{ substr(auth()->user()->first_name, 0, 1) }}</div>
+                            <div class="flex items-center justify-center rounded-full mr-3 bg-primary-700 w-8 h-8 text-primary-900 text-center font-bold">
+                                @if(auth()->user()->profile_image_name)
+                                    <img class="rounded-full w-full" src="{{ Storage::url('images/profiles/'.auth()->user()->profile_image_name.'.jpg') }}" alt="">
+                                @else
+                                    {{ substr(auth()->user()->first_name, 0, 1) }}
+                                @endif
+                            </div>
                             {{ auth()->user()->first_name }}<i class="fas fa-caret-down ml-1"></i>
                         </button>
                     </template>
