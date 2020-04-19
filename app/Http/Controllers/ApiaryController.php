@@ -45,10 +45,7 @@ class ApiaryController extends Controller
     public function store(ApiaryRequest $request)
     {
         if (isset($request->apiary_image)) {
-            $apiaryImageName = uniqid();
-
-            ApiaryHelper::storeMainImage($request, $apiaryImageName);
-            ApiaryHelper::storeThumbImage($request, $apiaryImageName);
+            $apiaryImageName = ApiaryHelper::storeApiaryImages($request);
 
             $request->merge(['image' => $apiaryImageName]);
         }
@@ -109,9 +106,9 @@ class ApiaryController extends Controller
         $this->authorize('update', $apiary);
 
         if (isset($request->apiary_image)) {
-            Storage::delete($apiary->image);
-            $imagePath = $request->file('apiary_image')->store('public/images/apiaries');
-            $request->merge(['image' => $imagePath]);
+            $apiaryImageName = ApiaryHelper::storeApiaryImages($request, $apiary);
+
+            $request->merge(['image' => $apiaryImageName]);
         }
 
         $apiary->update($request->except('apiary_image'));

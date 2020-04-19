@@ -15,7 +15,7 @@ class HiveController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class HiveController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -40,15 +40,12 @@ class HiveController extends Controller
      * Store a newly created resource in storage.
      *
      * @param HiveRequest $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(HiveRequest $request)
     {
-        if (isset($request->beehive_image)) {
-            $hiveImageName = uniqid();
-
-            HiveHelper::storeMainImage($request, $hiveImageName);
-            HiveHelper::storeThumbImage($request, $hiveImageName);
+        if ($request->hasFile('beehive_image')) {
+            $hiveImageName = HiveHelper::storeHiveImages($request);
 
             $request->merge(['image' => $hiveImageName]);
         }
@@ -62,7 +59,7 @@ class HiveController extends Controller
      * Display the specified resource.
      *
      * @param \App\Hive $hive
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Hive $hive)
@@ -76,7 +73,7 @@ class HiveController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Hive $hive
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Hive $hive)
@@ -93,17 +90,17 @@ class HiveController extends Controller
      *
      * @param HiveRequest $request
      * @param \App\Hive $hive
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(HiveRequest $request, Hive $hive)
     {
         $this->authorize('update', $hive);
 
-        if (isset($request->beehive_image)) {
-            Storage::delete($hive->image);
-            $imagePath = $request->file('beehive_image')->store('public/images/hives');
-            $request->merge(['image' => $imagePath]);
+        if ($request->hasFile('beehive_image')) {
+            $hiveImageName = HiveHelper::storeHiveImages($request, $hive);
+
+            $request->merge(['image' => $hiveImageName]);
         }
 
         $hive->update($request->except('beehive_image'));
@@ -115,7 +112,7 @@ class HiveController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Hive $hive
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Hive $hive)
