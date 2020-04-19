@@ -105,7 +105,7 @@
                         <td class="border border-gray-200 px-4 py-2">{{ $inspection->pollen_arriving }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $inspection->comb_building }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $inspection->weather }}</td>
-                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->temperature }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $inspection->computed_temperature }}</td>
                         <td class="border border-gray-200 px-4 py-2"><a href="{{ $inspection->path() }}">View</a></td>
                     </tr>
                 @endforeach
@@ -133,7 +133,7 @@
                         <td class="border border-gray-200 px-4 py-2">{{ $harvest->name }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $harvest->date }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $harvest->batch_code }}</td>
-                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->weight }}</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ $harvest->computed_weight }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $harvest->moister_content }}</td>
                         <td class="border border-gray-200 px-4 py-2">{{ $harvest->nectar_source }}</td>
                         <td class="border border-gray-200 px-4 py-2"><a href="{{ $harvest->path() }}">View</a></td>
@@ -146,7 +146,7 @@
             <ul class="text-xs">
                 @foreach($hive->activities->reverse() as $activity)
                     <li class="{{ $loop->last ? '' : 'pb-2' }}">
-                        {{ $activity->causer->name }} {{ $activity->description }} {{ $activity->subject->name }}
+                        {{ $activity->causer->first_name }} {{ $activity->description }} {{ $activity->subject->name }}
                         <small>{{ $activity->created_at->diffForHumans() }}</small>
                     </li>
                 @endforeach
